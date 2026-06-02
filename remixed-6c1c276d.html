@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BotaNote — Dept. of Botany, University of Chittagong</title>
+<style>
+:root{--gd:#1a3a2a;--gm:#2d5a3d;--gl:#4a8c5c;--gp:#a8d5b5;--cream:#f5f0e8;--cd:#ede4d0;--gold:#c8a84b;--td:#1a2e1f;--tm:#3d5945;--tl:#7a9e85;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;background:var(--cream);color:var(--td);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,58,42,0.97);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:58px;border-bottom:1px solid rgba(168,213,181,0.2);}
+.nav-logo{color:var(--gp);font-size:1.2rem;font-weight:bold;cursor:pointer;letter-spacing:1px;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:1.2rem;}
+.nav-links a{color:var(--gp);text-decoration:none;font-size:0.82rem;font-family:sans-serif;opacity:0.8;transition:all 0.2s;cursor:pointer;}
+.nav-links a:hover{opacity:1;color:var(--gold);}
+.nav-btn{background:var(--gl);color:white;border:none;padding:7px 16px;border-radius:20px;font-size:0.78rem;cursor:pointer;font-family:sans-serif;transition:background 0.2s;}
+.nav-btn:hover{background:var(--gold);}
+.page{display:none;min-height:100vh;padding-top:58px;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatLeaf{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+.fade-in{animation:fadeIn 0.35s ease forwards;}
+.leaf{position:absolute;opacity:0.06;animation:floatLeaf 7s ease-in-out infinite;pointer-events:none;}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--gm);color:white;padding:10px 20px;border-radius:10px;font-family:sans-serif;font-size:0.85rem;z-index:999;display:none;}
+
+/* HOME */
+#page-home{background:linear-gradient(160deg,#1a3a2a,#2d5a3d,#1a3a2a);overflow:hidden;}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 58px);text-align:center;padding:2rem;position:relative;z-index:2;}
+.hero-badge{background:rgba(168,213,181,0.12);border:1px solid rgba(168,213,181,0.3);color:var(--gp);padding:6px 18px;border-radius:20px;font-size:0.72rem;font-family:sans-serif;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;}
+.hero h1{font-size:3rem;color:white;line-height:1.2;margin-bottom:0.8rem;}
+.hero h1 span{color:var(--gp);}
+.hero-sub{color:rgba(255,255,255,0.55);font-size:0.85rem;font-family:sans-serif;margin-bottom:0.5rem;}
+.hero p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:480px;line-height:1.7;margin-bottom:2rem;font-family:sans-serif;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:var(--gl);color:white;border:none;padding:11px 26px;border-radius:25px;font-size:0.88rem;cursor:pointer;font-family:sans-serif;transition:all 0.2s;}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--gp);border:1px solid rgba(168,213,181,0.4);padding:11px 26px;border-radius:25px;font-size:0.88rem;cursor:pointer;font-family:sans-serif;transition:all 0.2s;}
+.btn-outline:hover{background:rgba(168,213,181,0.1);transform:translateY(-2px);}
+.stats-row{display:flex;gap:2.5rem;margin-top:2.5rem;}
+.stat-num{font-size:1.8rem;color:var(--gp);font-weight:bold;}
+.stat-label{font-size:0.7rem;color:rgba(255,255,255,0.45);font-family:sans-serif;letter-spacing:1px;text-transform:uppercase;}
+.groups-section{background:var(--cream);padding:3.5rem 1.5rem;}
+.section-title{text-align:center;font-size:1.6rem;color:var(--gd);margin-bottom:0.3rem;}
+.section-sub{text-align:center;color:var(--tl);font-family:sans-serif;font-size:0.85rem;margin-bottom:2rem;}
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;max-width:960px;margin:0 auto;}
+.group-card{background:white;border:1px solid var(--cd);border-radius:14px;padding:1.3rem;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
+.group-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gl),var(--gp));}
+.group-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(45,90,61,0.14);}
+.group-icon{font-size:1.8rem;margin-bottom:0.6rem;}
+.group-card h3{font-size:0.92rem;color:var(--gd);margin-bottom:0.2rem;}
+.group-card p{font-size:0.75rem;color:var(--tl);font-family:sans-serif;line-height:1.4;}
+.group-count{position:absolute;top:0.8rem;right:0.8rem;background:var(--cream);color:var(--tl);font-size:0.68rem;font-family:sans-serif;padding:3px 7px;border-radius:10px;}
+
+/* AUTH */
+#page-auth{background:linear-gradient(135deg,#1a3a2a,#2d5a3d);display:flex;align-items:center;justify-content:center;}
+.auth-container{background:rgba(255,255,255,0.98);border-radius:18px;width:410px;padding:2rem;margin:1.5rem;box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+.auth-logo-text{font-size:1.4rem;color:var(--gd);text-align:center;}
+.auth-logo-text span{color:var(--gl);}
+.auth-dept{text-align:center;font-size:0.72rem;color:var(--tl);font-family:sans-serif;margin-top:3px;margin-bottom:1.2rem;}
+.auth-tabs{display:flex;background:var(--cream);border-radius:10px;padding:3px;margin-bottom:1.2rem;}
+.auth-tab{flex:1;text-align:center;padding:7px;border-radius:8px;cursor:pointer;font-size:0.82rem;font-family:sans-serif;color:var(--tl);transition:all 0.2s;}
+.auth-tab.active{background:white;color:var(--gd);font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+.fg{margin-bottom:0.85rem;}
+.fg label{display:block;font-size:0.75rem;font-family:sans-serif;color:var(--tm);margin-bottom:4px;font-weight:600;}
+.fg input{width:100%;padding:9px 12px;border:1.5px solid #e0ddd5;border-radius:9px;font-size:0.88rem;font-family:sans-serif;color:var(--td);outline:none;transition:border 0.2s;}
+.fg input:focus{border-color:var(--gl);}
+.fg .hint{font-size:0.7rem;color:var(--tl);font-family:sans-serif;margin-top:3px;}
+.auth-submit{width:100%;padding:11px;background:var(--gm);color:white;border:none;border-radius:9px;font-size:0.92rem;cursor:pointer;font-family:sans-serif;font-weight:600;margin-top:0.3rem;transition:background 0.2s;}
+.auth-submit:hover{background:var(--gl);}
+.auth-pending{background:#f0f7f2;border:1px solid var(--gp);border-radius:9px;padding:0.9rem;text-align:center;margin-top:0.8rem;display:none;}
+.auth-pending p{font-size:0.82rem;color:var(--gm);font-family:sans-serif;}
+#register-form{display:none;}
+
+/* NOTES */
+#page-notes{background:var(--cream);}
+.notes-header{background:var(--gd);padding:2rem 1.5rem;}
+.notes-header h2{font-size:1.6rem;color:var(--gp);}
+.notes-header p{color:rgba(255,255,255,0.5);font-family:sans-serif;font-size:0.82rem;margin-top:0.2rem;}
+.notes-body{padding:1.5rem;max-width:1050px;margin:0 auto;}
+.group-tabs{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.gtab{padding:7px 15px;border-radius:20px;border:1.5px solid var(--gp);color:var(--gm);font-family:sans-serif;font-size:0.77rem;cursor:pointer;transition:all 0.2s;background:white;}
+.gtab.active,.gtab:hover{background:var(--gm);color:white;border-color:var(--gm);}
+.pdf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;}
+.pdf-card{background:white;border-radius:14px;padding:1.2rem;border:1px solid var(--cd);transition:all 0.25s;cursor:pointer;position:relative;overflow:hidden;}
+.pdf-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gl),var(--gp));opacity:0;transition:opacity 0.2s;}
+.pdf-card:hover{box-shadow:0 8px 24px rgba(45,90,61,0.13);transform:translateY(-3px);}
+.pdf-card:hover::after{opacity:1;}
+.pdf-icon{font-size:2rem;margin-bottom:0.6rem;}
+.pdf-card h4{font-size:0.85rem;color:var(--gd);margin-bottom:0.2rem;line-height:1.3;}
+.pdf-card .pdf-sub{font-size:0.72rem;color:var(--tl);font-family:sans-serif;margin-bottom:0.7rem;}
+.pdf-meta{display:flex;justify-content:space-between;align-items:center;margin-top:0.5rem;}
+.pdf-size{font-size:0.68rem;color:var(--tl);font-family:sans-serif;}
+.view-btn{background:var(--gm);color:white;border:none;padding:5px 12px;border-radius:18px;font-size:0.72rem;cursor:pointer;font-family:sans-serif;transition:background 0.2s;}
+.view-btn:hover{background:var(--gl);}
+.course-tag{display:inline-block;background:var(--cream);color:var(--tm);font-size:0.65rem;font-family:sans-serif;padding:2px 8px;border-radius:8px;margin-bottom:5px;font-weight:600;}
+
+/* ===== COURSE DETAIL PAGE ===== */
+#page-course{background:var(--cream);}
+.course-hero{background:linear-gradient(135deg,var(--gd) 0%,var(--gm) 100%);padding:2.5rem 2rem;position:relative;overflow:hidden;}
+.course-hero::before{content:'🌿';position:absolute;right:2rem;top:50%;transform:translateY(-50%);font-size:8rem;opacity:0.06;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-family:sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;cursor:pointer;}
+.breadcrumb span{color:var(--gp);cursor:pointer;}
+.breadcrumb span:hover{color:var(--gold);}
+.course-code-badge{display:inline-block;background:rgba(168,213,181,0.2);border:1px solid rgba(168,213,181,0.35);color:var(--gp);padding:4px 14px;border-radius:20px;font-family:sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;margin-bottom:0.7rem;}
+.course-hero h1{font-size:1.8rem;color:white;margin-bottom:0.5rem;line-height:1.3;}
+.course-meta-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.8rem;}
+.course-meta-item{display:flex;align-items:center;gap:5px;font-family:sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.6);}
+.course-meta-item strong{color:var(--gp);}
+.course-body{max-width:900px;margin:0 auto;padding:2rem 1.5rem;}
+.course-section{margin-bottom:2.5rem;}
+.course-section-title{font-size:0.72rem;font-family:sans-serif;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tl);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--cd);}
+
+/* Topic items */
+.topic-list{display:flex;flex-direction:column;gap:0.6rem;}
+.topic-item{background:white;border-radius:12px;border:1px solid var(--cd);padding:1rem 1.2rem;display:flex;gap:1rem;align-items:flex-start;transition:all 0.2s;position:relative;overflow:hidden;}
+.topic-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gl);border-radius:3px 0 0 3px;opacity:0;transition:opacity 0.2s;}
+.topic-item:hover{box-shadow:0 4px 16px rgba(45,90,61,0.1);}
+.topic-item:hover::before{opacity:1;}
+.topic-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--cream);border:1.5px solid var(--gp);display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:0.7rem;font-weight:700;color:var(--gm);margin-top:1px;}
+.topic-content{flex:1;}
+.topic-title{font-size:0.88rem;color:var(--gd);font-weight:600;margin-bottom:0.2rem;}
+.topic-desc{font-size:0.8rem;color:var(--tm);font-family:sans-serif;line-height:1.6;}
+.topic-lectures{flex-shrink:0;font-size:0.68rem;font-family:sans-serif;color:var(--tl);background:var(--cream);padding:3px 8px;border-radius:8px;margin-top:2px;}
+
+/* Book items */
+.book-list{display:flex;flex-direction:column;gap:0.5rem;}
+.book-item{background:white;border-radius:11px;border:1px solid var(--cd);padding:0.9rem 1.1rem;display:flex;align-items:center;gap:0.9rem;transition:all 0.2s;}
+.book-item:hover{border-color:var(--gp);box-shadow:0 3px 12px rgba(45,90,61,0.08);}
+.book-spine{width:36px;height:44px;border-radius:3px 6px 6px 3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.book-info{flex:1;}
+.book-title{font-size:0.83rem;color:var(--gd);margin-bottom:2px;line-height:1.4;}
+.book-author{font-size:0.72rem;color:var(--tl);font-family:sans-serif;}
+.book-upload-btn{flex-shrink:0;background:transparent;border:1.5px solid var(--gp);color:var(--gm);padding:5px 12px;border-radius:18px;font-size:0.72rem;cursor:pointer;font-family:sans-serif;transition:all 0.2s;display:flex;align-items:center;gap:4px;}
+.book-upload-btn:hover{background:var(--gm);color:white;border-color:var(--gm);}
+.uploaded-badge{flex-shrink:0;background:#d4edda;color:#155724;padding:4px 10px;border-radius:18px;font-size:0.7rem;font-family:sans-serif;font-weight:600;}
+
+/* ADMIN */
+#page-admin{background:#f7f5f0;}
+.admin-header{background:var(--gd);color:white;padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.admin-header h2{color:var(--gp);font-size:1.3rem;}
+.admin-body{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 116px);}
+.admin-sidebar{background:white;border-right:1px solid var(--cd);padding:1rem 0;}
+.sidebar-item{padding:9px 1.2rem;font-family:sans-serif;font-size:0.82rem;color:var(--tm);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:7px;}
+.sidebar-item:hover,.sidebar-item.active{background:var(--cream);color:var(--gd);font-weight:600;border-left:3px solid var(--gl);}
+.admin-content{padding:1.5rem;overflow-y:auto;}
+.admin-panel{display:none;}
+.admin-panel.active{display:block;}
+.panel-title{font-size:1.1rem;color:var(--gd);margin-bottom:1.2rem;}
+.stats-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.8rem;margin-bottom:1.5rem;}
+.stat-card{background:white;border-radius:10px;padding:1rem;border:1px solid var(--cd);text-align:center;}
+.stat-card-num{font-size:1.8rem;color:var(--gm);font-weight:bold;}
+.stat-card-label{font-size:0.7rem;color:var(--tl);font-family:sans-serif;margin-top:3px;}
+.user-table{width:100%;border-collapse:collapse;background:white;border-radius:10px;overflow:hidden;border:1px solid var(--cd);}
+.user-table th{background:var(--cream);padding:9px 12px;text-align:left;font-size:0.72rem;font-family:sans-serif;color:var(--tm);font-weight:700;text-transform:uppercase;letter-spacing:0.4px;}
+.user-table td{padding:9px 12px;font-size:0.8rem;font-family:sans-serif;border-top:1px solid var(--cd);color:var(--td);}
+.badge{padding:3px 9px;border-radius:18px;font-size:0.68rem;font-family:sans-serif;font-weight:600;}
+.b-pending{background:#fff3cd;color:#856404;}.b-approved{background:#d4edda;color:#155724;}.b-author{background:#d1ecf1;color:#0c5460;}.b-admin{background:#f8d7da;color:#721c24;}
+.action-btn{padding:4px 9px;border-radius:6px;border:none;font-size:0.7rem;cursor:pointer;font-family:sans-serif;margin:0 2px;transition:opacity 0.2s;}
+.action-btn:hover{opacity:0.8;}
+.btn-approve{background:#28a745;color:white;}.btn-delete{background:#dc3545;color:white;}.btn-author{background:#17a2b8;color:white;}
+.aform-card{background:white;border-radius:12px;padding:1.3rem;border:1px solid var(--cd);}
+.aform-card h4{font-size:0.9rem;color:var(--gd);margin-bottom:1rem;}
+.admin-form-group{margin-bottom:0.8rem;}
+.admin-form-group label{display:block;font-size:0.75rem;font-family:sans-serif;color:var(--tm);font-weight:600;margin-bottom:4px;}
+.admin-form-group input,.admin-form-group select{width:100%;padding:8px 11px;border:1.5px solid #e0ddd5;border-radius:8px;font-size:0.83rem;font-family:sans-serif;outline:none;}
+.admin-form-group input:focus,.admin-form-group select:focus{border-color:var(--gl);}
+.aform-submit{background:var(--gm);color:white;border:none;padding:9px 20px;border-radius:8px;font-size:0.83rem;cursor:pointer;font-family:sans-serif;width:100%;margin-top:0.3rem;}
+.group-mgmt{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.gitem{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--cd);font-family:sans-serif;font-size:0.8rem;color:var(--td);}
+.gitem:last-child{border-bottom:none;}
+.gitem-del{background:none;border:none;color:#dc3545;cursor:pointer;font-size:0.72rem;font-family:sans-serif;}
+.upload-area{background:white;border:2px dashed var(--gp);border-radius:12px;padding:1.5rem;text-align:center;cursor:pointer;transition:all 0.2s;margin:0.8rem 0;}
+.upload-area:hover{border-color:var(--gm);background:#f0f7f2;}
+
+/* AI */
+#page-ai{background:var(--gd);min-height:100vh;flex-direction:column;display:flex;}
+.ai-header{background:rgba(0,0,0,0.2);padding:1.2rem 1.5rem;border-bottom:1px solid rgba(168,213,181,0.15);}
+.ai-header h2{color:var(--gp);font-size:1.2rem;}
+.ai-header p{color:rgba(255,255,255,0.45);font-size:0.77rem;font-family:sans-serif;margin-top:2px;}
+.ai-body{flex:1;display:flex;flex-direction:column;max-width:780px;margin:0 auto;width:100%;padding:1.2rem;}
+.ai-sug-wrap{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.8rem;}
+.ai-sug{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.65);border:1px solid rgba(168,213,181,0.18);border-radius:18px;padding:5px 12px;font-size:0.72rem;font-family:sans-serif;cursor:pointer;transition:all 0.2s;}
+.ai-sug:hover{background:rgba(168,213,181,0.14);color:white;}
+.chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:0.8rem;margin-bottom:0.8rem;min-height:380px;max-height:460px;}
+.msg{display:flex;gap:8px;max-width:88%;}
+.msg.user{margin-left:auto;flex-direction:row-reverse;}
+.msg-av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.72rem;flex-shrink:0;}
+.msg.bot .msg-av{background:rgba(168,213,181,0.18);color:var(--gp);}
+.msg.user .msg-av{background:var(--gl);color:white;}
+.msg-bubble{padding:9px 13px;border-radius:13px;font-family:sans-serif;font-size:0.83rem;line-height:1.6;}
+.msg.bot .msg-bubble{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.88);border-bottom-left-radius:3px;}
+.msg.user .msg-bubble{background:var(--gm);color:white;border-bottom-right-radius:3px;}
+.chat-input-row{display:flex;gap:0.5rem;}
+.chat-input-row input{flex:1;padding:11px 15px;background:rgba(255,255,255,0.09);border:1px solid rgba(168,213,181,0.18);border-radius:23px;color:white;font-family:sans-serif;font-size:0.88rem;outline:none;}
+.chat-input-row input::placeholder{color:rgba(255,255,255,0.35);}
+.chat-input-row input:focus{border-color:rgba(168,213,181,0.45);}
+.send-btn{background:var(--gl);color:white;border:none;padding:11px 18px;border-radius:23px;cursor:pointer;font-family:sans-serif;font-size:0.88rem;transition:background 0.2s;}
+.send-btn:hover{background:var(--gold);}
+@keyframes typingBounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+.typing-dot{width:6px;height:6px;background:var(--gp);border-radius:50%;animation:typingBounce 1s infinite;display:inline-block;}
+.typing-dot:nth-child(2){animation-delay:0.15s;}.typing-dot:nth-child(3){animation-delay:0.3s;}
+.typing-indicator{display:flex;gap:4px;padding:9px 13px;background:rgba(255,255,255,0.08);border-radius:13px;border-bottom-left-radius:3px;width:fit-content;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">Bota<span>Note</span> 🌿</div>
+  <div class="nav-links">
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('notes')">Notes</a>
+    <a onclick="showPage('ai')">AI Assistant</a>
+    <a onclick="showPage('admin')" id="admin-link" style="display:none">Admin</a>
+  </div>
+  <button class="nav-btn" id="nav-auth-btn" onclick="showPage('auth')">Login / Register</button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div style="position:relative;overflow:hidden;background:linear-gradient(160deg,#1a3a2a,#2d5a3d,#1a3a2a);min-height:100vh;">
+    <div id="leafBg" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"></div>
+    <div class="hero">
+      <div class="hero-badge">🌿 Department of Botany</div>
+      <div class="hero-sub">Faculty of Biological Sciences · University of Chittagong</div>
+      <h1>Welcome to <span>BotaNote</span></h1>
+      <p>Your digital resource hub for B.Sc. (Hons) Botany — course notes, PDFs, and an AI assistant for your syllabus.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('notes')">Browse Course Notes</button>
+        <button class="btn-outline" onclick="showPage('ai')">Ask BotaBot 🤖</button>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num" id="stat-pdfs">0</div><div class="stat-label">Notes</div></div>
+        <div class="stat"><div class="stat-num" id="stat-members">0</div><div class="stat-label">Members</div></div>
+        <div class="stat"><div class="stat-num" id="stat-groups">0</div><div class="stat-label">Courses</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="groups-section">
+    <h2 class="section-title">B.Sc. (Hons) Curriculum Groups</h2>
+    <p class="section-sub">University of Chittagong · Sessions 2021-2022 & 2022-2023</p>
+    <div class="groups-grid" id="home-groups"></div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div class="page" id="page-auth" style="display:flex;align-items:center;justify-content:center;min-height:100vh;">
+  <div class="auth-container fade-in">
+    <div class="auth-logo-text">Bota<span>Note</span> 🌿</div>
+    <div class="auth-dept">Dept. of Botany — University of Chittagong</div>
+    <div class="auth-tabs">
+      <div class="auth-tab active" onclick="switchTab('login')">Login</div>
+      <div class="auth-tab" onclick="switchTab('register')">Register</div>
+    </div>
+    <div id="login-form">
+      <div class="fg"><label>Email Address</label><input type="email" id="login-email" placeholder="your@cu.ac.bd"></div>
+      <div class="fg"><label>Password</label><input type="password" id="login-pass" placeholder="••••••••"></div>
+      <button class="auth-submit" onclick="doLogin()">Login to BotaNote</button>
+    </div>
+    <div id="register-form">
+      <div class="fg"><label>Full Name</label><input type="text" id="reg-name" placeholder="Your full name"></div>
+      <div class="fg"><label>Department Roll Number</label><input type="text" id="reg-roll" placeholder="e.g. BOT-2024-001"><div class="hint">Your official department roll number</div></div>
+      <div class="fg"><label>Email Address</label><input type="email" id="reg-email" placeholder="your@cu.ac.bd"></div>
+      <div class="fg"><label>Password</label><input type="password" id="reg-pass" placeholder="Create a password"></div>
+      <button class="auth-submit" onclick="doRegister()">Send Registration Request</button>
+      <div class="auth-pending" id="reg-success"><p>✅ <strong>Request submitted!</strong><br>Awaiting admin approval.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTES -->
+<div class="page" id="page-notes">
+  <div class="notes-header">
+    <h2>📚 Course Notes & Resources</h2>
+    <p>B.Sc. (Hons) in Botany — University of Chittagong</p>
+  </div>
+  <div class="notes-body">
+    <div class="group-tabs" id="note-tabs"></div>
+    <div class="pdf-grid" id="pdf-grid"></div>
+  </div>
+</div>
+
+<!-- COURSE DETAIL PAGE -->
+<div class="page" id="page-course">
+  <div class="course-hero">
+    <div class="breadcrumb" onclick="showPage('notes')">
+      ← <span>Notes</span> &nbsp;/ <span id="cd-breadcrumb-group">1st Year</span> &nbsp;/ <span id="cd-breadcrumb-title">Course</span>
+    </div>
+    <div class="course-code-badge" id="cd-code">BOT.101</div>
+    <h1 id="cd-title">Microbiology</h1>
+    <div class="course-meta-row">
+      <div class="course-meta-item">📖 Lectures: <strong id="cd-lectures">30</strong></div>
+      <div class="course-meta-item">📊 Marks: <strong id="cd-marks">50</strong></div>
+      <div class="course-meta-item">⏱ Exam: <strong id="cd-duration">3 hours</strong></div>
+      <div class="course-meta-item">🏫 <strong id="cd-group">1st Year — Major Theory</strong></div>
+    </div>
+  </div>
+  <div class="course-body">
+    <div class="course-section">
+      <div class="course-section-title">📋 Course Topics</div>
+      <div class="topic-list" id="cd-topics"></div>
+    </div>
+    <div class="course-section">
+      <div class="course-section-title">📚 Recommended Books & Uploads</div>
+      <div class="book-list" id="cd-books"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="page" id="page-admin">
+  <div class="admin-header"><h2>⚙️ Admin Dashboard</h2><span style="font-family:sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.45);">BotaNote Control Panel</span></div>
+  <div class="admin-body">
+    <div class="admin-sidebar">
+      <div class="sidebar-item active" onclick="showPanel(this,'overview')">📊 Overview</div>
+      <div class="sidebar-item" onclick="showPanel(this,'users')">👥 Manage Users</div>
+      <div class="sidebar-item" onclick="showPanel(this,'groups')">📂 Manage Groups</div>
+      <div class="sidebar-item" onclick="showPanel(this,'upload')">📤 Upload PDF</div>
+    </div>
+    <div class="admin-content">
+      <div class="admin-panel active" id="panel-overview">
+        <div class="panel-title">Dashboard Overview</div>
+        <div class="stats-cards">
+          <div class="stat-card"><div class="stat-card-num" id="a-users">0</div><div class="stat-card-label">Total Users</div></div>
+          <div class="stat-card"><div class="stat-card-num" id="a-pending">0</div><div class="stat-card-label">Pending</div></div>
+          <div class="stat-card"><div class="stat-card-num" id="a-pdfs">0</div><div class="stat-card-label">PDFs</div></div>
+          <div class="stat-card"><div class="stat-card-num" id="a-groups">0</div><div class="stat-card-label">Groups</div></div>
+        </div>
+        <div class="aform-card" style="margin-top:0.5rem;"><h4>Recent Activity</h4><div style="font-family:sans-serif;font-size:0.8rem;color:var(--tm);line-height:2.1;">🟢 New registration pending<br>📄 Course detail pages active for 1st Year courses<br>✅ Admin account active<br>📂 All year groups pre-loaded from CU Botany syllabus</div></div>
+      </div>
+      <div class="admin-panel" id="panel-users">
+        <div class="panel-title">Manage Users</div>
+        <table class="user-table"><thead><tr><th>Name</th><th>Roll No.</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead><tbody id="user-tbody"></tbody></table>
+      </div>
+      <div class="admin-panel" id="panel-groups">
+        <div class="panel-title">Manage Groups</div>
+        <div class="group-mgmt">
+          <div class="aform-card"><h4>➕ Create New Group</h4>
+            <div class="admin-form-group"><label>Group Name</label><input type="text" id="new-group-name" placeholder="e.g. 4th Year Special Topics"></div>
+            <div class="admin-form-group"><label>Description</label><input type="text" id="new-group-desc" placeholder="Short description"></div>
+            <div class="admin-form-group"><label>Icon</label><select id="new-group-icon"><option value="📗">📗 1st Year</option><option value="📘">📘 2nd Year</option><option value="📙">📙 3rd Year</option><option value="📕">📕 4th Year</option><option value="🎓">🎓 Masters</option><option value="🔬">🔬 Lab Notes</option><option value="📋">📋 Other</option></select></div>
+            <button class="aform-submit" onclick="addGroup()">Create Group</button>
+          </div>
+          <div class="aform-card"><h4>📂 Existing Groups</h4><div id="group-list"></div></div>
+        </div>
+      </div>
+      <div class="admin-panel" id="panel-upload">
+        <div class="panel-title">Upload PDF / Note</div>
+        <div class="aform-card" style="max-width:520px;">
+          <div class="admin-form-group"><label>Note / PDF Title</label><input type="text" id="pdf-title" placeholder="e.g. BOT.101 Microbiology Lecture Notes"></div>
+          <div class="admin-form-group"><label>Course Code (optional)</label><input type="text" id="pdf-course" placeholder="e.g. BOT.101"></div>
+          <div class="admin-form-group"><label>Assign to Group</label><select id="pdf-group"></select></div>
+          <div class="upload-area" onclick="simulateUpload()"><div style="font-size:2rem;margin-bottom:6px;">📄</div><p style="font-family:sans-serif;font-size:0.82rem;color:var(--tl);"><strong style="color:var(--gm);">Click to select PDF</strong> or drag & drop<br><span style="font-size:0.7rem;">Max 50MB</span></p></div>
+          <button class="aform-submit" onclick="addPDF()">Add PDF to Group</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI -->
+<div class="page" id="page-ai">
+  <div class="ai-header"><h2>🌿 BotaBot — Syllabus AI Assistant</h2><p>Department of Botany, University of Chittagong · B.Sc. (Hons) Syllabus 2021-2023</p></div>
+  <div class="ai-body">
+    <div class="ai-sug-wrap">
+      <div class="ai-sug" onclick="askSug('What are the 1st year major theory courses?')">1st year courses</div>
+      <div class="ai-sug" onclick="askSug('Explain BOT.101 Microbiology topics in detail')">BOT.101 topics</div>
+      <div class="ai-sug" onclick="askSug('What is the grading system at CU Botany?')">Grading system</div>
+      <div class="ai-sug" onclick="askSug('How is CGPA calculated?')">CGPA calculation</div>
+      <div class="ai-sug" onclick="askSug('What books are recommended for Mycology BOT.102?')">BOT.102 books</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg bot"><div class="msg-av">🌿</div><div class="msg-bubble">Assalamu Alaikum! I'm <strong>BotaBot</strong>, your AI assistant for the <strong>Department of Botany, University of Chittagong</strong>. I know your full B.Sc. (Hons) syllabus — all course codes, topics, books, grading rules, and more. Ask me anything! 🌱</div></div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask about BOT courses, topics, exams, grading..." onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="send-btn" onclick="sendChat()">Send ✉️</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== COURSE DETAIL DATA =====
+const COURSES = {
+  1: {
+    code:'BOT.101', title:'Microbiology', lectures:30, marks:50, duration:'3 hours', group:'1st Year — Major Theory',
+    topics:[
+      {num:1, title:'Introduction', desc:'Definition, history, scope and development of microbiology; distribution of microorganisms in nature; spontaneous generation and biogenesis; the germ theory of disease.', lec:2},
+      {num:2, title:'Classification', desc:'Classification according to Whittaker\'s and Swartz\'s Super Kingdom and Kingdom system; seven to ninth edition of Bergey\'s Manual.', lec:3},
+      {num:3, title:'Prion', desc:'Discovery, structure, characteristics, distribution, replication and economic importance.', lec:2},
+      {num:4, title:'Viroids', desc:'Discovery, structure, characteristics, distribution, origin, transmission and economic importance.', lec:2},
+      {num:5, title:'Viruses', desc:'Discovery, nature, biological status, physical and chemical structure, nomenclature, classification, multiplication, transmission, culture, detection and economic importance.', lec:2},
+      {num:6, title:'Rickettsias and Chlamydias', desc:'Discovery, structure, classification, disease symptoms, multiplication and economic importance.', lec:2},
+      {num:7, title:'Mycoplasma', desc:'Characteristics, structure, multiplication and economic importance.', lec:2},
+      {num:8, title:'Bacteria', desc:'Habitat, characteristics, classification, detail description and function of structural parts of bacterial cell, nutrition, reproduction, bacterial recombination, endospore formation, biofilms formation and economic importance.', lec:4},
+      {num:9, title:'Actinomycetes', desc:'Discovery, structure, classification, reproduction, relationship and economic importance.', lec:2},
+      {num:10, title:'Growth of Microorganisms', desc:'Definition, types, phases, generation time, rate and efficiency of growth; synchronous growth, continuous growth, measurement of growth, growth curve and growth in a batch culture.', lec:3},
+      {num:11, title:'Control of Microorganisms', desc:'Physical, chemical, antibiotic and other chemotherapeutic agents, mode of action of antibacterial agents, antibiotic sensitivity assays.', lec:2},
+    ],
+    books:[
+      {title:'Essentials of Microbiology', author:'Bilgrami and Sinha, 1992. CBS Pub. and Dist, New Delhi.', color:'#d4edda', uploaded:false},
+      {title:'An Introduction to Viruses', author:'Biswas and Biswas, 1989. Vani Edu. Books, India.', color:'#d1ecf1', uploaded:false},
+      {title:'A Text Book of Microbiology', author:'Dubey RC and Maheshwari DK, 2003. S. Chand and Co., India.', color:'#fff3cd', uploaded:false},
+      {title:'Microbiology (5th Edition)', author:'Prescott LM.', color:'#f8d7da', uploaded:false},
+      {title:'Microbiology', author:'Sharma PD, 2000. Rastogi Pub, New Delhi.', color:'#e8d5f5', uploaded:false},
+      {title:'Microbiology and Plant Pathology', author:'Sharma PD, 2003.', color:'#d4edda', uploaded:false},
+      {title:'Microbiology: An Evolving Science', author:'Slonczewski JL and Foster JW, 2009. W.W. Norton and Company, New York.', color:'#d1ecf1', uploaded:false},
+    ]
+  },
+  2: {
+    code:'BOT.102', title:'Mycology and Lichenology', lectures:40, marks:75, duration:'4 hours', group:'1st Year — Major Theory',
+    topics:[
+      {num:1, title:'General Characters of Fungi', desc:'Vegetative structure, reproduction, fruiting bodies, spore liberation & dispersal mechanism, life cycle, classification (Alexopoulos and Mims), evolutionary trends and economic importance. Diversity of fungi in Bangladesh.', lec:5},
+      {num:2, title:'Fungal Growth', desc:'Culture medium, inoculum production, factors affecting fungal growth.', lec:2},
+      {num:3, title:'Biological Relations', desc:'Saprophytism, parasitism, symbiosis, biological specialization, parasexuality, heterokaryosis, homothallism, heterothallism and poisonous fungi.', lec:2},
+      {num:4, title:'Classification of Major Groups', desc:'General characters and classification of Myxomycetes, Chytridiomycetes, Oomycetes, Zygomycetes, Ascomycetes, Basidiomycetes and Deuteromycetes.', lec:7},
+      {num:5, title:'Classification of Orders', desc:'General characters, classification and economic importance of orders: Chytridiales, Saprolegniales, Endomycetales, Erysiphales, Eurotiales, Perenosporales, Uredinales, Ustilaginales, Agaricales, Melanconiales, Tuberculariales and Hyphomycetales.', lec:8},
+      {num:6, title:'Study of Important Genera', desc:'Detailed study of the genera: Synchytrium, Saprolegnia, Phytophthora, Albugo, Erysiphe, Saccharomyces, Aspergillus, Puccinia, Ustilago, Agaricus, Colletotrichum, and Alternaria.', lec:7},
+      {num:7, title:'Study of Lichens', desc:'Habit, habitat, classification, vegetative structure, reproduction and economic importance of lichens.', lec:2},
+    ],
+    books:[
+      {title:'Introductory Mycology (3rd edn.)', author:'Alexopoulos CS and Mims CW, 1986. Wiley Eastern Limited, New Delhi.', color:'#d4edda', uploaded:false},
+      {title:'A Text Book of Fungi', author:'Chopra GL, 1982. Pradeep Pub., India.', color:'#d1ecf1', uploaded:false},
+      {title:'An Introduction to Fungi', author:'Dube HC, 2004. Vikas Pub. House, New Delhi.', color:'#fff3cd', uploaded:false},
+      {title:'Mycology', author:'Hossain MM, Shahjahan M and Sultana R, 2018. Bangladesh Book Bank, Shams Pub. Dhaka.', color:'#f8d7da', uploaded:false},
+      {title:'A Text Book of Botany: Fungi', author:'Pandey BP, 1993. S. Chand and Co., New Delhi.', color:'#e8d5f5', uploaded:false},
+      {title:'Botany Part II. Fungi', author:'Vashishta BR, 1973. S Chand and Co., New Delhi.', color:'#d4edda', uploaded:false},
+    ]
+  },
+  3: {
+    code:'BOT.103', title:'Phycology', lectures:40, marks:75, duration:'4 hours', group:'1st Year — Major Theory',
+    topics:[
+      {num:1, title:'Introduction & General Characters', desc:'Introduction and history; habit and habitat; general classification (up to class); pigments and reserve foods; types of chloroplasts; reproduction and perennation; range of vegetative and reproductive structure; life cycle patterns; and affinities to other plant groups.', lec:5},
+      {num:2, title:'Classification of Major Classes', desc:'General characters, classification (up to order), reproduction and economic importance of class Cyanophyceae, Chlorophyceae, Xanthophyceae, Bacillariophyceae, Phaeophyceae and Rhodophyceae.', lec:5},
+      {num:3, title:'Study of Important Genera', desc:'Detailed study of Nostoc, Gloeotrichia, Volvox, Chlorella, Oedogonium, Fritschiella, Vaucheria, Chara, Sargassum, Polysiphonia, Gelidium and Batrachospermum.', lec:10},
+      {num:4, title:'Importance of Algae', desc:'Role of algae as/in food, seaweed, fodder, agriculture, industry, medicine, water purification, sewage disposal, nitrogen fixation, sources of growth substances, uptake of radioactive wastes, land reclamation, lens paper; death of fish, animals and human beings; control of undesirable species; bio fouling; ecological and soil fertility indicator; algal blooms; eutrophication; red tide; Sargasso Sea; in the service of global environment.', lec:8},
+      {num:5, title:'Origin and Evolutionary Trends', desc:'Origin and evolutionary trends in algae.', lec:3},
+      {num:6, title:'Special Types of Algae', desc:'Soil algae, parasitic algae, pathogenic algae, colourless algae, toxic algae, fossil algae and bioluminescence. Extra cellular products of algae.', lec:1},
+      {num:7, title:'Algal Flora of Bangladesh', desc:'Algal flora of Saint Martin\'s Island and Sundarbans and their ecology.', lec:1},
+    ],
+    books:[
+      {title:'Introduction to the Algae', author:'Bold HC and Wynne MJ, 1978. Prentice-Hall Inc.', color:'#d4edda', uploaded:false},
+      {title:'Phycology', author:'Lee RR, 1989. Cambridge University Press.', color:'#d1ecf1', uploaded:false},
+      {title:'A Text Book of Algae', author:'Pandey and Trivedi, 1995. Vikas Pub. House, New Delhi.', color:'#fff3cd', uploaded:false},
+      {title:'Algae — A Review', author:'Prescott GW, 1968. Houghton Mifflin Co.', color:'#f8d7da', uploaded:false},
+      {title:'Botany for Degree Students — Algae', author:'Vashishta BR, 1978. S. Chand and Co., New Delhi.', color:'#e8d5f5', uploaded:false},
+    ]
+  },
+  4: {
+    code:'BOT.104', title:'Bryology', lectures:30, marks:50, duration:'3 hours', group:'1st Year — Major Theory',
+    topics:[
+      {num:1, title:'Introduction', desc:'Habit and habitat; general characters; reproduction; spore dispersal; alternation of generation; biological, economical and ecological importance; resemblances and differences among thallophyta, pteridophyta and bryophyta; origin and evolution of bryophytes; fossil bryophytes.', lec:6},
+      {num:2, title:'Classification', desc:'Classification up to order with general characters.', lec:3},
+      {num:3, title:'Major Orders', desc:'Distribution, general characters and reproduction of order Marchantiales, Jungermaniales, Anthocerotales, Sphagnales and Polytrichales.', lec:6},
+      {num:4, title:'Study of Important Genera', desc:'Distribution, habit, habitat, external and internal features, asexual and sexual reproduction, development of antheridia and archegonia of the following genera: Riccia, Marchantia, Pellia, Porella, Anthoceros, Sphagnum, Funaria and Polytrichum.', lec:8},
+      {num:5, title:'Bryophytes of Bangladesh', desc:'Common bryophytes of Bangladesh and their occurrence, ecology, systematic position and importance.', lec:3},
+    ],
+    books:[
+      {title:'Bryophyta and Pteridophyta', author:'Chauhan DKS, 1967. Shashidhar Prakashan, India.', color:'#d4edda', uploaded:false},
+      {title:'Higher Cryptogams', author:'Pasha MK and Hossain MM, 2018. Bangladesh Book Bank, Shams Pub. Dhaka.', color:'#d1ecf1', uploaded:false},
+      {title:'An Introduction to Bryophyte', author:'Rashid A, 2004. Vikas Pub. House, New Delhi.', color:'#fff3cd', uploaded:false},
+      {title:'Cryptoganic Botany, Bryophytes and Pteridophytes', author:'Smith GM, 1990. Tata McGraw-Hill Pub., London.', color:'#f8d7da', uploaded:false},
+      {title:'Botany for Degree Students — Bryophyta', author:'Vashista BR, 1986. S Chand and Co., New Delhi.', color:'#e8d5f5', uploaded:false},
+      {title:'Bryophyta', author:'Pandey BP, 1993. S Chand and Co., New Delhi.', color:'#d4edda', uploaded:false},
+    ]
+  },
+  5: {
+    code:'BOT.105', title:'Pteridology', lectures:30, marks:50, duration:'3 hours', group:'1st Year — Major Theory',
+    topics:[
+      {num:1, title:'Introduction', desc:'General characters, origin and evolution, habitat and distribution, classification, importance of pteridophytes.', lec:4},
+      {num:2, title:'Stelar System', desc:'Stelar system and its evolution.', lec:2},
+      {num:3, title:'Diversity and Reproduction', desc:'Habit diversity, reproduction, alternation of generations, origin of seed habit, telome theory.', lec:2},
+      {num:4, title:'Taxonomy and Life History', desc:'Taxonomy and life history of: A. Psilophyta — Psilotum; B. Lycophyta — Lycopodium, Selaginella; C. Filicophyta — Cyathea, Pteris, Marsilea and Azolla.', lec:10},
+      {num:5, title:'Fern Propagation', desc:'Fern propagation by spores, spore dispersal mechanism, hybridization techniques, indoor and outdoor culture.', lec:4},
+      {num:6, title:'Pteridophytes of Bangladesh', desc:'Taxonomic exploration and study, diversity, distribution, ecology and importance of pteridophytes in Bangladesh.', lec:4},
+    ],
+    books:[
+      {title:'A Textbook of Pteridophyta', author:'Pandey SN, Trivedi PS and Misra SP, 1995. Vikas Pub. House, New Delhi.', color:'#d4edda', uploaded:false},
+      {title:'An Introduction to Pteridophyta', author:'Rashid A, 1976. Vikas Pub. House, New Delhi.', color:'#d1ecf1', uploaded:false},
+      {title:'Higher Cryptogamis', author:'Pasha MK and Hossain MM, 2018. Bangladesh Book Bank, Shams Pub. Dhaka.', color:'#fff3cd', uploaded:false},
+      {title:'The Morphology of Pteridophyta', author:'Sporne KR, 1966. Hutchinson University Library, London.', color:'#f8d7da', uploaded:false},
+      {title:'Pteridophyta', author:'Vashishta PC, 1985. S. Chand and Co., New Delhi.', color:'#e8d5f5', uploaded:false},
+      {title:'Cryptogamic Botany, Bryophytes and Pteridophytes', author:'Smith G, 1990. Tata McGraw-Hill Pub., New Delhi.', color:'#d4edda', uploaded:false},
+    ]
+  },
+  6: {
+    code:'BOT.106', title:'Agronomy', lectures:40, marks:75, duration:'4 hours', group:'1st Year — Related Theory',
+    topics:[
+      {num:1, title:'Introduction', desc:'Definition, scope and principles of Agronomy.', lec:3},
+      {num:2, title:'Classification of Crops', desc:'Classification of crops.', lec:2},
+      {num:3, title:'Agricultural Implements', desc:'Types and their uses. Tillage: objectives, types, merits and demerits.', lec:2},
+      {num:4, title:'Irrigation', desc:'Objectives, methods, advantages and disadvantages.', lec:2},
+      {num:5, title:'Drainage', desc:'Needs, methods, advantages and disadvantages.', lec:3},
+      {num:6, title:'Manures and Fertilizers', desc:'Types, time and methods of application in crop field.', lec:3},
+      {num:7, title:'Cropping Systems', desc:'Mono, multiple, relay, intercropping and mixed cropping systems.', lec:3},
+      {num:8, title:'Crop Rotation', desc:'Principles and practices of crop rotation.', lec:3},
+      {num:9, title:'Important Crops of Bangladesh', desc:'Botany, modern methods of cultivation and management of: Rice, Wheat, Jute, Sugarcane, Cotton, Mustard and Lentil.', lec:7},
+      {num:10, title:'Weeds of Bangladesh', desc:'Scientific names with families of common weeds of Bangladesh in crop field; classification, characteristics, harmful and beneficial effects and control measures.', lec:3},
+    ],
+    books:[
+      {title:'An Introduction to Bangladesh Agriculture', author:'Alim A, 1974.', color:'#d4edda', uploaded:false},
+      {title:'Fundamentals of Agronomy', author:'De GC, 1999. Oxford and IBH Pub. Co. Ltd.', color:'#d1ecf1', uploaded:false},
+      {title:'Agriculture in Bangladesh', author:'Hossain M, 1991. University Press, Dhaka.', color:'#fff3cd', uploaded:false},
+      {title:'Hand Book of Agronomy', author:'Kabir H, 1986. Mrs. Lotifa Khan, Dhaka.', color:'#f8d7da', uploaded:false},
+      {title:'Tropical Crops (Dicot and Monocot)', author:'Purseglove JW, 1972. Longman Group Ltd., London.', color:'#e8d5f5', uploaded:false},
+      {title:'Agriculture in the Tropics', author:'Webster CC, 1980. Longman Group Ltd. London.', color:'#d4edda', uploaded:false},
+    ]
+  },
+  7: {
+    code:'BOT.107', title:'Soil Science', lectures:30, marks:50, duration:'3 hours', group:'1st Year — Related Theory',
+    topics:[
+      {num:1, title:'Definition and Scope', desc:'Soils as a natural body, dynamic nature of soil, major components of soil, plants demand on soil.', lec:3},
+      {num:2, title:'Soil Formation', desc:'Rocks and minerals, weathering, soil forming factors, soil forming processes, and profile characteristics of different soils.', lec:4},
+      {num:3, title:'Properties of Soils', desc:'Physical, chemical and biological properties of soils; their interrelationships and effects on plants.', lec:3},
+      {num:4, title:'Soil Water', desc:'Forms, saturated and unsaturated movement, water stress and waterlogging.', lec:3},
+      {num:5, title:'Soil Organic Matter', desc:'Fractions, humification and effects on soil properties.', lec:3},
+      {num:6, title:'Soil Colloids', desc:'Type and significance.', lec:2},
+      {num:7, title:'Soil Fertility and Productivity', desc:'Concepts, soil fertility-productivity relationships, soil fertility problems and management — Saline, sodic, acid and acid-sulfate soils; soil erosion and conservation.', lec:5},
+      {num:8, title:'Soil Classification', desc:'Objectives, international systems, and classification of Bangladesh soils.', lec:3},
+    ],
+    books:[
+      {title:'Soils Physics (4th edn.)', author:'Baver LD, Gardner WH and Wilford WR, 1972. Wiley Eastern Pvt. Ltd., New Delhi.', color:'#d4edda', uploaded:false},
+      {title:'Chemistry of the Soil (2nd edn.)', author:'Bear FE, 1968. Oxford and IBH Pub. New Delhi.', color:'#d1ecf1', uploaded:false},
+      {title:'Text Book of Soil Science', author:'Biswas & Mukerjee, 1995. Tata McGraw-Hill Pub. Ltd.', color:'#fff3cd', uploaded:false},
+      {title:'The Nature and Properties of Soils (10th edn.)', author:'Brady NC, 1996. Eurasian Pub. Ram nagar, New Delhi.', color:'#f8d7da', uploaded:false},
+      {title:'Fundamentals of Soils Science (5th edn.)', author:'Turk LM and Foth FD, 1973. Wiley Eastern Pvt. Ltd., New Delhi.', color:'#e8d5f5', uploaded:false},
+    ]
+  },
+};
+
+const BOOK_UPLOADS = {};
+
+// ===== STATE =====
+const S = {
+  user:null, activeGroup:null,
+  groups:[
+    {id:1, name:'1st Year', desc:'BOT.101–115 · Microbiology, Mycology, Phycology, Bryology, Pteridology, Agronomy, Soil Science, Zoology, CS', icon:'📗'},
+    {id:2, name:'2nd Year', desc:'Anatomy, Morphology, Plant Systematics, Genetics, Biochemistry & related courses', icon:'📘'},
+    {id:3, name:'3rd Year', desc:'Plant Physiology, Ecology, Economic Botany, Plant Pathology & advanced courses', icon:'📙'},
+    {id:4, name:'4th Year', desc:'Plant Biotechnology, Research Methods, Advanced Taxonomy & final year courses', icon:'📕'},
+    {id:5, name:'Masters / Special', desc:'Postgraduate notes, thesis guidance and special course materials', icon:'🎓'},
+  ],
+  users:[
+    {id:1,name:'Admin',roll:'BOT-ADMIN',email:'admin@botany.cu.ac.bd',status:'admin',pass:'admin123'},
+    {id:2,name:'Sabbir Ahmed',roll:'BOT-2023-015',email:'user@botany.cu.ac.bd',status:'author',pass:'user123'},
+    {id:3,name:'Nusrat Jahan',roll:'BOT-2024-022',email:'nusrat@cu.ac.bd',status:'pending',pass:'pass1'},
+  ],
+  pdfs:[
+    {id:1,title:'BOT.101 — Microbiology Full Notes',course:'BOT.101',group:1,size:'2.4 MB',uploader:'Admin',courseId:1},
+    {id:2,title:'BOT.102 — Mycology & Lichenology Notes',course:'BOT.102',group:1,size:'3.1 MB',uploader:'Admin',courseId:2},
+    {id:3,title:'BOT.103 — Phycology Lecture Notes',course:'BOT.103',group:1,size:'2.8 MB',uploader:'Admin',courseId:3},
+    {id:4,title:'BOT.104 — Bryology Notes',course:'BOT.104',group:1,size:'1.9 MB',uploader:'Sabbir Ahmed',courseId:4},
+    {id:5,title:'BOT.105 — Pteridology Study Guide',course:'BOT.105',group:1,size:'2.2 MB',uploader:'Admin',courseId:5},
+    {id:6,title:'BOT.106 — Agronomy (Bangladesh Crops)',course:'BOT.106',group:1,size:'1.7 MB',uploader:'Admin',courseId:6},
+    {id:7,title:'BOT.107 — Soil Science Notes',course:'BOT.107',group:1,size:'1.4 MB',uploader:'Admin',courseId:7},
+    {id:8,title:'1st Year Syllabus & Course Outline 2021-23',course:'',group:1,size:'0.5 MB',uploader:'Admin',courseId:null},
+  ]
+};
+
+// ===== UTILS =====
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2800);}
+
+function showPage(p){
+  document.querySelectorAll('.page').forEach(el=>{el.classList.remove('active');el.style.display='none';});
+  const pg=document.getElementById('page-'+p);
+  if(pg){pg.style.display='';pg.classList.add('active');}
+  if(p==='notes')renderNotes();
+  if(p==='admin')renderAdmin();
+  if(p==='home')renderHomeGroups();
+}
+
+// LEAVES
+(function(){
+  const lb=document.getElementById('leafBg');
+  const em=['🌿','🍃','🌱','🍀','🌾'];
+  for(let i=0;i<16;i++){
+    const l=document.createElement('div');l.className='leaf';
+    l.textContent=em[Math.floor(Math.random()*em.length)];
+    l.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${2+Math.random()*3.5}rem;animation-delay:${Math.random()*5}s;animation-duration:${5+Math.random()*5}s;`;
+    lb.appendChild(l);
+  }
+})();
+
+// AUTH
+function switchTab(t){
+  document.querySelectorAll('.auth-tab').forEach((el,i)=>el.classList.toggle('active',i===(t==='login'?0:1)));
+  document.getElementById('login-form').style.display=t==='login'?'block':'none';
+  document.getElementById('register-form').style.display=t==='register'?'block':'none';
+}
+switchTab('login');
+
+function doLogin(){
+  const e=document.getElementById('login-email').value.trim();
+  const p=document.getElementById('login-pass').value.trim();
+  const u=S.users.find(u=>u.email===e&&u.pass===p);
+  if(!u){toast('❌ Invalid credentials');return;}
+  if(u.status==='pending'){toast('⏳ Account pending admin approval');return;}
+  S.user=u;
+  document.getElementById('nav-auth-btn').textContent=u.name.split(' ')[0];
+  if(u.status==='admin')document.getElementById('admin-link').style.display='inline';
+  toast('✅ Welcome, '+u.name.split(' ')[0]+'!');
+  showPage('home');
+}
+
+function doRegister(){
+  const name=document.getElementById('reg-name').value.trim();
+  const roll=document.getElementById('reg-roll').value.trim();
+  const email=document.getElementById('reg-email').value.trim();
+  const pass=document.getElementById('reg-pass').value.trim();
+  if(!name||!roll||!email||!pass){toast('⚠️ Fill all fields');return;}
+  if(S.users.find(u=>u.email===email||u.roll===roll)){toast('⚠️ Email or Roll already registered');return;}
+  S.users.push({id:S.users.length+1,name,roll,email,status:'pending',pass});
+  document.getElementById('reg-success').style.display='block';
+  toast('📩 Registration sent for admin approval!');
+}
+
+// HOME
+function renderHomeGroups(){
+  document.getElementById('home-groups').innerHTML=S.groups.map(g=>{
+    const cnt=S.pdfs.filter(p=>p.group===g.id).length;
+    return `<div class="group-card" onclick="goToGroup(${g.id})"><span class="group-count">${cnt} files</span><div class="group-icon">${g.icon}</div><h3>${g.name}</h3><p>${g.desc}</p></div>`;
+  }).join('');
+  document.getElementById('stat-groups').textContent=S.groups.length;
+  document.getElementById('stat-pdfs').textContent=S.pdfs.length;
+  document.getElementById('stat-members').textContent=S.users.filter(u=>u.status!=='pending').length;
+}
+renderHomeGroups();
+
+function goToGroup(gid){S.activeGroup=gid;showPage('notes');}
+
+// NOTES
+function renderNotes(){
+  const tabs=document.getElementById('note-tabs');
+  const grid=document.getElementById('pdf-grid');
+  tabs.innerHTML=`<div class="gtab ${!S.activeGroup?'active':''}" onclick="filterGroup(null)">📚 All Notes</div>`
+    +S.groups.map(g=>`<div class="gtab ${g.id===S.activeGroup?'active':''}" onclick="filterGroup(${g.id})">${g.icon} ${g.name}</div>`).join('');
+  const filtered=S.activeGroup?S.pdfs.filter(p=>p.group===S.activeGroup):S.pdfs;
+  if(!filtered.length){grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--tl);font-family:sans-serif;font-size:0.9rem;">No notes uploaded yet. 🌱</div>`;return;}
+  grid.innerHTML=filtered.map(pdf=>{
+    const grp=S.groups.find(g=>g.id===pdf.group);
+    const hasCourse=pdf.courseId&&COURSES[pdf.courseId];
+    return `<div class="pdf-card fade-in" onclick="${hasCourse?`openCourse(${pdf.courseId})`:`dlPDF('${pdf.title}')`}">
+      <div class="pdf-icon">📄</div>
+      ${pdf.course?`<div class="course-tag">${pdf.course}</div>`:''}
+      <h4>${pdf.title}</h4>
+      <div class="pdf-sub">${grp?grp.name:''} · ${pdf.uploader}</div>
+      <div class="pdf-meta">
+        <span class="pdf-size">${pdf.size}</span>
+        <button class="view-btn">${hasCourse?'View Topics':'⬇ Download'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterGroup(gid){S.activeGroup=gid;renderNotes();}
+function dlPDF(t){toast('⬇ Downloading: '+t);}
+
+// ===== COURSE DETAIL =====
+function openCourse(cid){
+  const c=COURSES[cid];
+  if(!c)return;
+  const grp=S.groups.find(g=>g.id===1);
+  document.getElementById('cd-code').textContent=c.code;
+  document.getElementById('cd-title').textContent=c.title;
+  document.getElementById('cd-lectures').textContent=c.lectures;
+  document.getElementById('cd-marks').textContent=c.marks;
+  document.getElementById('cd-duration').textContent=c.duration;
+  document.getElementById('cd-group').textContent=c.group;
+  document.getElementById('cd-breadcrumb-group').textContent=grp?grp.name:'1st Year';
+  document.getElementById('cd-breadcrumb-title').textContent=c.code+' '+c.title;
+
+  // Render topics
+  document.getElementById('cd-topics').innerHTML=c.topics.map(t=>`
+    <div class="topic-item fade-in">
+      <div class="topic-num">${t.num}</div>
+      <div class="topic-content">
+        <div class="topic-title">${t.title}</div>
+        <div class="topic-desc">${t.desc}</div>
+      </div>
+      <div class="topic-lectures">${t.lec} ${t.lec===1?'lecture':'lectures'}</div>
+    </div>`).join('');
+
+  // Render books
+  const bookColors=['#3a7d5a','#5a6e3a','#7d5a3a','#3a5a7d','#6e3a7d','#7d3a5a','#3a7d7d'];
+  document.getElementById('cd-books').innerHTML=c.books.map((b,i)=>{
+    const key=`${cid}-${i}`;
+    const uploaded=BOOK_UPLOADS[key]||false;
+    const color=bookColors[i%bookColors.length];
+    return `<div class="book-item fade-in" id="book-${cid}-${i}">
+      <div class="book-spine" style="background:${color};color:white;">📖</div>
+      <div class="book-info">
+        <div class="book-title">${b.title}</div>
+        <div class="book-author">${b.author}</div>
+      </div>
+      ${uploaded
+        ?`<div class="uploaded-badge">✅ Uploaded</div>`
+        :`<button class="book-upload-btn" onclick="uploadBook(${cid},${i})">⬆ Upload PDF</button>`
+      }
+    </div>`;
+  }).join('');
+
+  showPage('course');
+}
+
+function uploadBook(cid,idx){
+  const key=`${cid}-${idx}`;
+  BOOK_UPLOADS[key]=true;
+  const el=document.getElementById(`book-${cid}-${idx}`);
+  if(el){
+    el.querySelector('.book-upload-btn').outerHTML=`<div class="uploaded-badge">✅ Uploaded</div>`;
+  }
+  toast('✅ Book PDF uploaded successfully!');
+}
+
+// ADMIN
+function renderAdmin(){
+  renderUserTable();renderGroupList();renderGroupSelect();
+  document.getElementById('a-users').textContent=S.users.length;
+  document.getElementById('a-pending').textContent=S.users.filter(u=>u.status==='pending').length;
+  document.getElementById('a-pdfs').textContent=S.pdfs.length;
+  document.getElementById('a-groups').textContent=S.groups.length;
+}
+
+function showPanel(el,p){
+  document.querySelectorAll('.admin-panel').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(e=>e.classList.remove('active'));
+  document.getElementById('panel-'+p).classList.add('active');
+  el.classList.add('active');
+}
+
+function renderUserTable(){
+  document.getElementById('user-tbody').innerHTML=S.users.map(u=>{
+    const bc={admin:'b-admin',author:'b-author',approved:'b-approved',pending:'b-pending'}[u.status]||'b-pending';
+    const acts=u.status==='pending'
+      ?`<button class="action-btn btn-approve" onclick="approveUser(${u.id})">✅ Approve</button><button class="action-btn btn-delete" onclick="delUser(${u.id})">🗑</button>`
+      :u.status==='approved'
+      ?`<button class="action-btn btn-author" onclick="makeAuthor(${u.id})">📝 Author</button><button class="action-btn btn-delete" onclick="delUser(${u.id})">🗑</button>`
+      :u.status==='admin'?'—'
+      :`<button class="action-btn btn-delete" onclick="delUser(${u.id})">🗑</button>`;
+    return `<tr><td><strong>${u.name}</strong></td><td style="color:var(--tl)">${u.roll}</td><td style="color:var(--tl)">${u.email}</td><td><span class="badge ${bc}">${u.status}</span></td><td>${acts}</td></tr>`;
+  }).join('');
+}
+
+function approveUser(id){const u=S.users.find(u=>u.id===id);if(u){u.status='approved';toast('✅ '+u.name+' approved!');renderAdmin();}}
+function makeAuthor(id){const u=S.users.find(u=>u.id===id);if(u){u.status='author';toast('📝 '+u.name+' is now an Author');renderAdmin();}}
+function delUser(id){const u=S.users.find(u=>u.id===id);if(u&&u.status!=='admin'){S.users=S.users.filter(x=>x.id!==id);toast('🗑 User removed');renderAdmin();}}
+
+function renderGroupList(){
+  document.getElementById('group-list').innerHTML=S.groups.map(g=>`
+    <div class="gitem"><span>${g.icon} ${g.name}</span><button class="gitem-del" onclick="delGroup(${g.id})">Remove</button></div>`).join('');
+}
+
+function addGroup(){
+  const name=document.getElementById('new-group-name').value.trim();
+  const desc=document.getElementById('new-group-desc').value.trim();
+  const icon=document.getElementById('new-group-icon').value;
+  if(!name){toast('⚠️ Enter a group name');return;}
+  S.groups.push({id:Math.max(...S.groups.map(g=>g.id))+1,name,desc:desc||'Course materials',icon});
+  document.getElementById('new-group-name').value='';
+  document.getElementById('new-group-desc').value='';
+  toast('📂 Group "'+name+'" created!');renderAdmin();
+}
+
+function delGroup(id){
+  S.groups=S.groups.filter(g=>g.id!==id);
+  S.pdfs=S.pdfs.filter(p=>p.group!==id);
+  toast('🗑 Group removed');renderAdmin();
+}
+
+function renderGroupSelect(){
+  document.getElementById('pdf-group').innerHTML=S.groups.map(g=>`<option value="${g.id}">${g.icon} ${g.name}</option>`).join('');
+}
+
+function simulateUpload(){toast('📄 PDF selected (demo mode)');}
+
+function addPDF(){
+  const title=document.getElementById('pdf-title').value.trim();
+  const course=document.getElementById('pdf-course').value.trim();
+  const gid=parseInt(document.getElementById('pdf-group').value);
+  if(!title){toast('⚠️ Enter a PDF title');return;}
+  S.pdfs.push({id:Math.max(...S.pdfs.map(p=>p.id))+1,title,course,group:gid,size:'N/A',uploader:S.user?S.user.name:'Admin',courseId:null});
+  document.getElementById('pdf-title').value='';
+  document.getElementById('pdf-course').value='';
+  toast('✅ "'+title+'" added!');renderAdmin();
+}
+
+// AI
+const SYLLABUS=`You are BotaBot, the AI assistant for the Department of Botany, Faculty of Biological Sciences, University of Chittagong. You have complete knowledge of the B.Sc. (Honours) in Botany curriculum for Sessions 2021-2022 and 2022-2023. Programme: 4 years, 4000 marks, 160 credits. Major courses: 2700 marks. Related: 700. Sessional: 400. Viva: 200. Grading: A+=80%+/4.00, A=75-80%/3.75, A-=70-75%/3.50, B+=65-70%/3.25, B=60-65%/3.00, B-=55-60%/2.75, C+=50-55%/2.50, C=45-50%/2.25, D=40-45%/2.00, F=below 40%/0.00. Min CGPA for degree: 2.25. Min GPA for promotion: 1.75. Distinction: CGPA 4.00. 1st Year courses: BOT.101 Microbiology (50m), BOT.102 Mycology & Lichenology (75m), BOT.103 Phycology (75m), BOT.104 Bryology (50m), BOT.105 Pteridology (50m), BOT.106 Agronomy (75m), BOT.107 Soil Science (50m), BOT.108 Zoology (75m), BOT.109 Computer Science (50m). Practicals: BOT.110-113. Sessional BOT.114 (100m), Viva BOT.115 (50m). English non-credit BOT.001 (100m). Answer helpfully and refer to course codes when relevant.`;
+
+async function sendChat(){
+  const inp=document.getElementById('chat-input');
+  const msg=inp.value.trim();if(!msg)return;
+  inp.value='';addMsg(msg,'user');
+  const typing=addTyping();
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYLLABUS,messages:[{role:'user',content:msg}]})});
+    const data=await res.json();
+    typing.remove();
+    addMsg(data.content&&data.content[0]?data.content[0].text:"Sorry, couldn't get a response.",'bot');
+  }catch(e){typing.remove();addMsg("Connection issue. Please try again.",'bot');}
+}
+
+function askSug(q){document.getElementById('chat-input').value=q;sendChat();}
+
+function addMsg(text,from){
+  const c=document.getElementById('chat-messages');
+  const d=document.createElement('div');d.className=`msg ${from} fade-in`;
+  d.innerHTML=`<div class="msg-av">${from==='bot'?'🌿':'👤'}</div><div class="msg-bubble">${text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div>`;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;return d;
+}
+
+function addTyping(){
+  const c=document.getElementById('chat-messages');
+  const d=document.createElement('div');d.className='msg bot';
+  d.innerHTML='<div class="msg-av">🌿</div><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+  c.appendChild(d);c.scrollTop=c.scrollHeight;return d;
+}
+
+showPage('home');
+</script>
+</body>
+</html>
