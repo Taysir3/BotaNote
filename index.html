@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BotaNote — Dept. of Botany, University of Chittagong</title>
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-storage.js";
+  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCR5TtKKIgSVp6W_VWvj-RLq_eGfH0tezM",
+    authDomain: "botanote-cu.firebaseapp.com",
+    projectId: "botanote-cu",
+    storageBucket: "botanote-cu.firebasestorage.app",
+    messagingSenderId: "103027763158",
+    appId: "1:103027763158:web:1fa59f3249b69eca7a6677"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const storage = getStorage(app);
+  const db = getFirestore(app);
+
+  // Make Firebase available globally
+  window.fbStorage = storage;
+  window.fbDb = db;
+  window.fbRef = ref;
+  window.fbUploadBytes = uploadBytes;
+  window.fbGetDownloadURL = getDownloadURL;
+  window.fbCollection = collection;
+  window.fbAddDoc = addDoc;
+  window.fbGetDocs = getDocs;
+  window.fbDeleteDoc = deleteDoc;
+  window.fbDoc = doc;
+  window.firebaseReady = true;
+  console.log("✅ Firebase connected!");
+</script>
 <style>
 :root{--gd:#1a3a2a;--gm:#2d5a3d;--gl:#4a8c5c;--gp:#a8d5b5;--cream:#f5f0e8;--cd:#ede4d0;--gold:#c8a84b;--td:#1a2e1f;--tm:#3d5945;--tl:#7a9e85;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -350,8 +383,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,58,42,0.9
           <div class="admin-form-group"><label>Note / PDF Title</label><input type="text" id="pdf-title" placeholder="e.g. BOT.101 Microbiology Lecture Notes"></div>
           <div class="admin-form-group"><label>Course Code (optional)</label><input type="text" id="pdf-course" placeholder="e.g. BOT.101"></div>
           <div class="admin-form-group"><label>Assign to Group</label><select id="pdf-group"></select></div>
-          <div class="upload-area" onclick="simulateUpload()"><div style="font-size:2rem;margin-bottom:6px;">📄</div><p style="font-family:sans-serif;font-size:0.82rem;color:var(--tl);"><strong style="color:var(--gm);">Click to select PDF</strong> or drag & drop<br><span style="font-size:0.7rem;">Max 50MB</span></p></div>
-          <button class="aform-submit" onclick="addPDF()">Add PDF to Group</button>
+          <div class="upload-area" onclick="document.getElementById('real-file-input').click()">
+            <input type="file" id="real-file-input" accept=".pdf" style="display:none" onchange="onFileSelected(this)">
+            <div style="font-size:2rem;margin-bottom:6px;">📄</div>
+            <p style="font-family:sans-serif;font-size:0.82rem;color:var(--tl);"><strong style="color:var(--gm);">Click to select PDF</strong> or drag & drop<br><span style="font-size:0.7rem;">Max 50MB</span></p>
+            <div id="file-chosen" style="margin-top:8px;font-family:sans-serif;font-size:0.78rem;color:var(--gm);font-weight:600;"></div>
+          </div>
+          <div id="upload-progress" style="display:none;font-family:sans-serif;font-size:0.8rem;color:var(--gm);text-align:center;padding:8px;">⏳ Uploading to Firebase...</div>
+          <button class="aform-submit" id="upload-btn" onclick="uploadRealPDF()">⬆ Upload PDF to Firebase</button>
         </div>
       </div>
     </div>
@@ -639,14 +678,20 @@ function renderNotes(){
   grid.innerHTML=filtered.map(pdf=>{
     const grp=S.groups.find(g=>g.id===pdf.group);
     const hasCourse=pdf.courseId&&COURSES[pdf.courseId];
-    return `<div class="pdf-card fade-in" onclick="${hasCourse?`openCourse(${pdf.courseId})`:`dlPDF('${pdf.title}')`}">
+    const hasURL = pdf.url;
+    return `<div class="pdf-card fade-in">
       <div class="pdf-icon">📄</div>
       ${pdf.course?`<div class="course-tag">${pdf.course}</div>`:''}
       <h4>${pdf.title}</h4>
       <div class="pdf-sub">${grp?grp.name:''} · ${pdf.uploader}</div>
       <div class="pdf-meta">
         <span class="pdf-size">${pdf.size}</span>
-        <button class="view-btn">${hasCourse?'View Topics':'⬇ Download'}</button>
+        ${hasCourse
+          ?`<button class="view-btn" onclick="openCourse(${pdf.courseId})">View Topics</button>`
+          :hasURL
+            ?`<a href="${pdf.url}" target="_blank" style="text-decoration:none"><button class="view-btn">⬇ Download</button></a>`
+            :`<button class="view-btn" onclick="dlPDF('${pdf.title}')">⬇ Download</button>`
+        }
       </div>
     </div>`;
   }).join('');
@@ -771,18 +816,84 @@ function renderGroupSelect(){
   document.getElementById('pdf-group').innerHTML=S.groups.map(g=>`<option value="${g.id}">${g.icon} ${g.name}</option>`).join('');
 }
 
-function simulateUpload(){toast('📄 PDF selected (demo mode)');}
-
-function addPDF(){
-  const title=document.getElementById('pdf-title').value.trim();
-  const course=document.getElementById('pdf-course').value.trim();
-  const gid=parseInt(document.getElementById('pdf-group').value);
-  if(!title){toast('⚠️ Enter a PDF title');return;}
-  S.pdfs.push({id:Math.max(...S.pdfs.map(p=>p.id))+1,title,course,group:gid,size:'N/A',uploader:S.user?S.user.name:'Admin',courseId:null});
-  document.getElementById('pdf-title').value='';
-  document.getElementById('pdf-course').value='';
-  toast('✅ "'+title+'" added!');renderAdmin();
+// Real file selection
+let selectedFile = null;
+function onFileSelected(input){
+  selectedFile = input.files[0];
+  if(selectedFile){
+    document.getElementById('file-chosen').textContent = '📎 ' + selectedFile.name + ' (' + (selectedFile.size/1024/1024).toFixed(2) + ' MB)';
+  }
 }
+
+// Real Firebase Upload
+async function uploadRealPDF(){
+  const title = document.getElementById('pdf-title').value.trim();
+  const course = document.getElementById('pdf-course').value.trim();
+  const gid = parseInt(document.getElementById('pdf-group').value);
+  if(!title){toast('⚠️ Enter a PDF title');return;}
+  if(!selectedFile){toast('⚠️ Please select a PDF file first');return;}
+  if(!window.firebaseReady){toast('⚠️ Firebase not connected yet');return;}
+
+  const btn = document.getElementById('upload-btn');
+  const prog = document.getElementById('upload-progress');
+  btn.disabled = true; btn.textContent = '⏳ Uploading...';
+  prog.style.display = 'block';
+
+  try {
+    // 1. Upload file to Firebase Storage
+    const fileRef = window.fbRef(window.fbStorage, 'pdfs/' + Date.now() + '_' + selectedFile.name);
+    await window.fbUploadBytes(fileRef, selectedFile);
+    const downloadURL = await window.fbGetDownloadURL(fileRef);
+
+    // 2. Save metadata to Firestore
+    const grp = S.groups.find(g=>g.id===gid);
+    const docData = {
+      title, course, group: gid, groupName: grp?grp.name:'',
+      size: (selectedFile.size/1024/1024).toFixed(2)+' MB',
+      uploader: S.user?S.user.name:'Admin',
+      url: downloadURL,
+      courseId: null,
+      createdAt: new Date().toISOString()
+    };
+    const docRef = await window.fbAddDoc(window.fbCollection(window.fbDb,'pdfs'), docData);
+
+    // 3. Add to local state
+    S.pdfs.push({id:docRef.id, ...docData});
+    document.getElementById('pdf-title').value='';
+    document.getElementById('pdf-course').value='';
+    document.getElementById('file-chosen').textContent='';
+    selectedFile = null;
+    document.getElementById('real-file-input').value='';
+    toast('✅ "'+title+'" uploaded to Firebase!');
+    renderAdmin();
+  } catch(err){
+    console.error(err);
+    toast('❌ Upload failed: '+err.message);
+  } finally {
+    btn.disabled=false; btn.textContent='⬆ Upload PDF to Firebase';
+    prog.style.display='none';
+  }
+}
+
+// Load PDFs from Firestore on startup
+async function loadPDFsFromFirebase(){
+  if(!window.firebaseReady) return;
+  try {
+    const snap = await window.fbGetDocs(window.fbCollection(window.fbDb,'pdfs'));
+    snap.forEach(d=>{
+      const data = d.data();
+      // Avoid duplicates with hardcoded ones
+      if(!S.pdfs.find(p=>p.id===d.id)){
+        S.pdfs.push({id:d.id,...data});
+      }
+    });
+    renderHomeGroups();
+    if(document.getElementById('page-notes').classList.contains('active')) renderNotes();
+  } catch(e){ console.log('Firestore load:',e.message); }
+}
+
+// Load after Firebase is ready
+setTimeout(loadPDFsFromFirebase, 1500);
 
 // AI
 const SYLLABUS=`You are BotaBot, the AI assistant for the Department of Botany, Faculty of Biological Sciences, University of Chittagong. You have complete knowledge of the B.Sc. (Honours) in Botany curriculum for Sessions 2021-2022 and 2022-2023. Programme: 4 years, 4000 marks, 160 credits. Major courses: 2700 marks. Related: 700. Sessional: 400. Viva: 200. Grading: A+=80%+/4.00, A=75-80%/3.75, A-=70-75%/3.50, B+=65-70%/3.25, B=60-65%/3.00, B-=55-60%/2.75, C+=50-55%/2.50, C=45-50%/2.25, D=40-45%/2.00, F=below 40%/0.00. Min CGPA for degree: 2.25. Min GPA for promotion: 1.75. Distinction: CGPA 4.00. 1st Year courses: BOT.101 Microbiology (50m), BOT.102 Mycology & Lichenology (75m), BOT.103 Phycology (75m), BOT.104 Bryology (50m), BOT.105 Pteridology (50m), BOT.106 Agronomy (75m), BOT.107 Soil Science (50m), BOT.108 Zoology (75m), BOT.109 Computer Science (50m). Practicals: BOT.110-113. Sessional BOT.114 (100m), Viva BOT.115 (50m). English non-credit BOT.001 (100m). Answer helpfully and refer to course codes when relevant.`;
