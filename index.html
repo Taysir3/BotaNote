@@ -3,27 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BotaNote — Dept. of Botany, University of Chittagong</title>
+<title>BotNote Dept. of Botany, University of Chittagong</title>
 <style>
 :root{--gd:#1a3a2a;--gm:#2d5a3d;--gl:#4a8c5c;--gp:#a8d5b5;--cream:#f5f0e8;--cd:#ede4d0;--gold:#c8a84b;--td:#1a2e1f;--tm:#3d5945;--tl:#7a9e85;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Georgia',serif;background:var(--cream);color:var(--td);overflow-x:hidden;}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.97);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0 1.2rem;height:56px;border-bottom:1px solid rgba(168,213,181,0.2);}
 .nav-logo{color:var(--gp);font-size:1.1rem;font-weight:bold;cursor:pointer;letter-spacing:1px;white-space:nowrap;}
 .nav-logo span{color:var(--gold);}
-.nav-links{display:flex;gap:1rem;align-items:center;}
-.nav-links a{color:var(--gp);text-decoration:none;font-size:0.8rem;font-family:sans-serif;opacity:0.8;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.nav-links{display:flex;gap:0.8rem;align-items:center;}
+.nav-links a{color:var(--gp);text-decoration:none;font-size:0.78rem;font-family:sans-serif;opacity:0.8;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
 .nav-links a:hover{opacity:1;color:var(--gold);}
 .nav-btn{background:var(--gl);color:white;border:none;padding:6px 14px;border-radius:20px;font-size:0.76rem;cursor:pointer;font-family:sans-serif;white-space:nowrap;}
 .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:2px;background:var(--gp);border-radius:2px;transition:all 0.3s;}
-.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(26,58,42,0.98);padding:1rem;z-index:199;flex-direction:column;gap:0;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--gp);border-radius:2px;}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(26,58,42,0.98);padding:1rem;z-index:199;flex-direction:column;}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{color:var(--gp);font-family:sans-serif;font-size:0.9rem;padding:0.75rem 0.5rem;border-bottom:1px solid rgba(168,213,181,0.1);cursor:pointer;}
-.mobile-menu a:last-child{border-bottom:none;}
-
+.mobile-menu a{color:var(--gp);font-family:sans-serif;font-size:0.88rem;padding:0.7rem 0.5rem;border-bottom:1px solid rgba(168,213,181,0.1);cursor:pointer;}
 .page{display:none;min-height:100vh;padding-top:56px;}
 .page.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -38,13 +34,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 .hero-badge{background:rgba(168,213,181,0.12);border:1px solid rgba(168,213,181,0.3);color:var(--gp);padding:5px 14px;border-radius:20px;font-size:0.68rem;font-family:sans-serif;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.2rem;}
 .hero h1{font-size:clamp(1.8rem,6vw,3rem);color:white;line-height:1.2;margin-bottom:0.7rem;}
 .hero h1 span{color:var(--gp);}
-.hero-sub{color:rgba(255,255,255,0.5);font-size:0.8rem;font-family:sans-serif;margin-bottom:0.5rem;}
+.hero-sub{color:rgba(255,255,255,0.5);font-size:0.8rem;font-family:sans-serif;margin-bottom:0.4rem;}
 .hero p{color:rgba(255,255,255,0.62);font-size:0.92rem;max-width:440px;line-height:1.7;margin-bottom:1.8rem;font-family:sans-serif;}
 .hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;}
 .btn-primary{background:var(--gl);color:white;border:none;padding:10px 22px;border-radius:25px;font-size:0.85rem;cursor:pointer;font-family:sans-serif;transition:all 0.2s;}
 .btn-primary:hover{background:var(--gold);transform:translateY(-2px);}
 .btn-outline{background:transparent;color:var(--gp);border:1px solid rgba(168,213,181,0.4);padding:10px 22px;border-radius:25px;font-size:0.85rem;cursor:pointer;font-family:sans-serif;transition:all 0.2s;}
-.btn-outline:hover{background:rgba(168,213,181,0.1);transform:translateY(-2px);}
+.btn-outline:hover{background:rgba(168,213,181,0.1);}
 .stats-row{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;justify-content:center;}
 .stat-num{font-size:1.6rem;color:var(--gp);font-weight:bold;}
 .stat-label{font-size:0.68rem;color:rgba(255,255,255,0.4);font-family:sans-serif;letter-spacing:1px;text-transform:uppercase;}
@@ -68,15 +64,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 .auth-dept{text-align:center;font-size:0.7rem;color:var(--tl);font-family:sans-serif;margin-top:3px;margin-bottom:1rem;}
 .auth-tabs{display:flex;background:var(--cream);border-radius:10px;padding:3px;margin-bottom:1rem;}
 .auth-tab{flex:1;text-align:center;padding:7px;border-radius:8px;cursor:pointer;font-size:0.8rem;font-family:sans-serif;color:var(--tl);transition:all 0.2s;}
-.auth-tab.active{background:white;color:var(--gd);font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,0.07);}
+.auth-tab.active{background:white;color:var(--gd);font-weight:600;}
 .fg{margin-bottom:0.8rem;}
 .fg label{display:block;font-size:0.73rem;font-family:sans-serif;color:var(--tm);margin-bottom:4px;font-weight:600;}
-.fg input{width:100%;padding:9px 11px;border:1.5px solid #e0ddd5;border-radius:9px;font-size:0.85rem;font-family:sans-serif;color:var(--td);outline:none;transition:border 0.2s;}
+.fg input{width:100%;padding:9px 11px;border:1.5px solid #e0ddd5;border-radius:9px;font-size:0.85rem;font-family:sans-serif;outline:none;transition:border 0.2s;}
 .fg input:focus{border-color:var(--gl);}
 .fg .hint{font-size:0.68rem;color:var(--tl);font-family:sans-serif;margin-top:3px;}
 .auth-submit{width:100%;padding:11px;background:var(--gm);color:white;border:none;border-radius:9px;font-size:0.9rem;cursor:pointer;font-family:sans-serif;font-weight:600;margin-top:0.3rem;}
 .auth-pending{background:#f0f7f2;border:1px solid var(--gp);border-radius:9px;padding:0.8rem;text-align:center;margin-top:0.7rem;display:none;}
-.auth-pending p{font-size:0.8rem;color:var(--gm);font-family:sans-serif;}
 #register-form{display:none;}
 
 /* NOTES */
@@ -85,14 +80,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 .notes-header h2{font-size:clamp(1.2rem,4vw,1.6rem);color:var(--gp);}
 .notes-header p{color:rgba(255,255,255,0.5);font-family:sans-serif;font-size:0.78rem;margin-top:0.2rem;}
 .notes-body{padding:1rem;max-width:1050px;margin:0 auto;}
-.group-tabs{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1.2rem;padding:0.2rem 0;}
+.group-tabs{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1.2rem;}
 .gtab{padding:6px 12px;border-radius:18px;border:1.5px solid var(--gp);color:var(--gm);font-family:sans-serif;font-size:0.73rem;cursor:pointer;transition:all 0.2s;background:white;white-space:nowrap;}
 .gtab.active,.gtab:hover{background:var(--gm);color:white;border-color:var(--gm);}
 .pdf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:0.9rem;}
 .pdf-card{background:white;border-radius:13px;padding:1.1rem;border:1px solid var(--cd);transition:all 0.22s;cursor:pointer;position:relative;overflow:hidden;}
-.pdf-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gl),var(--gp));opacity:0;transition:opacity 0.2s;}
 .pdf-card:hover{box-shadow:0 6px 18px rgba(45,90,61,0.12);transform:translateY(-2px);}
-.pdf-card:hover::after{opacity:1;}
 .pdf-icon{font-size:1.8rem;margin-bottom:0.5rem;}
 .pdf-card h4{font-size:0.83rem;color:var(--gd);margin-bottom:0.2rem;line-height:1.3;}
 .pdf-card .pdf-sub{font-size:0.7rem;color:var(--tl);font-family:sans-serif;margin-bottom:0.6rem;}
@@ -100,6 +93,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 .pdf-size{font-size:0.66rem;color:var(--tl);font-family:sans-serif;}
 .view-btn{background:var(--gm);color:white;border:none;padding:5px 11px;border-radius:16px;font-size:0.7rem;cursor:pointer;font-family:sans-serif;}
 .course-tag{display:inline-block;background:var(--cream);color:var(--tm);font-size:0.63rem;font-family:sans-serif;padding:2px 7px;border-radius:7px;margin-bottom:4px;font-weight:600;}
+.card-actions{position:absolute;top:0.5rem;right:0.5rem;display:none;gap:3px;}
+.pdf-card:hover .card-actions{display:flex;}
+.card-act-btn{border:none;padding:3px 7px;border-radius:6px;font-size:0.65rem;cursor:pointer;font-family:sans-serif;}
+.edit-act{background:#fff3cd;color:#856404;}
+.del-act{background:#f8d7da;color:#721c24;}
 
 /* COURSE DETAIL */
 #page-course{background:var(--cream);}
@@ -107,7 +105,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 .course-hero::before{content:'🌿';position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:6rem;opacity:0.06;}
 .breadcrumb{display:flex;align-items:center;gap:5px;font-family:sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.45);margin-bottom:0.7rem;cursor:pointer;flex-wrap:wrap;}
 .breadcrumb span{color:var(--gp);cursor:pointer;}
-.breadcrumb span:hover{color:var(--gold);}
 .course-code-badge{display:inline-block;background:rgba(168,213,181,0.18);border:1px solid rgba(168,213,181,0.3);color:var(--gp);padding:3px 12px;border-radius:18px;font-family:sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:1px;margin-bottom:0.6rem;}
 .course-hero h1{font-size:clamp(1.3rem,4vw,1.8rem);color:white;margin-bottom:0.4rem;line-height:1.3;}
 .course-meta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.7rem;}
@@ -115,44 +112,84 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 .course-meta-item strong{color:var(--gp);}
 .course-body{max-width:860px;margin:0 auto;padding:1.5rem 1rem;}
 .course-section{margin-bottom:2rem;}
-.course-section-title{font-size:0.68rem;font-family:sans-serif;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tl);margin-bottom:0.9rem;padding-bottom:0.45rem;border-bottom:1px solid var(--cd);display:flex;align-items:center;gap:6px;}
-
-/* Topics */
+.course-section-title{font-size:0.68rem;font-family:sans-serif;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tl);margin-bottom:0.9rem;padding-bottom:0.45rem;border-bottom:1px solid var(--cd);}
 .topic-list{display:flex;flex-direction:column;gap:0.55rem;}
-.topic-item{background:white;border-radius:11px;border:1px solid var(--cd);padding:0.9rem 1rem;display:flex;gap:0.8rem;align-items:flex-start;transition:all 0.2s;position:relative;overflow:hidden;cursor:pointer;}
+.topic-item{background:white;border-radius:11px;border:1px solid var(--cd);padding:0.9rem 1rem;display:flex;gap:0.8rem;align-items:flex-start;transition:all 0.2s;position:relative;overflow:hidden;}
 .topic-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gl);border-radius:3px 0 0 3px;opacity:0;transition:opacity 0.2s;}
-.topic-item:hover{box-shadow:0 3px 12px rgba(45,90,61,0.1);}
 .topic-item:hover::before{opacity:1;}
 .topic-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--cream);border:1.5px solid var(--gp);display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:0.68rem;font-weight:700;color:var(--gm);}
 .topic-content{flex:1;min-width:0;}
-.topic-header{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;flex-wrap:wrap;}
 .topic-title{font-size:0.85rem;color:var(--gd);font-weight:600;}
 .topic-desc{font-size:0.78rem;color:var(--tm);font-family:sans-serif;line-height:1.6;margin-top:0.2rem;}
-.topic-actions{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;margin-top:0.5rem;}
+.topic-actions{display:flex;align-items:center;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap;}
 .topic-lec-badge{font-size:0.65rem;font-family:sans-serif;color:var(--tl);background:var(--cream);padding:2px 7px;border-radius:7px;white-space:nowrap;}
-.topic-dl-btn{background:var(--gm);color:white;border:none;padding:4px 10px;border-radius:14px;font-size:0.68rem;cursor:pointer;font-family:sans-serif;white-space:nowrap;display:flex;align-items:center;gap:3px;transition:background 0.2s;}
+.topic-dl-btn{background:var(--gm);color:white;border:none;padding:4px 10px;border-radius:14px;font-size:0.68rem;cursor:pointer;font-family:sans-serif;white-space:nowrap;transition:background 0.2s;}
 .topic-dl-btn:hover{background:var(--gl);}
 .topic-dl-btn.no-link{background:var(--cd);color:var(--tl);cursor:default;}
-
-/* Books */
 .book-list{display:flex;flex-direction:column;gap:0.5rem;}
 .book-item{background:white;border-radius:11px;border:1px solid var(--cd);padding:0.85rem 1rem;display:flex;align-items:center;gap:0.8rem;transition:all 0.2s;}
-.book-item:hover{border-color:var(--gp);box-shadow:0 3px 10px rgba(45,90,61,0.08);}
+.book-item:hover{border-color:var(--gp);}
 .book-spine{width:34px;height:40px;border-radius:3px 6px 6px 3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;}
 .book-info{flex:1;min-width:0;}
 .book-title{font-size:0.82rem;color:var(--gd);margin-bottom:2px;line-height:1.3;}
 .book-author{font-size:0.7rem;color:var(--tl);font-family:sans-serif;}
-.book-dl-btn{flex-shrink:0;background:var(--gm);color:white;border:none;padding:5px 11px;border-radius:16px;font-size:0.7rem;cursor:pointer;font-family:sans-serif;display:flex;align-items:center;gap:4px;transition:background 0.2s;white-space:nowrap;}
-.book-dl-btn:hover{background:var(--gl);}
+.book-dl-btn{flex-shrink:0;background:var(--gm);color:white;border:none;padding:5px 11px;border-radius:16px;font-size:0.7rem;cursor:pointer;font-family:sans-serif;transition:background 0.2s;white-space:nowrap;}
 .book-dl-btn.no-link{background:var(--cd);color:var(--tl);cursor:default;}
+
+/* TEACHERS */
+#page-teachers{background:var(--cream);}
+.page-header{background:var(--gd);padding:2rem 1rem;}
+.page-header h2{font-size:clamp(1.2rem,4vw,1.6rem);color:var(--gp);}
+.page-header p{color:rgba(255,255,255,0.5);font-family:sans-serif;font-size:0.78rem;margin-top:0.2rem;}
+.page-body{padding:1.5rem 1rem;max-width:1100px;margin:0 auto;}
+.teachers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:1.2rem;}
+.teacher-card{background:white;border-radius:16px;border:1px solid var(--cd);overflow:hidden;transition:all 0.2s;position:relative;}
+.teacher-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(45,90,61,0.12);}
+.teacher-photo{width:100%;height:160px;object-fit:cover;background:linear-gradient(135deg,var(--gd),var(--gm));display:flex;align-items:center;justify-content:center;font-size:3.5rem;}
+.teacher-photo img{width:100%;height:100%;object-fit:cover;}
+.teacher-info{padding:1rem;}
+.teacher-name{font-size:0.95rem;color:var(--gd);font-weight:bold;margin-bottom:0.2rem;}
+.teacher-title{font-size:0.75rem;color:var(--gl);font-family:sans-serif;margin-bottom:0.4rem;}
+.teacher-dept{font-size:0.72rem;color:var(--tl);font-family:sans-serif;margin-bottom:0.7rem;line-height:1.4;}
+.teacher-papers{display:flex;flex-direction:column;gap:0.3rem;}
+.paper-link{display:flex;align-items:center;gap:5px;font-size:0.7rem;font-family:sans-serif;color:var(--gm);text-decoration:none;padding:4px 8px;background:var(--cream);border-radius:8px;transition:background 0.2s;cursor:pointer;}
+.paper-link:hover{background:var(--gp);}
+.teacher-card-actions{position:absolute;top:0.5rem;right:0.5rem;display:flex;gap:4px;}
+.tca-btn{background:rgba(255,255,255,0.9);border:none;padding:4px 8px;border-radius:8px;font-size:0.68rem;cursor:pointer;font-family:sans-serif;}
+.tca-edit{color:var(--gm);}
+.tca-del{color:#dc3545;}
+
+/* OFFICE */
+#page-office{background:var(--cream);}
+.office-body{max-width:900px;margin:0 auto;padding:1.5rem 1rem;}
+.info-card{background:white;border-radius:14px;border:1px solid var(--cd);padding:1.5rem;margin-bottom:1.2rem;position:relative;}
+.info-card h3{font-size:1rem;color:var(--gd);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+.info-item label{font-size:0.7rem;font-family:sans-serif;color:var(--tl);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:3px;}
+.info-item p{font-size:0.85rem;color:var(--td);font-family:sans-serif;line-height:1.5;}
+.edit-overlay-btn{position:absolute;top:1rem;right:1rem;background:var(--cream);border:1px solid var(--cd);color:var(--gm);padding:5px 12px;border-radius:8px;font-size:0.72rem;cursor:pointer;font-family:sans-serif;}
+.edit-overlay-btn:hover{background:var(--gm);color:white;}
+
+/* ABOUT */
+#page-about{background:var(--cream);}
+.about-body{max-width:900px;margin:0 auto;padding:1.5rem 1rem;}
+.about-hero-img{width:100%;height:200px;background:linear-gradient(135deg,var(--gd),var(--gm));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:5rem;margin-bottom:1.5rem;overflow:hidden;}
+.about-hero-img img{width:100%;height:100%;object-fit:cover;border-radius:14px;}
+.about-section{background:white;border-radius:14px;border:1px solid var(--cd);padding:1.5rem;margin-bottom:1.2rem;position:relative;}
+.about-section h3{font-size:1rem;color:var(--gd);margin-bottom:0.8rem;}
+.about-section p{font-size:0.88rem;color:var(--tm);font-family:sans-serif;line-height:1.8;}
+.about-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.2rem;}
+.about-stat{background:white;border-radius:12px;border:1px solid var(--cd);padding:1.2rem;text-align:center;}
+.about-stat-num{font-size:2rem;color:var(--gm);font-weight:bold;}
+.about-stat-label{font-size:0.72rem;color:var(--tl);font-family:sans-serif;margin-top:3px;}
 
 /* ADMIN */
 #page-admin{background:#f7f5f0;}
 .admin-header{background:var(--gd);color:white;padding:1rem 1rem;display:flex;justify-content:space-between;align-items:center;}
 .admin-header h2{color:var(--gp);font-size:clamp(1rem,4vw,1.3rem);}
 .admin-body{display:flex;flex-direction:column;}
-.admin-sidebar{background:white;border-bottom:1px solid var(--cd);display:flex;gap:0;overflow-x:auto;}
-.sidebar-item{padding:10px 14px;font-family:sans-serif;font-size:0.78rem;color:var(--tm);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:5px;white-space:nowrap;border-bottom:2px solid transparent;}
+.admin-sidebar{background:white;border-bottom:1px solid var(--cd);display:flex;overflow-x:auto;}
+.sidebar-item{padding:10px 14px;font-family:sans-serif;font-size:0.75rem;color:var(--tm);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:4px;white-space:nowrap;border-bottom:2px solid transparent;flex-shrink:0;}
 .sidebar-item:hover,.sidebar-item.active{background:var(--cream);color:var(--gd);font-weight:600;border-bottom-color:var(--gl);}
 .admin-content{padding:1rem;overflow-y:auto;}
 .admin-panel{display:none;}
@@ -164,47 +201,56 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 .stat-card-label{font-size:0.68rem;color:var(--tl);font-family:sans-serif;margin-top:2px;}
 .user-table-wrap{overflow-x:auto;}
 .user-table{width:100%;border-collapse:collapse;background:white;border-radius:10px;overflow:hidden;border:1px solid var(--cd);min-width:500px;}
-.user-table th{background:var(--cream);padding:8px 10px;text-align:left;font-size:0.7rem;font-family:sans-serif;color:var(--tm);font-weight:700;text-transform:uppercase;letter-spacing:0.4px;}
+.user-table th{background:var(--cream);padding:8px 10px;text-align:left;font-size:0.7rem;font-family:sans-serif;color:var(--tm);font-weight:700;text-transform:uppercase;}
 .user-table td{padding:8px 10px;font-size:0.78rem;font-family:sans-serif;border-top:1px solid var(--cd);color:var(--td);}
 .badge{padding:2px 8px;border-radius:16px;font-size:0.66rem;font-family:sans-serif;font-weight:600;}
 .b-pending{background:#fff3cd;color:#856404;}.b-approved{background:#d4edda;color:#155724;}.b-author{background:#d1ecf1;color:#0c5460;}.b-admin{background:#f8d7da;color:#721c24;}
 .action-btn{padding:3px 8px;border-radius:6px;border:none;font-size:0.68rem;cursor:pointer;font-family:sans-serif;margin:0 1px;}
-.btn-approve{background:#28a745;color:white;}.btn-delete{background:#dc3545;color:white;}.btn-author{background:#17a2b8;color:white;}
+.btn-approve{background:#28a745;color:white;}.btn-delete{background:#dc3545;color:white;}.btn-author{background:#17a2b8;color:white;}.btn-edit{background:var(--gold);color:white;}
 .aform-card{background:white;border-radius:11px;padding:1.1rem;border:1px solid var(--cd);margin-bottom:1rem;}
 .aform-card h4{font-size:0.88rem;color:var(--gd);margin-bottom:0.9rem;}
 .admin-form-group{margin-bottom:0.75rem;}
 .admin-form-group label{display:block;font-size:0.72rem;font-family:sans-serif;color:var(--tm);font-weight:600;margin-bottom:3px;}
 .admin-form-group input,.admin-form-group select,.admin-form-group textarea{width:100%;padding:8px 10px;border:1.5px solid #e0ddd5;border-radius:8px;font-size:0.81rem;font-family:sans-serif;outline:none;resize:vertical;}
 .admin-form-group input:focus,.admin-form-group select:focus,.admin-form-group textarea:focus{border-color:var(--gl);}
-.admin-form-group textarea{min-height:60px;}
+.admin-form-group textarea{min-height:70px;}
 .aform-submit{background:var(--gm);color:white;border:none;padding:8px 18px;border-radius:8px;font-size:0.81rem;cursor:pointer;font-family:sans-serif;width:100%;margin-top:0.2rem;}
 .group-mgmt{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;}
 .gitem{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--cd);font-family:sans-serif;font-size:0.78rem;color:var(--td);}
 .gitem:last-child{border-bottom:none;}
 .gitem-del{background:none;border:none;color:#dc3545;cursor:pointer;font-size:0.7rem;font-family:sans-serif;}
-
-/* Admin link manager */
-.link-section-title{font-size:0.82rem;color:var(--gd);font-weight:600;margin:1rem 0 0.5rem;font-family:sans-serif;}
 .link-item{background:white;border:1px solid var(--cd);border-radius:9px;padding:0.8rem;margin-bottom:0.5rem;}
 .link-item-header{display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap;}
 .link-item-name{font-size:0.82rem;color:var(--gd);font-weight:600;}
 .link-item-type{font-size:0.65rem;font-family:sans-serif;background:var(--cream);color:var(--tl);padding:2px 7px;border-radius:7px;}
 .link-input-row{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;}
-.link-input-row input{flex:1;min-width:180px;padding:7px 10px;border:1.5px solid #e0ddd5;border-radius:7px;font-size:0.78rem;font-family:sans-serif;outline:none;}
-.link-input-row input:focus{border-color:var(--gl);}
+.link-input-row input{flex:1;min-width:160px;padding:7px 10px;border:1.5px solid #e0ddd5;border-radius:7px;font-size:0.78rem;font-family:sans-serif;outline:none;}
 .link-save-btn{background:var(--gm);color:white;border:none;padding:7px 13px;border-radius:7px;font-size:0.75rem;cursor:pointer;font-family:sans-serif;white-space:nowrap;}
-.link-save-btn:hover{background:var(--gl);}
 .link-status{font-size:0.68rem;font-family:sans-serif;margin-top:4px;}
 .link-status.set{color:#155724;}.link-status.unset{color:var(--tl);}
+.section-header-bar{background:var(--gm);color:var(--gp);padding:0.5rem 0.8rem;border-radius:8px;font-family:sans-serif;font-size:0.8rem;font-weight:700;margin:1rem 0 0.6rem;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;display:none;align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:1.5rem;}
+.modal-title{font-size:1.1rem;color:var(--gd);margin-bottom:1.2rem;display:flex;justify-content:space-between;align-items:center;}
+.modal-close{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--tl);}
+.photo-preview{width:100%;height:140px;background:var(--cream);border-radius:10px;border:2px dashed var(--gp);display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:0.8rem;overflow:hidden;cursor:pointer;}
+.photo-preview img{width:100%;height:100%;object-fit:cover;}
+.paper-item-row{display:flex;gap:0.5rem;align-items:center;margin-bottom:0.5rem;}
+.paper-item-row input{flex:1;padding:7px 10px;border:1.5px solid #e0ddd5;border-radius:7px;font-size:0.78rem;font-family:sans-serif;outline:none;}
+.rm-paper{background:none;border:none;color:#dc3545;cursor:pointer;font-size:1rem;}
+.add-paper-btn{background:var(--cream);border:1px dashed var(--gp);color:var(--gm);padding:6px 12px;border-radius:7px;font-size:0.75rem;cursor:pointer;font-family:sans-serif;width:100%;margin-top:0.3rem;}
 
 /* AI */
-#page-ai{background:var(--gd);min-height:100vh;flex-direction:column;display:flex;}
-.ai-header{background:rgba(0,0,0,0.2);padding:1rem 1rem;border-bottom:1px solid rgba(168,213,181,0.15);}
+#page-ai{background:var(--gd);min-height:100vh;display:flex;flex-direction:column;}
+.ai-header{background:rgba(0,0,0,0.2);padding:1rem;border-bottom:1px solid rgba(168,213,181,0.15);}
 .ai-header h2{color:var(--gp);font-size:clamp(1rem,3.5vw,1.2rem);}
 .ai-header p{color:rgba(255,255,255,0.42);font-size:0.72rem;font-family:sans-serif;margin-top:2px;}
 .ai-body{flex:1;display:flex;flex-direction:column;max-width:760px;margin:0 auto;width:100%;padding:1rem;}
 .ai-sug-wrap{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.7rem;}
-.ai-sug{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.62);border:1px solid rgba(168,213,181,0.16);border-radius:16px;padding:4px 11px;font-size:0.7rem;font-family:sans-serif;cursor:pointer;transition:all 0.2s;}
+.ai-sug{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.62);border:1px solid rgba(168,213,181,0.16);border-radius:16px;padding:4px 11px;font-size:0.7rem;font-family:sans-serif;cursor:pointer;}
 .ai-sug:hover{background:rgba(168,213,181,0.13);color:white;}
 .chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:0.7rem;min-height:300px;max-height:430px;}
 .msg{display:flex;gap:7px;max-width:90%;}
@@ -218,31 +264,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 .chat-input-row{display:flex;gap:0.4rem;}
 .chat-input-row input{flex:1;padding:10px 14px;background:rgba(255,255,255,0.09);border:1px solid rgba(168,213,181,0.16);border-radius:22px;color:white;font-family:sans-serif;font-size:0.85rem;outline:none;}
 .chat-input-row input::placeholder{color:rgba(255,255,255,0.32);}
-.chat-input-row input:focus{border-color:rgba(168,213,181,0.42);}
-.send-btn{background:var(--gl);color:white;border:none;padding:10px 16px;border-radius:22px;cursor:pointer;font-family:sans-serif;font-size:0.85rem;}
+.send-btn{background:var(--gl);color:white;border:none;padding:10px 16px;border-radius:22px;cursor:pointer;font-family:sans-serif;}
 @keyframes typingBounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
 .typing-dot{width:6px;height:6px;background:var(--gp);border-radius:50%;animation:typingBounce 1s infinite;display:inline-block;}
 .typing-dot:nth-child(2){animation-delay:0.15s;}.typing-dot:nth-child(3){animation-delay:0.3s;}
 .typing-indicator{display:flex;gap:4px;padding:8px 12px;background:rgba(255,255,255,0.08);border-radius:12px;border-bottom-left-radius:3px;width:fit-content;}
 
-/* RESPONSIVE */
 @media(max-width:640px){
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
-  .nav-btn{display:none;}
+  .nav-links{display:none;}.hamburger{display:flex;}.nav-btn{display:none;}
   .groups-grid{grid-template-columns:repeat(2,1fr);}
-  .pdf-grid{grid-template-columns:1fr 1fr;}
-  .course-meta-row{gap:0.6rem;}
-  .topic-item{flex-wrap:wrap;}
-  .topic-actions{width:100%;}
-  .book-item{flex-wrap:wrap;}
-  .book-dl-btn{margin-top:0.4rem;}
-  .admin-sidebar{flex-wrap:wrap;}
+  .pdf-grid{grid-template-columns:repeat(2,1fr);}
+  .teachers-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:380px){
-  .pdf-grid{grid-template-columns:1fr;}
-  .groups-grid{grid-template-columns:1fr 1fr;}
-  .stats-row{gap:1.2rem;}
+  .pdf-grid,.teachers-grid,.groups-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -253,46 +288,86 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
   <div class="nav-links">
     <a onclick="showPage('home')">Home</a>
     <a onclick="showPage('notes')">Notes</a>
+    <a onclick="showPage('teachers')">Teachers</a>
+    <a onclick="showPage('office')">Office</a>
+    <a onclick="showPage('about')">About Us</a>
     <a onclick="showPage('ai')">AI Assistant</a>
     <a onclick="showPage('admin')" id="admin-link" style="display:none">Admin</a>
   </div>
   <button class="nav-btn" id="nav-auth-btn" onclick="showPage('auth')">Login / Register</button>
-  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <a onclick="showPage('home');closeMenu()">🏠 Home</a>
   <a onclick="showPage('notes');closeMenu()">📚 Notes</a>
+  <a onclick="showPage('teachers');closeMenu()">👨‍🏫 Teachers</a>
+  <a onclick="showPage('office');closeMenu()">🏛 Office</a>
+  <a onclick="showPage('about');closeMenu()">ℹ️ About Us</a>
   <a onclick="showPage('ai');closeMenu()">🤖 AI Assistant</a>
   <a onclick="showPage('admin');closeMenu()" id="m-admin-link" style="display:none">⚙️ Admin</a>
   <a onclick="showPage('auth');closeMenu()" id="m-auth-btn">🔐 Login / Register</a>
 </div>
 <div class="toast" id="toast"></div>
 
+<!-- TEACHER MODAL -->
+<div class="modal-overlay" id="teacher-modal">
+  <div class="modal">
+    <div class="modal-title"><span id="modal-teacher-title">Add Teacher</span><button class="modal-close" onclick="closeTeacherModal()"></button></div>
+    <input type="hidden" id="edit-teacher-id">
+    <div class="photo-preview" id="photo-preview" onclick="document.getElementById('photo-upload').click()">
+      <span id="photo-placeholder">📷 Click to upload photo</span>
+      <img id="photo-img" style="display:none">
+    </div>
+    <input type="file" id="photo-upload" accept="image/*" style="display:none" onchange="handlePhotoUpload(event)">
+    <div class="admin-form-group"><label>Full Name</label><input type="text" id="t-name" placeholder="Prof. Dr. Name"></div>
+    <div class="admin-form-group"><label>Designation</label><input type="text" id="t-title" placeholder="Professor / Associate Professor / etc."></div>
+    <div class="admin-form-group"><label>Specialization / Area</label><input type="text" id="t-dept" placeholder="e.g. Plant Taxonomy, Mycology"></div>
+    <div class="admin-form-group"><label>Email</label><input type="email" id="t-email" placeholder="email@cu.ac.bd"></div>
+    <div class="admin-form-group"><label>Phone</label><input type="text" id="t-phone" placeholder="+880..."></div>
+    <div class="admin-form-group">
+      <label>Research Papers / Publications</label>
+      <div id="papers-list"></div>
+      <button class="add-paper-btn" onclick="addPaperRow()">+ Add Paper / Publication Link</button>
+    </div>
+    <button class="aform-submit" onclick="saveTeacher()">Save Teacher</button>
+  </div>
+</div>
+
+<!-- EDIT NOTE MODAL -->
+<div class="modal-overlay" id="note-modal">
+  <div class="modal">
+    <div class="modal-title"><span>Edit Note</span><button class="modal-close" onclick="document.getElementById('note-modal').classList.remove('open')"></button></div>
+    <input type="hidden" id="edit-note-id">
+    <div class="admin-form-group"><label>Title</label><input type="text" id="edit-note-title"></div>
+    <div class="admin-form-group"><label>Course Code</label><input type="text" id="edit-note-course"></div>
+    <div class="admin-form-group"><label>Download Link</label><input type="url" id="edit-note-link" placeholder="https://drive.google.com/..."></div>
+    <button class="aform-submit" onclick="saveEditNote()">Save Changes</button>
+  </div>
+</div>
+
 <!-- HOME -->
 <div class="page active" id="page-home">
   <div style="position:relative;overflow:hidden;background:linear-gradient(160deg,#1a3a2a,#2d5a3d,#1a3a2a);min-height:100vh;">
     <div id="leafBg" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"></div>
     <div class="hero">
-      <div class="hero-badge">🌿 Department of Botany</div>
-      <div class="hero-sub">Faculty of Biological Sciences · University of Chittagong</div>
-      <h1>Welcome to <span>BotaNote</span></h1>
-      <p>Your digital resource hub for B.Sc. (Hons) Botany — course notes, books, and an AI syllabus assistant.</p>
+      <div class="hero-badge">Department of Botany</div>
+      <div class="hero-sub">Faculty of Biological Sciences || University of Chittagong</div>
+      <h1>Welcome to <span>BotNote</span></h1>
+      <p>Your digital resource hub for B.Sc. (Hons) Botany course notes, books, teachers and an AI syllabus assistant.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="showPage('notes')">Browse Course Notes</button>
-        <button class="btn-outline" onclick="showPage('ai')">Ask BotaBot 🤖</button>
+        <button class="btn-outline" onclick="showPage('ai')">Ask BotaBot</button>
       </div>
       <div class="stats-row">
         <div class="stat"><div class="stat-num" id="stat-pdfs">0</div><div class="stat-label">Notes</div></div>
         <div class="stat"><div class="stat-num" id="stat-members">0</div><div class="stat-label">Members</div></div>
-        <div class="stat"><div class="stat-num" id="stat-groups">0</div><div class="stat-label">Courses</div></div>
+        <div class="stat"><div class="stat-num" id="stat-teachers">0</div><div class="stat-label">Teachers</div></div>
       </div>
     </div>
   </div>
   <div class="groups-section">
     <h2 class="section-title">B.Sc. (Hons) Curriculum Groups</h2>
-    <p class="section-sub">University of Chittagong · Sessions 2021-2022 & 2022-2023</p>
+    <p class="section-sub">University of Chittagong</p>
     <div class="groups-grid" id="home-groups"></div>
   </div>
 </div>
@@ -301,15 +376,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 <div class="page" id="page-auth" style="display:flex;align-items:center;justify-content:center;min-height:100vh;">
   <div class="auth-container fade-in">
     <div class="auth-logo-text">Bota<span>Note</span> 🌿</div>
-    <div class="auth-dept">Dept. of Botany — University of Chittagong</div>
-    <div class="auth-tabs">
-      <div class="auth-tab active" onclick="switchTab('login')">Login</div>
-      <div class="auth-tab" onclick="switchTab('register')">Register</div>
-    </div>
+    <div class="auth-dept">Dept. of Botany || University of Chittagong</div>
+    <div class="auth-tabs"><div class="auth-tab active" onclick="switchTab('login')">Login</div><div class="auth-tab" onclick="switchTab('register')">Register</div></div>
     <div id="login-form">
-      <div class="fg"><label>Email Address</label><input type="email" id="login-email" placeholder="your@cu.ac.bd"></div>
-      <div class="fg"><label>Password</label><input type="password" id="login-pass" placeholder="••••••••"></div>
-      <button class="auth-submit" onclick="doLogin()">Login to BotaNote</button>
+      <div class="fg"><label>Email</label><input type="email" id="login-email" placeholder="your@cu.ac.bd"></div>
+      <div class="fg"><label>Password</label><input type="password" id="login-pass" placeholder=""></div>
+      <button class="auth-submit" onclick="doLogin()">Login to BotNote</button>
       <p style="text-align:center;font-size:0.7rem;color:var(--tl);font-family:sans-serif;margin-top:0.7rem;">Demo: admin@botany.cu.ac.bd / admin123</p>
     </div>
     <div id="register-form">
@@ -318,17 +390,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
       <div class="fg"><label>Email</label><input type="email" id="reg-email" placeholder="your@cu.ac.bd"></div>
       <div class="fg"><label>Password</label><input type="password" id="reg-pass" placeholder="Create a password"></div>
       <button class="auth-submit" onclick="doRegister()">Send Registration Request</button>
-      <div class="auth-pending" id="reg-success"><p>✅ <strong>Request submitted!</strong><br>Awaiting admin approval.</p></div>
+      <div class="auth-pending" id="reg-success"><p> <strong>Request submitted!</strong><br>Awaiting admin approval.</p></div>
     </div>
   </div>
 </div>
 
 <!-- NOTES -->
 <div class="page" id="page-notes">
-  <div class="notes-header">
-    <h2>📚 Course Notes & Resources</h2>
-    <p>B.Sc. (Hons) in Botany — University of Chittagong</p>
-  </div>
+  <div class="notes-header"><h2>Course Notes & Resources</h2><p>B.Sc. (Hons) in Botany University of Chittagong</p></div>
   <div class="notes-body">
     <div class="group-tabs" id="note-tabs"></div>
     <div class="pdf-grid" id="pdf-grid"></div>
@@ -338,38 +407,59 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 <!-- COURSE DETAIL -->
 <div class="page" id="page-course">
   <div class="course-hero">
-    <div class="breadcrumb" onclick="showPage('notes')">← <span>Notes</span> / <span id="cd-bg">1st Year</span> / <span id="cd-bt">Course</span></div>
+    <div class="breadcrumb" onclick="showPage('notes')"><span>Notes</span> / <span id="cd-bg">Year</span> / <span id="cd-bt">Course</span></div>
     <div class="course-code-badge" id="cd-code">BOT.101</div>
-    <h1 id="cd-title">Microbiology</h1>
+    <h1 id="cd-title">Course Title</h1>
     <div class="course-meta-row">
-      <div class="course-meta-item">📖 Lectures: <strong id="cd-lec">30</strong></div>
-      <div class="course-meta-item">📊 Marks: <strong id="cd-marks">50</strong></div>
-      <div class="course-meta-item">⏱ Exam: <strong id="cd-dur">3 hours</strong></div>
-      <div class="course-meta-item">🏫 <strong id="cd-grp">1st Year</strong></div>
+      <div class="course-meta-item"> Lectures: <strong id="cd-lec">-</strong></div>
+      <div class="course-meta-item"> Marks: <strong id="cd-marks">-</strong></div>
+      <div class="course-meta-item"> Exam: <strong id="cd-dur">-</strong></div>
+      <div class="course-meta-item"> <strong id="cd-grp">-</strong></div>
     </div>
   </div>
   <div class="course-body">
-    <div class="course-section">
-      <div class="course-section-title">📋 Course Topics</div>
-      <div class="topic-list" id="cd-topics"></div>
-    </div>
-    <div class="course-section">
-      <div class="course-section-title">📚 Recommended Books</div>
-      <div class="book-list" id="cd-books"></div>
-    </div>
+    <div class="course-section"><div class="course-section-title">📋 Course Topics</div><div class="topic-list" id="cd-topics"></div></div>
+    <div class="course-section"><div class="course-section-title">📚 Recommended Books</div><div class="book-list" id="cd-books"></div></div>
   </div>
+</div>
+
+<!-- TEACHERS -->
+<div class="page" id="page-teachers">
+  <div class="page-header"><h2>👨‍🏫 Faculty Members</h2><p>Department of Botany — University of Chittagong</p></div>
+  <div class="page-body">
+    <div id="admin-add-teacher-btn" style="display:none;margin-bottom:1rem;">
+      <button class="btn-primary" onclick="openTeacherModal()">+ Add New Teacher</button>
+    </div>
+    <div class="teachers-grid" id="teachers-grid"></div>
+    <div id="no-teachers" style="text-align:center;padding:3rem;color:var(--tl);font-family:sans-serif;display:none;">No teachers added yet. Admin can add faculty members.</div>
+  </div>
+</div>
+
+<!-- OFFICE -->
+<div class="page" id="page-office">
+  <div class="page-header"><h2>🏛 Department Office</h2><p>Contact & Administrative Information</p></div>
+  <div class="office-body" id="office-body"></div>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="page-header"><h2>ℹ️ About Us</h2><p>Department of Botany — University of Chittagong</p></div>
+  <div class="about-body" id="about-body"></div>
 </div>
 
 <!-- ADMIN -->
 <div class="page" id="page-admin">
-  <div class="admin-header"><h2>⚙️ Admin Dashboard</h2><span style="font-family:sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.4);">BotaNote Control Panel</span></div>
+  <div class="admin-header"><h2>⚙️ Admin Dashboard</h2><span style="font-family:sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.4);">BotNote Control Panel</span></div>
   <div class="admin-body">
     <div class="admin-sidebar">
       <div class="sidebar-item active" onclick="showPanel(this,'overview')">📊 Overview</div>
       <div class="sidebar-item" onclick="showPanel(this,'users')">👥 Users</div>
       <div class="sidebar-item" onclick="showPanel(this,'groups')">📂 Groups</div>
-      <div class="sidebar-item" onclick="showPanel(this,'links')">🔗 Manage Links</div>
+      <div class="sidebar-item" onclick="showPanel(this,'links')">🔗 Links</div>
       <div class="sidebar-item" onclick="showPanel(this,'upload')">📤 Add Note</div>
+      <div class="sidebar-item" onclick="showPanel(this,'teachers-admin')">👨‍🏫 Teachers</div>
+      <div class="sidebar-item" onclick="showPanel(this,'office-admin')">🏛 Office Info</div>
+      <div class="sidebar-item" onclick="showPanel(this,'about-admin')">ℹ️ About Us</div>
     </div>
     <div class="admin-content">
       <div class="admin-panel active" id="panel-overview">
@@ -379,8 +469,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
           <div class="stat-card"><div class="stat-card-num" id="a-pending">0</div><div class="stat-card-label">Pending</div></div>
           <div class="stat-card"><div class="stat-card-num" id="a-pdfs">0</div><div class="stat-card-label">Notes</div></div>
           <div class="stat-card"><div class="stat-card-num" id="a-links">0</div><div class="stat-card-label">Links Set</div></div>
+          <div class="stat-card"><div class="stat-card-num" id="a-teachers-count">0</div><div class="stat-card-label">Teachers</div></div>
         </div>
-        <div class="aform-card"><h4>💡 How to add download links</h4><div style="font-family:sans-serif;font-size:0.8rem;color:var(--tm);line-height:1.9;">1. Go to <strong>🔗 Manage Links</strong> tab<br>2. Find the topic or book by name<br>3. Paste a Google Drive / any URL link<br>4. Click Save — the Download button will now open your link<br><br>Google Drive tip: Share the file → Get Link → set to "Anyone with the link can view"</div></div>
+        <div class="aform-card"><h4>💡 Quick Guide</h4><div style="font-family:sans-serif;font-size:0.8rem;color:var(--tm);line-height:2;">🔗 <b>Links</b> → Add Google Drive links to topics & books<br>📤 <b>Add Note</b> → Upload new note cards to groups<br>👨‍🏫 <b>Teachers</b> → Add/edit/delete faculty profiles + research papers<br>🏛 <b>Office Info</b> → Edit contact, address, office hours<br>ℹ️ <b>About Us</b> → Edit department history, vision, mission</div></div>
       </div>
 
       <div class="admin-panel" id="panel-users">
@@ -391,9 +482,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
       <div class="admin-panel" id="panel-groups">
         <div class="panel-title">Manage Groups</div>
         <div class="group-mgmt">
-          <div class="aform-card"><h4>➕ Create Group</h4>
-            <div class="admin-form-group"><label>Group Name</label><input type="text" id="new-group-name" placeholder="e.g. 4th Year Special Topics"></div>
-            <div class="admin-form-group"><label>Description</label><input type="text" id="new-group-desc" placeholder="Short description"></div>
+          <div class="aform-card"><h4> Create Group</h4>
+            <div class="admin-form-group"><label>Group Name</label><input type="text" id="new-group-name" placeholder="e.g. Special Topics"></div>
+            <div class="admin-form-group"><label>Description</label><input type="text" id="new-group-desc"></div>
             <div class="admin-form-group"><label>Icon</label><select id="new-group-icon"><option value="📗">📗 1st Year</option><option value="📘">📘 2nd Year</option><option value="📙">📙 3rd Year</option><option value="📕">📕 4th Year</option><option value="🎓">🎓 Masters</option><option value="🔬">🔬 Lab</option><option value="📋">📋 Other</option></select></div>
             <button class="aform-submit" onclick="addGroup()">Create Group</button>
           </div>
@@ -409,11 +500,46 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
       <div class="admin-panel" id="panel-upload">
         <div class="panel-title">📤 Add Note Card</div>
         <div class="aform-card" style="max-width:500px;">
-          <div class="admin-form-group"><label>Note Title</label><input type="text" id="pdf-title" placeholder="e.g. BOT.101 Microbiology Lecture Notes"></div>
-          <div class="admin-form-group"><label>Course Code (optional)</label><input type="text" id="pdf-course" placeholder="e.g. BOT.101"></div>
+          <div class="admin-form-group"><label>Note Title</label><input type="text" id="pdf-title" placeholder="e.g. BOT.201 Plant Anatomy Notes"></div>
+          <div class="admin-form-group"><label>Course Code (optional)</label><input type="text" id="pdf-course" placeholder="e.g. BOT.201"></div>
           <div class="admin-form-group"><label>Assign to Group</label><select id="pdf-group"></select></div>
-          <div class="admin-form-group"><label>Direct Link (Google Drive or any URL)</label><input type="url" id="pdf-link" placeholder="https://drive.google.com/..."></div>
+          <div class="admin-form-group"><label>Download Link (Google Drive or URL)</label><input type="url" id="pdf-link" placeholder="https://drive.google.com/..."></div>
           <button class="aform-submit" onclick="addPDF()">Add Note</button>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="panel-teachers-admin">
+        <div class="panel-title">👨‍🏫 Manage Teachers</div>
+        <button class="btn-primary" style="margin-bottom:1rem;" onclick="openTeacherModal()">+ Add New Teacher</button>
+        <div id="admin-teachers-list"></div>
+      </div>
+
+      <div class="admin-panel" id="panel-office-admin">
+        <div class="panel-title">🏛 Edit Office Information</div>
+        <div class="aform-card">
+          <div class="admin-form-group"><label>Department Head Name</label><input type="text" id="off-head" placeholder="Prof. Dr. Name"></div>
+          <div class="admin-form-group"><label>Head's Email</label><input type="email" id="off-head-email" placeholder="chairman@botany.cu.ac.bd"></div>
+          <div class="admin-form-group"><label>Department Phone</label><input type="text" id="off-phone" placeholder="+880-31-..."></div>
+          <div class="admin-form-group"><label>Fax</label><input type="text" id="off-fax" placeholder="Fax number"></div>
+          <div class="admin-form-group"><label>Email</label><input type="email" id="off-email" placeholder="botany@cu.ac.bd"></div>
+          <div class="admin-form-group"><label>Address</label><textarea id="off-address" placeholder="Department address..."></textarea></div>
+          <div class="admin-form-group"><label>Office Hours</label><input type="text" id="off-hours" placeholder="SaturdayWednesday 9AM5PM"></div>
+          <div class="admin-form-group"><label>Additional Info / Announcements</label><textarea id="off-notes" placeholder="Any notice or info..."></textarea></div>
+          <button class="aform-submit" onclick="saveOffice()">Save Office Info</button>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="panel-about-admin">
+        <div class="panel-title">ℹ️ Edit About Us</div>
+        <div class="aform-card">
+          <div class="admin-form-group"><label>Department History / Overview</label><textarea id="about-history" rows="5" placeholder="Write about the department..."></textarea></div>
+          <div class="admin-form-group"><label>Vision</label><textarea id="about-vision" rows="3" placeholder="Vision statement..."></textarea></div>
+          <div class="admin-form-group"><label>Mission</label><textarea id="about-mission" rows="3" placeholder="Mission statement..."></textarea></div>
+          <div class="admin-form-group"><label>Number of Faculty</label><input type="number" id="about-faculty-count" placeholder="e.g. 25"></div>
+          <div class="admin-form-group"><label>Number of Students</label><input type="number" id="about-student-count" placeholder="e.g. 400"></div>
+          <div class="admin-form-group"><label>Year Established</label><input type="text" id="about-year" placeholder="e.g. 1966"></div>
+          <div class="admin-form-group"><label>Notable Achievements / Awards</label><textarea id="about-achievements" rows="3" placeholder="List achievements..."></textarea></div>
+          <button class="aform-submit" onclick="saveAbout()">Save About Us</button>
         </div>
       </div>
     </div>
@@ -422,32 +548,105 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 
 <!-- AI -->
 <div class="page" id="page-ai">
-  <div class="ai-header"><h2>🌿 BotaBot — Syllabus AI Assistant</h2><p>Dept. of Botany, University of Chittagong · B.Sc. (Hons) 2021-2023</p></div>
+  <div class="ai-header"><h2>🌿 BotaBot  Syllabus AI Assistant</h2><p>Dept. of Botany, University of Chittagong  B.Sc. (Hons) 2021-2023</p></div>
   <div class="ai-body">
     <div class="ai-sug-wrap">
-      <div class="ai-sug" onclick="askSug('What are the 1st year major theory courses?')">1st year courses</div>
-      <div class="ai-sug" onclick="askSug('Explain BOT.101 Microbiology topics in detail')">BOT.101 topics</div>
-      <div class="ai-sug" onclick="askSug('What is the grading system at CU Botany?')">Grading system</div>
-      <div class="ai-sug" onclick="askSug('How is CGPA calculated?')">CGPA calculation</div>
-      <div class="ai-sug" onclick="askSug('What books are recommended for Mycology BOT.102?')">BOT.102 books</div>
+      <div class="ai-sug" onclick="askSug('What are all the 2nd year courses?')">2nd year courses</div>
+      <div class="ai-sug" onclick="askSug('Explain 3rd year Plant Physiology topics')">3rd year topics</div>
+      <div class="ai-sug" onclick="askSug('What is the grading system?')">Grading</div>
+      <div class="ai-sug" onclick="askSug('What are the 4th year courses?')">4th year</div>
+      <div class="ai-sug" onclick="askSug('How is CGPA calculated?')">CGPA</div>
     </div>
     <div class="chat-messages" id="chat-messages">
-      <div class="msg bot"><div class="msg-av">🌿</div><div class="msg-bubble">Assalamu Alaikum! I'm <strong>BotaBot</strong>, your AI assistant for <strong>Dept. of Botany, University of Chittagong</strong>. I know your full B.Sc. (Hons) syllabus. Ask me anything! 🌱</div></div>
+      <div class="msg bot"><div class="msg-av">🌿</div><div class="msg-bubble">Assalamu Alaikum! I'm <strong>BotaBot</strong>, your AI assistant for <strong>Dept. of Botany, CU</strong>. I know your full B.Sc. (Hons) syllabus for all 4 years. Ask me anything! 🌱</div></div>
     </div>
     <div class="chat-input-row">
       <input type="text" id="chat-input" placeholder="Ask about courses, topics, grading..." onkeydown="if(event.key==='Enter')sendChat()">
-      <button class="send-btn" onclick="sendChat()">➤</button>
+      <button class="send-btn" onclick="sendChat()"></button>
     </div>
   </div>
 </div>
 
 <script>
-// ===== LINK STORE (persists in memory, admin sets) =====
-// Keys: "topic-{courseId}-{topicIndex}" or "book-{courseId}-{bookIndex}" or "note-{noteId}"
+// ===== DATA STORES =====
 const LINKS = {};
+let TEACHERS = [];
+let nextTeacherId = 1;
+let TEACHER_PHOTOS = {};
 
-// ===== COURSE DATA =====
+let OFFICE_INFO = {
+  head:'', headEmail:'', phone:'', fax:'', email:'botany@cu.ac.bd',
+  address:'Department of Botany, Faculty of Biological Sciences\nUniversity of Chittagong, Chittagong-4331, Bangladesh',
+  hours:'SaturdayWednesday 9:00 AM  5:00 PM', notes:''
+};
+
+let ABOUT_INFO = {
+  history:'The Department of Botany at the University of Chittagong is one of the oldest and most distinguished departments in Bangladesh. It has been training students in all aspects of plant science for decades.',
+  vision:'Creative endeavor for reaching a global height in quality higher education in principles and practices of Botany.',
+  mission:'Gathering and imparting knowledge and world class education based on productive research, teaching and training on various aspects of Botany.',
+  facultyCount:'25', studentCount:'400', year:'1966',
+  achievements:'Numerous national and international research publications, biodiversity surveys of Bangladesh, contributions to national herbarium.'
+};
+
+// ===== STATE =====
+const S = {
+  user:null, activeGroup:null,
+  groups:[
+    {id:1,name:'1st Year',desc:'BOT.101115  Microbiology, Mycology, Phycology, Bryology, Pteridology, Agronomy, Soil Science, Zoology, CS',icon:'📗'},
+    {id:2,name:'2nd Year',desc:'BOT.201215  Plant Anatomy, Biodiversity, Embryology & Palynology, Genetics, Plant Physiology & more',icon:'📘'},
+    {id:3,name:'3rd Year',desc:'BOT.301315  Plant Taxonomy, Limnology, Ecology, Plant Pathology, Cytology, Pharmacognosy & more',icon:'📙'},
+    {id:4,name:'4th Year',desc:'BOT.401415  Phytogeography, Ethnobotany, Biotechnology, Molecular Biology, Microbiology B & more',icon:'📕'},
+    {id:5,name:'Masters / Special',desc:'Postgraduate notes, thesis guidance and special course materials',icon:'🎓'},
+  ],
+  users:[
+    {id:1,name:'Admin',roll:'BOT-ADMIN',email:'admin@botany.cu.ac.bd',status:'admin',pass:'admin123'},
+    {id:2,name:'Sabbir Ahmed',roll:'BOT-2023-015',email:'user@botany.cu.ac.bd',status:'author',pass:'user123'},
+    {id:3,name:'Nusrat Jahan',roll:'BOT-2024-022',email:'nusrat@cu.ac.bd',status:'pending',pass:'pass1'},
+  ],
+  pdfs:[
+    // 1st Year
+    {id:1,title:'BOT.101 — Microbiology Full Notes',course:'BOT.101',group:1,uploader:'Admin',courseId:1},
+    {id:2,title:'BOT.102 — Mycology & Lichenology Notes',course:'BOT.102',group:1,uploader:'Admin',courseId:2},
+    {id:3,title:'BOT.103 — Phycology Lecture Notes',course:'BOT.103',group:1,uploader:'Admin',courseId:3},
+    {id:4,title:'BOT.104 — Bryology Notes',course:'BOT.104',group:1,uploader:'Admin',courseId:4},
+    {id:5,title:'BOT.105 — Pteridology Study Guide',course:'BOT.105',group:1,uploader:'Admin',courseId:5},
+    {id:6,title:'BOT.106 — Agronomy Notes',course:'BOT.106',group:1,uploader:'Admin',courseId:6},
+    {id:7,title:'BOT.107 — Soil Science Notes',course:'BOT.107',group:1,uploader:'Admin',courseId:7},
+    // 2nd Year
+    {id:8,title:'BOT.201 — Gymnosperms & Palaeobotany',course:'BOT.201',group:2,uploader:'Admin',courseId:101},
+    {id:9,title:'BOT.202 — Biodiversity',course:'BOT.202',group:2,uploader:'Admin',courseId:102},
+    {id:10,title:'BOT.203 — Plant Anatomy',course:'BOT.203',group:2,uploader:'Admin',courseId:103},
+    {id:11,title:'BOT.204 — Plant Morphology & Systematics',course:'BOT.204',group:2,uploader:'Admin',courseId:104},
+    {id:12,title:'BOT.205 — Embryology & Palynology',course:'BOT.205',group:2,uploader:'Admin',courseId:105},
+    {id:23,title:'BOT.206 — Horticulture & Hill Cultivation',course:'BOT.206',group:2,uploader:'Admin',courseId:106},
+    {id:24,title:'BOT.207 — Plant Taxonomy (Related)',course:'BOT.207',group:2,uploader:'Admin',courseId:107},
+    {id:25,title:'BOT.208 — Bio-physical Chemistry',course:'BOT.208',group:2,uploader:'Admin',courseId:108},
+    {id:26,title:'BOT.209 — Genetics',course:'BOT.209',group:2,uploader:'Admin',courseId:109},
+    // 3rd Year
+    {id:13,title:'BOT.301 — Plant Taxonomy',course:'BOT.301',group:3,uploader:'Admin',courseId:201},
+    {id:14,title:'BOT.302 — Limnology',course:'BOT.302',group:3,uploader:'Admin',courseId:202},
+    {id:15,title:'BOT.303 — Plant Ecology',course:'BOT.303',group:3,uploader:'Admin',courseId:203},
+    {id:16,title:'BOT.304 — Plant Physiology',course:'BOT.304',group:3,uploader:'Admin',courseId:204},
+    {id:17,title:'BOT.305 — Plant Pathology',course:'BOT.305',group:3,uploader:'Admin',courseId:205},
+    {id:27,title:'BOT.306 — Cytology & Genetics',course:'BOT.306',group:3,uploader:'Admin',courseId:206},
+    {id:28,title:'BOT.307 — Pharmacognosy & Medicinal Botany',course:'BOT.307',group:3,uploader:'Admin',courseId:207},
+    {id:29,title:'BOT.308 — Plant Tissue Culture',course:'BOT.308',group:3,uploader:'Admin',courseId:208},
+    // 4th Year
+    {id:18,title:'BOT.401 — Phytogeography & Plant Conservation Biology',course:'BOT.401',group:4,uploader:'Admin',courseId:301},
+    {id:19,title:'BOT.402 — Ethnobotany & Economic Botany',course:'BOT.402',group:4,uploader:'Admin',courseId:302},
+    {id:20,title:'BOT.403 — Plant PhysiologyII',course:'BOT.403',group:4,uploader:'Admin',courseId:303},
+    {id:21,title:'BOT.404 — Plant Breeding',course:'BOT.404',group:4,uploader:'Admin',courseId:304},
+    {id:22,title:'BOT.405 — Plant & Environmental Microbiology',course:'BOT.405',group:4,uploader:'Admin',courseId:305},
+    {id:30,title:'BOT.406 — Origin & Evolution of Life',course:'BOT.406',group:4,uploader:'Admin',courseId:306},
+    {id:31,title:'BOT.407 — Plant Stress Physiology',course:'BOT.407',group:4,uploader:'Admin',courseId:307},
+    {id:32,title:'BOT.408 — Biotechnology & Genetic Engineering',course:'BOT.408',group:4,uploader:'Admin',courseId:308},
+    {id:33,title:'BOT.409 — Molecular Biology',course:'BOT.409',group:4,uploader:'Admin',courseId:309},
+  ]
+};
+
+// ===== COURSE DATA (all years) =====
 const COURSES = {
+  // 1ST YEAR
   1:{code:'BOT.101',title:'Microbiology',lectures:30,marks:50,duration:'3 hours',group:'1st Year — Major Theory',
     topics:[
       {t:'Introduction',d:'Definition, history, scope and development of microbiology; distribution of microorganisms in nature; spontaneous generation and biogenesis; the germ theory of disease.',l:2},
@@ -494,7 +693,7 @@ const COURSES = {
       {t:'Introduction & General Characters',d:'Introduction and history; habit and habitat; general classification (up to class); pigments and reserve foods; types of chloroplasts; reproduction and perennation; range of vegetative and reproductive structure; life cycle patterns; affinities to other plant groups.',l:5},
       {t:'Classification of Major Classes',d:'General characters, classification (up to order), reproduction and economic importance of Cyanophyceae, Chlorophyceae, Xanthophyceae, Bacillariophyceae, Phaeophyceae and Rhodophyceae.',l:5},
       {t:'Study of Important Genera',d:'Detailed study of Nostoc, Gloeotrichia, Volvox, Chlorella, Oedogonium, Fritschiella, Vaucheria, Chara, Sargassum, Polysiphonia, Gelidium and Batrachospermum.',l:10},
-      {t:'Importance of Algae',d:'Role of algae in food, seaweed, fodder, agriculture, industry, medicine, water purification, sewage disposal, nitrogen fixation, sources of growth substances, radioactive waste uptake, land reclamation; algal blooms; eutrophication; red tide; Sargasso Sea; in the service of global environment.',l:8},
+      {t:'Importance of Algae',d:'Role of algae in food, seaweed, fodder, agriculture, industry, medicine, water purification, sewage disposal, nitrogen fixation, radioactive waste uptake, land reclamation; algal blooms; eutrophication; red tide; Sargasso Sea; global environment.',l:8},
       {t:'Origin and Evolutionary Trends',d:'Origin and evolutionary trends in algae.',l:3},
       {t:'Special Types of Algae',d:'Soil algae, parasitic algae, pathogenic algae, colourless algae, toxic algae, fossil algae and bioluminescence. Extra cellular products of algae.',l:1},
       {t:'Algal Flora of Bangladesh',d:"Algal flora of Saint Martin's Island and Sundarbans and their ecology.",l:1},
@@ -503,8 +702,8 @@ const COURSES = {
       {t:'Introduction to the Algae',a:'Bold HC and Wynne MJ, 1978. Prentice-Hall Inc.',c:'#2d6b45'},
       {t:'Phycology',a:'Lee RR, 1989. Cambridge University Press.',c:'#4a6b2d'},
       {t:'A Text Book of Algae',a:'Pandey and Trivedi, 1995. Vikas Pub. House, New Delhi.',c:'#6b4a2d'},
-      {t:'Algae — A Review',a:'Prescott GW, 1968. Houghton Mifflin Co.',c:'#2d4a6b'},
-      {t:'Botany for Degree Students — Algae',a:'Vashishta BR, 1978. S. Chand and Co., New Delhi.',c:'#5a2d6b'},
+      {t:'Algae  A Review',a:'Prescott GW, 1968. Houghton Mifflin Co.',c:'#2d4a6b'},
+      {t:'Botany for Degree Students  Algae',a:'Vashishta BR, 1978. S. Chand and Co., New Delhi.',c:'#5a2d6b'},
     ]},
   4:{code:'BOT.104',title:'Bryology',lectures:30,marks:50,duration:'3 hours',group:'1st Year — Major Theory',
     topics:[
@@ -519,7 +718,7 @@ const COURSES = {
       {t:'Higher Cryptogams',a:'Pasha MK and Hossain MM, 2018. Bangladesh Book Bank, Shams Pub. Dhaka.',c:'#4a6b2d'},
       {t:'An Introduction to Bryophyte',a:'Rashid A, 2004. Vikas Pub. House, New Delhi.',c:'#6b4a2d'},
       {t:'Cryptoganic Botany, Bryophytes and Pteridophytes',a:'Smith GM, 1990. Tata McGraw-Hill Pub., London.',c:'#2d4a6b'},
-      {t:'Botany for Degree Students — Bryophyta',a:'Vashista BR, 1986. S Chand and Co., New Delhi.',c:'#5a2d6b'},
+      {t:'Botany for Degree Students  Bryophyta',a:'Vashista BR, 1986. S Chand and Co., New Delhi.',c:'#5a2d6b'},
       {t:'Bryophyta',a:'Pandey BP, 1993. S Chand and Co., New Delhi.',c:'#6b2d4a'},
     ]},
   5:{code:'BOT.105',title:'Pteridology',lectures:30,marks:50,duration:'3 hours',group:'1st Year — Major Theory',
@@ -527,7 +726,7 @@ const COURSES = {
       {t:'Introduction',d:'General characters, origin and evolution, habitat and distribution, classification, importance of pteridophytes.',l:4},
       {t:'Stelar System',d:'Stelar system and its evolution.',l:2},
       {t:'Diversity and Reproduction',d:'Habit diversity, reproduction, alternation of generations, origin of seed habit, telome theory.',l:2},
-      {t:'Taxonomy and Life History',d:'Taxonomy and life history of: Psilophyta — Psilotum; Lycophyta — Lycopodium, Selaginella; Filicophyta — Cyathea, Pteris, Marsilea and Azolla.',l:10},
+      {t:'Taxonomy and Life History',d:'Taxonomy and life history of: Psilophyta  Psilotum; Lycophyta  Lycopodium, Selaginella; Filicophyta  Cyathea, Pteris, Marsilea and Azolla.',l:10},
       {t:'Fern Propagation',d:'Fern propagation by spores, spore dispersal mechanism, hybridization techniques, indoor and outdoor culture.',l:4},
       {t:'Pteridophytes of Bangladesh',d:'Taxonomic exploration and study, diversity, distribution, ecology and importance of pteridophytes in Bangladesh.',l:4},
     ],
@@ -537,13 +736,12 @@ const COURSES = {
       {t:'Higher Cryptogamis',a:'Pasha MK and Hossain MM, 2018. Bangladesh Book Bank, Shams Pub. Dhaka.',c:'#6b4a2d'},
       {t:'The Morphology of Pteridophyta',a:'Sporne KR, 1966. Hutchinson University Library, London.',c:'#2d4a6b'},
       {t:'Pteridophyta',a:'Vashishta PC, 1985. S. Chand and Co., New Delhi.',c:'#5a2d6b'},
-      {t:'Cryptogamic Botany, Bryophytes and Pteridophytes',a:'Smith G, 1990. Tata McGraw-Hill Pub., New Delhi.',c:'#6b2d4a'},
     ]},
   6:{code:'BOT.106',title:'Agronomy',lectures:40,marks:75,duration:'4 hours',group:'1st Year — Related Theory',
     topics:[
       {t:'Introduction',d:'Definition, scope and principles of Agronomy.',l:3},
       {t:'Classification of Crops',d:'Classification of crops.',l:2},
-      {t:'Agricultural Implements',d:'Types and their uses. Tillage: objectives, types, merits and demerits.',l:2},
+      {t:'Agricultural Implements & Tillage',d:'Types and their uses. Tillage: objectives, types, merits and demerits.',l:2},
       {t:'Irrigation',d:'Objectives, methods, advantages and disadvantages.',l:2},
       {t:'Drainage',d:'Needs, methods, advantages and disadvantages.',l:3},
       {t:'Manures and Fertilizers',d:'Types, time and methods of application in crop field.',l:3},
@@ -568,7 +766,7 @@ const COURSES = {
       {t:'Soil Water',d:'Forms, saturated and unsaturated movement, water stress and waterlogging.',l:3},
       {t:'Soil Organic Matter',d:'Fractions, humification and effects on soil properties.',l:3},
       {t:'Soil Colloids',d:'Type and significance.',l:2},
-      {t:'Soil Fertility and Productivity',d:'Concepts, soil fertility-productivity relationships, soil fertility problems and management — Saline, sodic, acid and acid-sulfate soils; soil erosion and conservation.',l:5},
+      {t:'Soil Fertility and Productivity',d:'Concepts, soil fertility-productivity relationships, soil fertility problems and management  Saline, sodic, acid and acid-sulfate soils; soil erosion and conservation.',l:5},
       {t:'Soil Classification',d:'Objectives, international systems, and classification of Bangladesh soils.',l:3},
     ],
     books:[
@@ -578,44 +776,522 @@ const COURSES = {
       {t:'The Nature and Properties of Soils (10th edn.)',a:'Brady NC, 1996. Eurasian Pub. Ram nagar, New Delhi.',c:'#2d4a6b'},
       {t:'Fundamentals of Soils Science (5th edn.)',a:'Turk LM and Foth FD, 1973. Wiley Eastern Pvt. Ltd., New Delhi.',c:'#5a2d6b'},
     ]},
+
+  // 2ND YEAR
+  101:{code:'BOT.201',title:'Gymnosperms and Palaeobotany',lectures:30,marks:50,duration:'3 hours',group:'2nd Year — Major Theory',
+    topics:[
+      {t:'Introduction to Gymnosperms',d:'Habit, habitat, diversity, characters, vegetative and reproductive structure, life cycle, classification and economic importance. Comparative account with other plant groups.',l:4},
+      {t:'Classification of Gymnosperms',d:'Classification up to genus level; general characters of major classes: Cycadopsida, Coniferopsida, Gnetopsida.',l:3},
+      {t:'Detailed Study of Genera',d:'Detailed study of Cycas, Pinus, Gnetum, and Ephedra: habitat, morphology, anatomy, reproduction and life cycle.',l:8},
+      {t:'Economic Importance of Gymnosperms',d:'Economic uses of gymnosperms in timber, medicine, ornament, food, paper and resin industries.',l:2},
+      {t:'Introduction to Palaeobotany',d:'History, scope, development and importance of palaeobotany; methods of preservation of plant fossils.',l:3},
+      {t:'Types of Plant Fossils',d:'Compressions, impressions, permineralizations, molds and casts, amber fossils; geological time scale.',l:3},
+      {t:'Evolution through Fossil Record',d:'Origin and evolution of vascular plants from fossil evidence; Psilophyton, Rhynia, Lepidodendron, Calamites, Cordaites, fossil gymnosperms.',l:4},
+      {t:'Palaeobotany of Bangladesh',d:'Fossil plants found in Bangladesh and their significance.',l:3},
+    ],
+    books:[
+      {t:'Gymnosperms',a:'Bhatnagar SP and Moitra A, 1996. New Age International, New Delhi.',c:'#2d6b45'},
+      {t:'Gymnosperms',a:'Sporne KR, 1965. Hutchinson University Library, London.',c:'#4a6b2d'},
+      {t:'Palaeobotany',a:'Delevoryas T, 1962. Holt, Rinehart and Winston, New York.',c:'#6b4a2d'},
+      {t:'Gymnosperms and Evolution of Vascular Plants',a:'Foster AS and Gifford EM, 1974. WH Freeman and Co., San Francisco.',c:'#2d4a6b'},
+      {t:'Palaeobotany (3rd edn.)',a:'Puri V, 1997. Agrobios Pub., Jodhpur.',c:'#5a2d6b'},
+    ]},
+  102:{code:'BOT.202',title:'Biodiversity',lectures:30,marks:50,duration:'3 hours',group:'2nd Year — Major Theory',
+    topics:[
+      {t:'Introduction to Biodiversity',d:'Definition, scope, concepts, types (genetic, species, ecosystem diversity). Importance of biodiversity. Distribution and measurement of biodiversity.',l:4},
+      {t:'Threats to Biodiversity',d:'Introduction, causes and categories of biodiversity loss. Biological and physical threats. Endangered, threatened and endemic species of Bangladesh.',l:4},
+      {t:'Conservation Biology',d:'Definition, scope, principles, objectives. Strategies for biodiversity conservation: in-situ and ex-situ methods. National parks, protected areas of Bangladesh. Role of IUCN, WWF, CITES, CBD.',l:5},
+      {t:'Biodiversity of Bangladesh',d:'Plant biodiversity of Bangladesh  algae, fungi, bryophytes, pteridophytes, angiosperms. Biodiversity hotspots. Sundarbans and Chittagong Hill Tracts biodiversity.',l:6},
+      {t:'Economic Importance of Biodiversity',d:'Biodiversity as source of food, medicine, industry, agriculture. Gene banks and their role.',l:3},
+      {t:'Ethnobotany and Biodiversity',d:'Relationship between ethnobotany and biodiversity conservation; indigenous knowledge; sacred plants.',l:3},
+      {t:'International Conventions',d:'Convention on Biological Diversity (CBD), Ramsar Convention, CITES, Cartagena Protocol, Nagoya Protocol.',l:3},
+      {t:'Biodiversity Information Systems',d:'Use of GIS, remote sensing and bioinformatics in biodiversity assessment.',l:2},
+    ],
+    books:[
+      {t:'Biodiversity',a:'Wilson EO, 1988. National Academy Press, Washington DC.',c:'#2d6b45'},
+      {t:'An Advanced Text Book on Biodiversity',a:'Krishnamurthy KV, 2003. Oxford & IBH Pub. Co., New Delhi.',c:'#4a6b2d'},
+      {t:'Biodiversity and Conservation',a:'Gaston KJ and Spicer JI, 2004. Blackwell Publishing.',c:'#6b4a2d'},
+      {t:'Plant Biodiversity  Principles and Practice',a:'Akanda MJU, 2018. Bangladesh Book Bank, Shams Pub. Dhaka.',c:'#2d4a6b'},
+      {t:'Ethnobotany',a:'Martin GJ, 1995. Chapman and Hall, London.',c:'#5a2d6b'},
+    ]},
+  103:{code:'BOT.203',title:'Plant Anatomy',lectures:30,marks:50,duration:'3 hours',group:'2nd Year — Major Theory',
+    topics:[
+      {t:'Introduction to Plant Anatomy',d:'Definition, scope and importance of plant anatomy; history of plant anatomy; tools and techniques of anatomical study.',l:2},
+      {t:'Meristematic Tissues',d:'Types, characteristics and functions of meristems: apical, intercalary and lateral meristems. Shoot apical meristem and root apical meristem organization.',l:4},
+      {t:'Permanent Tissues',d:'Simple permanent tissues: parenchyma, collenchyma, sclerenchyma. Complex permanent tissues: xylem (tracheids, vessels, xylem fibres, xylem parenchyma) and phloem (sieve elements, companion cells, phloem fibres, phloem parenchyma).',l:6},
+      {t:'Tissue Systems',d:'Epidermal, ground (fundamental) and vascular tissue systems. Structure and functions. Epidermis, stomata, trichomes.',l:4},
+      {t:'Anatomy of Root',d:'Primary and secondary structure of dicot and monocot root. Casparian strip. Secondary growth in root.',l:4},
+      {t:'Anatomy of Stem',d:'Primary and secondary structure of dicot and monocot stem. Secondary growth, wood anatomy, annual rings. Structure of timber plants of Bangladesh.',l:6},
+      {t:'Anatomy of Leaf',d:'Structure of dicot and monocot leaf. C3 and C4 leaf anatomy. Adaptations.',l:3},
+      {t:'Anomalous Secondary Growth',d:'Anomalous structure in various plant families: Chenopodiaceae, Convolvulaceae, Nyctaginaceae, Cucurbitaceae.',l:3},
+    ],
+    books:[
+      {t:"Esau's Plant Anatomy (3rd edn.)",a:'Evert RF, 2006. John Wiley and Sons, New Jersey.',c:'#2d6b45'},
+      {t:'Introduction to Plant Anatomy (2nd edn.)',a:'James AJ and Haynes PH, 1971. Longman Group Ltd., London.',c:'#4a6b2d'},
+      {t:'Plant Anatomy',a:'Rann KS, 1973. Plant Anatomy. McGraw-Hill Book Co., New York.',c:'#6b4a2d'},
+      {t:'Plant Anatomy (6th edn.)',a:'Pandey SN, 2003. S. Chand & Co., New Delhi.',c:'#2d4a6b'},
+      {t:'A Text Book of Plant Anatomy (Vol.6)',a:'Yasinfor P, 1993. S. Chand & Co., New Delhi.',c:'#5a2d6b'},
+    ]},
+  104:{code:'BOT.204',title:'Plant Morphology and Systematics',lectures:30,marks:50,duration:'3 hours',group:'2nd Year — Major Theory',
+    topics:[
+      {t:'Introduction to Plant Morphology',d:'Definition, scope, importance. Morphological terms  vegetative and reproductive parts. Root systems: types, modifications, functions.',l:3},
+      {t:'Stem and Leaf Morphology',d:'Stem: types, modifications (underground, sub-aerial, aerial). Leaf: types, parts, phyllotaxy, duration, vernation, leaf modifications, heterophylly.',l:5},
+      {t:'Flower Morphology',d:'Parts of a flower, symmetry, sexuality. Calyx, corolla, androecium, gynoecium. Placentation types. Floral formula and floral diagram.',l:6},
+      {t:'Fruit and Seed',d:'Development and classification of fruit (true, false, aggregate, multiple). Classification of seeds, germination types, seed dispersal mechanisms.',l:4},
+      {t:'Introduction to Plant Systematics',d:'History, scope, tools and methods of plant systematics. Species concept. Nomenclature: ICBN rules, author citation, herbarium.',l:4},
+      {t:'Classification Systems',d:'Artificial, natural and phylogenetic systems. Bentham and Hooker, Engler and Prantl, Hutchinson and Cronquist classification systems.',l:4},
+      {t:'Study of Families',d:'Morphological description, economic importance and floral formula of families: Magnoliaceae, Ranunculaceae, Rosaceae, Leguminosae, Euphorbiaceae, Solanaceae, Compositae, Liliaceae, Gramineae.',l:7},
+      {t:'Taxonomic Keys',d:'Types of keys: dichotomous, bracketed. Construction and use of taxonomic identification keys.',l:3},
+    ],
+    books:[
+      {t:'Plant Systematics',a:'Judd WS, Campbell CS, Kellog EA, Stevens PF and Donoghue MJ, 2002. Sinauer Associates, USA.',c:'#2d6b45'},
+      {t:'An Introduction to Taxonomy of Angiosperms',a:'Benson L, 1962. Appleton, New York.',c:'#4a6b2d'},
+      {t:'Plant Taxonomy',a:'Cronquist A, 1968. Nelson, London.',c:'#6b4a2d'},
+      {t:'Flowering Plants Taxonomy',a:'Subramanyam K, 1962. New Central Book Agency, Calcutta.',c:'#2d4a6b'},
+      {t:'A Text Book of Systematic Botany',a:'Sudhi J, 1981. Vikas Pub. House, New Delhi.',c:'#5a2d6b'},
+    ]},
+  105:{code:'BOT.205',title:'Embryology and Palynology',lectures:30,marks:50,duration:'3 hours',group:'2nd Year — Major Theory',
+    topics:[
+      {t:'Introduction to Embryology',d:'History and scope of embryology. Development of anther and pollen grain. Microsporogenesis and male gametophyte development.',l:4},
+      {t:'Male Gametophyte',d:'Development of male gametophyte. Structure and types of pollen grains. Viability of pollen. Pollen storage and pollen germination.',l:4},
+      {t:'Ovule and Female Gametophyte',d:'Ovule types, structure and development. Megasporogenesis. Types of embryo sac: Polygonum type, Allium type, Fritillaria type, Drusa type, Penaea type, Oenothera type, Plumbago type, Adoxa type.',l:6},
+      {t:'Fertilization and Endosperm',d:'Pollination types. Double fertilization and its significance. Endosperm: types (nuclear, cellular, helobial) and development. Endosperm haustoria.',l:5},
+      {t:'Embryo Development',d:'Types of embryo development in dicots and monocots. Embryo structure. Seed development. Polyembryony and apomixis.',l:5},
+      {t:'Introduction to Palynology',d:'Definition, scope and applications of palynology. Morphological terms: apertures, exine sculpturing, symmetry. Pollen classification.',l:4},
+      {t:'Applied Palynology',d:'Melissopalynology, forensic palynology, petroleum palynology, medical palynology. Palynology in taxonomic studies.',l:4},
+      {t:'Pollen Allergy',d:'Aeropalynology: pollen calendar, pollinosis, major allergenic pollen plants; pollen monitoring.',l:2},
+    ],
+    books:[
+      {t:'Plant Embryology',a:'Bhojwani SS and Bhatnagar SP, 1983. Vikas Pub. House, New Delhi.',c:'#2d6b45'},
+      {t:'Embryology of Angiosperms',a:'Johri BM (ed.), 1984. Springer-Verlag, Berlin.',c:'#4a6b2d'},
+      {t:'Palynology',a:'Faegri K and Iversen J, 1989. John Wiley and Sons, New York.',c:'#6b4a2d'},
+      {t:'Pollen: Biology and Implications for Plant Breeding',a:'Mulcahy DL and Ottaviano E, 1983. Elsevier, New York.',c:'#2d4a6b'},
+      {t:'Plant Embryology',a:'Nair PKK and Kapoor LD, 1978. CSIR, New Delhi.',c:'#5a2d6b'},
+    ]},
+
+  // 2ND YEAR ADDITIONAL
+  106:{code:'BOT.206',title:'Horticulture and Hill Cultivation',lectures:40,marks:75,duration:'4 hours',group:'2nd Year — Related Theory',
+    topics:[
+      {t:'Introduction to Horticulture',d:'Definition, scope, classification of horticultural crops. Importance of horticulture in national economy. Overview of horticultural industry in Bangladesh.',l:3},
+      {t:'Propagation of Horticultural Plants',d:'Methods of propagation: sexual (seed) and asexual (vegetative). Vegetative propagation: cutting, layering, grafting, budding, division. Tissue culture propagation.',l:5},
+      {t:'Nursery Management',d:'Establishment and management of nursery. Seed bed preparation. Raising of seedlings. Pricking out, transplanting, hardening off. Types of nurseries.',l:4},
+      {t:'Soil and Manure Management',d:'Soil preparation for horticultural crops. Organic and inorganic fertilizers. Mulching, composting, green manuring. Irrigation and drainage in horticultural fields.',l:4},
+      {t:'Orchard Establishment and Management',d:'Site selection, layout, planting systems. Training and pruning of fruit trees. Intercropping in orchards. Pest and disease management.',l:5},
+      {t:'Important Fruit Crops of Bangladesh',d:'Botany, cultivation and management of: Mango, Banana, Pineapple, Guava, Papaya, Jackfruit, Litchi, Coconut, Betelnut. Post-harvest handling.',l:7},
+      {t:'Vegetable Crops',d:'Cultivation and management of important vegetables: Potato, Tomato, Brinjal, Okra, Cauliflower, Cabbage, Bitter gourd, Cucumber, Spinach.',l:5},
+      {t:'Spices and Condiment Crops',d:'Cultivation of Turmeric, Ginger, Garlic, Onion, Chilli, Coriander. Importance in Bangladesh agriculture.',l:3},
+      {t:'Floriculture',d:'Importance of flower cultivation. Cultivation of Rose, Marigold, Gladiolus, Chrysanthemum. Flower arrangement and marketing.',l:3},
+      {t:'Hill Cultivation',d:'Characteristics of hill soils and climate. Special problems of hill agriculture. Shifting cultivation (Jhum). Important hill crops: Bamboo, cane, fruit trees, medicinal plants. Conservation of hill resources.',l:3},
+    ],
+    books:[
+      {t:'Introduction to Horticulture',a:'Bose TK and Mitra SK, 1990. Naya Prokash, Calcutta.',c:'#2d6b45'},
+      {t:'Horticulture',a:'Aggarwal A, 2002. Agrobios Pub., Jodhpur.',c:'#4a6b2d'},
+      {t:'Vegetable Crops',a:'Thompson HC and Kelly WC, 1990. McGraw-Hill, New York.',c:'#6b4a2d'},
+      {t:'Fruit Production in Bangladesh',a:'Alam MK, 1987. BARI, Joydebpur, Dhaka.',c:'#2d4a6b'},
+      {t:'Horticulture: Principles and Practices',a:'Acquaah G, 2002. Prentice Hall, New Jersey.',c:'#5a2d6b'},
+      {t:'New Agriculture for Bangladesh',a:'Hamid MA, 1991. Dhaka University Press.',c:'#6b2d4a'},
+    ]},
+  107:{code:'BOT.207',title:'Plant Taxonomy (Related)',lectures:40,marks:75,duration:'4 hours',group:'2nd Year — Related Theory',
+    topics:[
+      {t:'Introduction and History',d:'Definition, aims, scope of taxonomy. History and development of plant taxonomy. Relationship of taxonomy with other branches of botany.',l:3},
+      {t:'Taxonomic Concepts',d:'Species concept: morphological, biological, phylogenetic, ecological species concepts. Infra-specific taxa: variety, subspecies, forma, cultivar.',l:3},
+      {t:'Nomenclature',d:'International Code of Nomenclature for algae, fungi and plants (ICN). Rules and recommendations. Type concept. Effective and valid publication. Author citation.',l:4},
+      {t:'Identification Tools',d:'Herbarium: history, collection techniques, mounting, preservation and uses. Taxonomic keys: types, construction and use. Flora, monograph, revision.',l:4},
+      {t:'Major Classification Systems',d:'Artificial systems: Linnaeus. Natural systems: Jussieu, de Candolle, Bentham & Hooker. Phylogenetic systems: Engler & Prantl, Hutchinson, Cronquist, Takhtajan, APG IV.',l:5},
+      {t:'Morphological Taxonomy',d:'Vegetative and floral morphology as taxonomic characters. Floral formula, floral diagram. Importance of fruit and seed characters.',l:3},
+      {t:'Angiosperm Families  Dicots',d:'Morphological description, floral formula, economic importance and representative genera of: Ranunculaceae, Magnoliaceae, Leguminosae (3 sub-families), Malvaceae, Euphorbiaceae, Umbelliferae, Compositae, Rubiaceae, Solanaceae, Labiatae, Cucurbitaceae, Acanthaceae.',l:9},
+      {t:'Angiosperm Families  Monocots',d:'Morphological description, floral formula, economic importance and representative genera of: Liliaceae, Amaryllidaceae, Orchidaceae, Zingiberaceae, Gramineae, Cyperaceae, Palmae.',l:6},
+      {t:'Taxonomy of Selected Bangladesh Flora',d:'Identification and classification of common plants of Bangladesh campus and local flora. Study of herbarium specimens in the department collection.',l:3},
+    ],
+    books:[
+      {t:'Plant Systematics',a:'Judd WS, Campbell CS, Kellogg EA, Stevens PF and Donoghue MJ, 2002. Sinauer Associates, USA.',c:'#2d6b45'},
+      {t:'Taxonomy and Biosystematics',a:'Stace CA, 1980. Arnold, London.',c:'#4a6b2d'},
+      {t:'Flowering Plants of Bangladesh',a:'Pasha MK and Uddin SB, 2013. Bangladesh Book Bank, Shams Pub.',c:'#6b4a2d'},
+      {t:'Principles of Angiosperm Taxonomy',a:'Davis PH and Heywood VH, 1963. Oliver and Boyd, Edinburgh.',c:'#2d4a6b'},
+      {t:'Introduction to Plant Taxonomy',a:'Lawrence GHM, 1951. Macmillan, New York.',c:'#5a2d6b'},
+      {t:'Flora of Bangladesh',a:'Khan MS and Huq AM (eds). BARC and BNH, Dhaka.',c:'#6b2d4a'},
+    ]},
+  108:{code:'BOT.208',title:'Bio-physical Chemistry',lectures:50,marks:75,duration:'4 hours',group:'2nd Year — Related Theory',
+    topics:[
+      {t:'Solutions and Colligative Properties',d:'Solutions: types, concentration units, molarity, molality, normality. Colligative properties: vapour pressure lowering, boiling point elevation, freezing point depression, osmotic pressure. Van\'t Hoff factor.',l:4},
+      {t:'Thermodynamics',d:'Laws of thermodynamics. Enthalpy, entropy, free energy. Gibbs free energy and its relation to equilibrium. Spontaneity of reactions. Applications in biological systems.',l:5},
+      {t:'Electrochemistry',d:'Electrolytic and galvanic cells. Electrode potential, EMF. Nernst equation. pH measurement, glass electrode, reference electrodes. Conductometric titrations.',l:4},
+      {t:'Spectroscopy',d:'Principles of UV-Visible, IR, NMR, and Mass spectroscopy. Applications in plant biochemistry. Beer-Lambert\'s law. Fluorescence and phosphorescence spectroscopy.',l:5},
+      {t:'Chromatography',d:'Principles and types: paper, TLC, column, GC, HPLC, ion exchange chromatography. Applications in separation of plant compounds.',l:4},
+      {t:'Centrifugation',d:'Principles. Types: differential, density gradient (sucrose, caesium chloride). Preparative and analytical ultracentrifugation. Applications.',l:3},
+      {t:'Electrophoresis',d:'Principles. Types: paper, agarose gel, polyacrylamide gel (PAGE), SDS-PAGE, 2D-PAGE, isoelectric focusing. Applications in protein and nucleic acid analysis.',l:4},
+      {t:'Carbohydrates',d:'Classification, structure and properties of monosaccharides, disaccharides and polysaccharides. Structural carbohydrates: cellulose, hemicellulose, pectin, starch.',l:4},
+      {t:'Lipids',d:'Classification, structure and properties. Fatty acids: saturated and unsaturated. Phospholipids, glycolipids, waxes. Role in membranes and energy storage.',l:3},
+      {t:'Proteins and Amino Acids',d:'Structure of amino acids. Peptide bond. Primary, secondary, tertiary and quaternary protein structure. Protein denaturation. Enzyme structure and classification.',l:4},
+      {t:'Nucleic Acids',d:'Structure of DNA (Watson-Crick model) and RNA. Nucleotides and nucleosides. DNA replication overview. Types of RNA and their functions.',l:4},
+    ],
+    books:[
+      {t:'Biochemistry',a:'Stryer L, Berg JM and Tymoczko JL, 2002. Freeman and Co., New York.',c:'#2d6b45'},
+      {t:'Physical Chemistry',a:'Atkins PW, 2001. Oxford University Press.',c:'#4a6b2d'},
+      {t:'Introduction to Plant Physiology (2nd edn.)',a:'Hopkins WG, 1999. Wiley, New York.',c:'#6b4a2d'},
+      {t:'Principles of Biochemistry',a:'Lehninger AL, Nelson DL and Cox MM, 2005. Freeman, New York.',c:'#2d4a6b'},
+      {t:'Biophysical Chemistry',a:'Cantor CR and Schimmel PR, 1980. Freeman, San Francisco.',c:'#5a2d6b'},
+    ]},
+  109:{code:'BOT.209',title:'Genetics',lectures:40,marks:75,duration:'4 hours',group:'2nd Year — Related Theory',
+    topics:[
+      {t:'Introduction to Genetics',d:'Definition, history, scope and importance. Mendelism: Mendel\'s laws  Law of Segregation, Law of Independent Assortment. Monohybrid and dihybrid crosses. Test cross, back cross. Deviations from Mendelian ratios.',l:5},
+      {t:'Extensions of Mendelian Genetics',d:'Incomplete dominance and co-dominance. Multiple allelism: ABO blood groups. Epistasis types and ratios. Pleiotropy. Penetrance and expressivity.',l:4},
+      {t:'Chromosomal Theory of Inheritance',d:'Sutton-Boveri hypothesis. Sex determination: XX-XY, XX-XO, ZW-ZZ systems. Sex-linked inheritance. Sex-limited and sex-influenced traits.',l:4},
+      {t:'Linkage and Crossing Over',d:'Definition and types of linkage. Crossing over: mechanism and significance. Chromosomal mapping. Interference and coincidence. Three-point test cross.',l:5},
+      {t:'Chromosomal Mutations',d:'Structural chromosomal aberrations: deletion, duplication, inversion, translocation. Numerical aberrations: aneuploidy (monosomy, trisomy), polyploidy (autopolyploidy, allopolyploidy). Examples and significance.',l:5},
+      {t:'Gene Mutations',d:'Definition, types: point mutations (transition, transversion, insertion, deletion). Spontaneous and induced mutations. Physical and chemical mutagens. Molecular basis of mutations.',l:4},
+      {t:'Quantitative Genetics',d:'Multiple factor hypothesis. Quantitative vs qualitative traits. Heritability  broad sense and narrow sense. Variance components. Regression and correlation in genetics.',l:4},
+      {t:'Population Genetics',d:'Hardy-Weinberg law and equilibrium. Gene frequencies. Forces changing allele frequencies: mutation, selection, genetic drift, migration. Inbreeding coefficient.',l:4},
+      {t:'Molecular Genetics Overview',d:'DNA as genetic material. DNA replication: semi-conservative model, enzymes involved. Transcription: RNA types and processing. Translation: genetic code, ribosomes. Central dogma.',l:5},
+    ],
+    books:[
+      {t:'Genetics',a:'Gardner EJ, Simmons MJ and Snustad DP, 1991. John Wiley and Sons, New York.',c:'#2d6b45'},
+      {t:'Introduction to Genetics',a:'Stansfield WD, 1991. Schaum\'s Outline Series, McGraw-Hill, New York.',c:'#4a6b2d'},
+      {t:'Molecular Biology of the Cell',a:'Alberts B et al., 2002. Garland Science, New York.',c:'#6b4a2d'},
+      {t:'Genetics',a:'Lewin B, 1990. Oxford University Press, Oxford.',c:'#2d4a6b'},
+      {t:'Fundamentals of Genetics',a:'Strickberger MW, 1990. Macmillan, New York.',c:'#5a2d6b'},
+      {t:'Principles of Genetics',a:'Snyder LA, Freifelder D and Hartl DL, 1985. Jones and Bartlett, Boston.',c:'#6b2d4a'},
+    ]},
+
+  // 3RD YEAR
+  201:{code:'BOT.301',title:'Plant Taxonomy',lectures:40,marks:75,duration:'4 hours',group:'3rd Year — Major Theory',
+    topics:[
+      {t:'Introduction, History and Scope',d:'Definition, history and scope of taxonomy. Components of taxonomy: classification, nomenclature, identification. Taxonomic hierarchy. Taxonomic evidence: morphological, anatomical, chemical, cytological, molecular.',l:3},
+      {t:'Development of Plant Classification',d:'Brief survey of systems: Theophrastus, Ray, Tournefort, Linnaeus, Jussieu, De Candolle, Bentham & Hooker, Engler & Prantl, Hutchinson, Cronquist, Takhtajan, Dahlgren, APG.',l:5},
+      {t:'Modern Taxonomy',d:'Biosystematics, chemosystematics, cytotaxonomy, molecular systematics. Cladistics  basic principles, parsimony, phylogenetic trees, cladogram.',l:5},
+      {t:'Botanical Nomenclature',d:'ICN (formerly ICBN): principles, rules. Nomenclatural types, priority, author citation, valid and illegitimate names. Herbarium  importance, techniques.',l:4},
+      {t:'Plant Identification',d:'Methods of identification: morphological keys, flora, monograph, revision. Taxonomic databases and online resources (GBIF, Tropicos, Plants of the World Online).',l:3},
+      {t:'Detailed Study of Families (Dicots)',d:'Magnoliaceae, Annonaceae, Nymphaeaceae, Ranunculaceae, Papaveraceae, Cruciferae, Malvaceae, Tiliaceae, Sterculiaceae, Capparaceae, Leguminosae (Papilionoideae, Caesalpinioideae, Mimosoideae), Rosaceae, Myrtaceae.',l:8},
+      {t:'Detailed Study of Families (Dicots cont.)',d:'Umbelliferae, Rubiaceae, Compositae, Convolvulaceae, Solanaceae, Labiatae, Euphorbiaceae, Cucurbitaceae, Acanthaceae, Verbenaceae.',l:7},
+      {t:'Detailed Study of Families (Monocots)',d:'Liliaceae, Amaryllidaceae, Palmae, Zingiberaceae, Orchidaceae, Gramineae, Cyperaceae.',l:5},
+    ],
+    books:[
+      {t:'Plant Systematics',a:'Judd WS et al., 2002. Sinauer Associates, USA.',c:'#2d6b45'},
+      {t:'Taxonomy and Biosystematics',a:'Stace CA, 1980. Arnold, London.',c:'#4a6b2d'},
+      {t:'Plant Taxonomy',a:'Davis PH and Heywood VH, 1963. Oliver and Boyd, Edinburgh.',c:'#6b4a2d'},
+      {t:'Flowering Plants of Bangladesh',a:'Pasha MK and Uddin SB, 2013. Bangladesh Book Bank, Shams Pub.',c:'#2d4a6b'},
+      {t:'Introduction to Plant Taxonomy',a:'Lawrence GHM, 1951. Macmillan, New York.',c:'#5a2d6b'},
+      {t:'Flora of Bangladesh series',a:'Khan MS and Huq AM (eds). BARC and BNH, Dhaka.',c:'#6b2d4a'},
+    ]},
+  202:{code:'BOT.302',title:'Limnology',lectures:40,marks:75,duration:'4 hours',group:'3rd Year — Major Theory',
+    topics:[
+      {t:'Introduction',d:'Definition, scope, history and classification of water bodies. Characteristics of lakes, ponds, rivers, streams, wetlands and waterlogged lands of Bangladesh.',l:3},
+      {t:'Physical Properties of Water',d:'Light, temperature, transparency (Secchi depth), turbidity, colour, water movements and stratification (thermocline).',l:4},
+      {t:'Chemical Properties of Water',d:'pH, dissolved oxygen (DO), BOD, COD, carbon dioxide system, nutrients (nitrogen, phosphorus), conductivity, hardness, alkalinity.',l:5},
+      {t:'Biological Communities',d:'Aquatic organisms: plankton (phytoplankton, zooplankton), benthos, periphyton, nekton, neuston, macrophytes. Food chains and food webs in aquatic systems.',l:6},
+      {t:'Primary Production',d:'Definition, measurement methods. Eutrophication  causes, types, effects and control. Algal blooms  types, causes and management.',l:5},
+      {t:'Aquatic Plants of Bangladesh',d:'Classification, ecology, distribution, importance and management of aquatic and semi-aquatic plants. Aquatic macrophytes of Bangladesh: Nelumbo, Nymphaea, Pistia, Eichhornia, Hydrilla.',l:6},
+      {t:'Water Pollution and Management',d:'Sources and types of water pollution. Effects on aquatic flora. Water quality standards. Bioindicators. Phytoremediation. Wastewater treatment.',l:6},
+      {t:'Wetlands and Water Resources',d:'Types of wetlands in Bangladesh: haors, baors, beels, floodplains. Management and conservation. Ramsar Convention. Water resources management in Bangladesh.',l:5},
+    ],
+    books:[
+      {t:'Limnology',a:'Wetzel RG, 2001. Academic Press, San Diego.',c:'#2d6b45'},
+      {t:'Limnology',a:'Maan SR, 1983. McGraw-Hill, New York.',c:'#4a6b2d'},
+      {t:'Aquatic Plants of Bangladesh',a:'Rashid MM, 1999. BARC, Dhaka.',c:'#6b4a2d'},
+      {t:'Aquatic Plant Biology',a:'Bristow JM, 1991. Academic Press, London.',c:'#2d4a6b'},
+      {t:'Limnology of the Chittagong University Campus',a:'Islam AS (ed.), 1986. CU Publications.',c:'#5a2d6b'},
+    ]},
+  203:{code:'BOT.303',title:'Plant Ecology',lectures:40,marks:75,duration:'4 hours',group:'3rd Year — Major Theory',
+    topics:[
+      {t:'Introduction',d:'Definition, scope, history of ecology. Autecology and synecology. Relationship of ecology with other sciences.',l:2},
+      {t:'Environmental Factors',d:'Climatic factors: light, temperature, rainfall, wind. Edaphic factors: soil texture, structure, pH, moisture, nutrients. Biotic factors: competition, predation, symbiosis, parasitism, mutualism.',l:6},
+      {t:'Ecological Adaptations',d:'Xerophytes, hydrophytes, mesophytes, halophytes, epiphytes, lithophytes  structural and physiological adaptations.',l:5},
+      {t:'Plant Communities and Vegetation',d:'Community characteristics: composition, stratification, density, frequency, abundance, IVI. Phytosociology methods. Vegetation types of Bangladesh.',l:6},
+      {t:'Succession',d:'Primary and secondary succession. Sere types: xerosere, hydrosere, halosere. Climax concept. Succession in Bangladesh ecosystems.',l:4},
+      {t:'Ecosystem',d:'Structure and function of ecosystem. Energy flow: food chains, food webs, trophic levels, energy pyramids. Nutrient cycling: carbon cycle, nitrogen cycle, phosphorus cycle.',l:6},
+      {t:'Major Ecosystems of Bangladesh',d:'Sundarbans mangrove ecosystem. Floodplain ecology. Hill forest ecology. Coastal ecosystem. Degradation and conservation.',l:5},
+      {t:'Restoration Ecology',d:'Concepts of ecological restoration. Afforestation, reforestation. Social forestry. Role of NGOs in conservation.',l:3},
+      {t:'Phytogeography',d:'Distribution patterns of plants. Biogeographic regions. Flora of Bangladesh regions.',l:3},
+    ],
+    books:[
+      {t:'Principles of Ecology',a:'Odum EP and Barret GW, 2005. Thomson, Brooks/Cole, USA.',c:'#2d6b45'},
+      {t:'Ecology',a:'Mackenzie A, Ball AS and Virdee SR, 2001. Instant Notes, BIOS Scientific.',c:'#4a6b2d'},
+      {t:'Plant Ecology (3rd edn.)',a:'Weaver JE and Clements FE, 1938. McGraw-Hill, New York.',c:'#6b4a2d'},
+      {t:'Ecology and Environment',a:'Sharma PD, 2005. Rastogi Pub., Meerut.',c:'#2d4a6b'},
+      {t:'Ecology of Bangladesh',a:'Alam M, 1992. Bangladesh Books International.',c:'#5a2d6b'},
+    ]},
+  204:{code:'BOT.304',title:'Plant Physiology',lectures:40,marks:75,duration:'4 hours',group:'3rd Year — Major Theory',
+    topics:[
+      {t:'Water Relations',d:'Properties of water, osmosis, diffusion, water potential, turgor pressure. Absorption of water by roots, ascent of sap, transpiration  types, mechanism, significance.',l:5},
+      {t:'Mineral Nutrition',d:'Essential and beneficial elements, deficiency symptoms, toxicity. Mechanism of ion uptake: passive and active transport, ion carriers, proton pumps.',l:4},
+      {t:'Photosynthesis',d:'Light reactions: photosystems I and II, Z-scheme, cyclic and non-cyclic photophosphorylation. Dark reactions: Calvin cycle (C3), C4 pathway, CAM pathway. Factors affecting photosynthesis.',l:8},
+      {t:'Respiration',d:'Glycolysis, Krebs cycle, electron transport chain, oxidative phosphorylation. Anaerobic respiration. Pentose phosphate pathway. Respiratory quotient.',l:6},
+      {t:'Nitrogen Metabolism',d:'Biological nitrogen fixation: symbiotic and non-symbiotic. Nitrate reduction, ammonium assimilation, transamination. Protein synthesis overview.',l:4},
+      {t:'Growth Regulators (Phytohormones)',d:'Auxins, gibberellins, cytokinins, abscisic acid, ethylene, brassinosteroids  structure, biosynthesis, mode of action and applications.',l:6},
+      {t:'Growth and Development',d:'Seed germination, dormancy, senescence, abscission. Photoperiodism  SDP, LDP, DNP. Vernalization.',l:5},
+      {t:'Stress Physiology',d:'Drought, salinity, heat, cold and heavy metal stress responses. Tolerance mechanisms.',l:2},
+    ],
+    books:[
+      {t:'Plant Physiology',a:'Salisbury FB and Ross CW, 2005. CBS Pub. and Dist., New Delhi.',c:'#2d6b45'},
+      {t:'The Physiology of Plants Under Stress',a:'Levitt J, 1980. Academic Press, New York.',c:'#4a6b2d'},
+      {t:'Plant Physiology',a:'Taiz L and Zeiger E, 2006. Sinauer Associates Inc., USA.',c:'#6b4a2d'},
+      {t:'Plant Physiology',a:'Hopkins WG and Hüner NPA, 2004. John Wiley & Sons, New York.',c:'#2d4a6b'},
+      {t:'Introduction to Plant Physiology (2nd edn.)',a:'Hopkins WG, 1999. Wiley, New York.',c:'#5a2d6b'},
+      {t:'Advanced Plant Physiology',a:'Wilkins MB, 1987. ELBS.',c:'#6b2d4a'},
+    ]},
+  205:{code:'BOT.305',title:'Plant Pathology',lectures:40,marks:75,duration:'4 hours',group:'3rd Year — Major Theory',
+    topics:[
+      {t:'Introduction',d:'Definition, history, scope and importance of plant pathology. Causes of plant diseases: infectious (fungi, bacteria, viruses, nematodes) and non-infectious. Koch\'s postulates.',l:3},
+      {t:'Plant Pathogenic Organisms',d:'Fungi: classification of plant pathogenic fungi, parasitism, host-parasite relationship. Bacteria: characteristics, symptoms, modes of spread. Viruses: types, replication, spread.',l:6},
+      {t:'Disease Cycle and Epidemiology',d:'Disease cycle components: inoculation, penetration, infection, colonization, reproduction, dissemination, survival. Factors affecting disease development.',l:4},
+      {t:'Symptoms of Plant Diseases',d:'Types of symptoms: necrotic, hypoplastic, hyperplastic. Common symptoms: wilts, rots, blights, cankers, rusts, smuts, mosaics, mildews.',l:3},
+      {t:'Important Diseases of Bangladesh Crops',d:'Diseases of Rice (blast, brown spot, bacterial leaf blight, sheath blight), Wheat (rust, smut), Jute (stem rot, anthracnose), Potato (late blight, early blight), Brinjal, Tomato, Sugarcane.',l:10},
+      {t:'Disease Control',d:'Cultural, physical, biological and chemical methods. Integrated pest management (IPM). Fungicides, bactericides  types and mode of action.',l:5},
+      {t:'Post-harvest Pathology',d:'Causes of post-harvest losses. Important post-harvest diseases. Storage conditions and handling.',l:3},
+      {t:'Plant Disease Diagnosis',d:'Diagnostic methods: symptoms, Koch\'s postulates, microscopy, serological tests (ELISA), molecular methods (PCR).',l:3},
+      {t:'Plant Quarantine',d:'Importance of plant quarantine. Principles and procedures. Bangladesh plant quarantine rules.',l:3},
+    ],
+    books:[
+      {t:'Plant Pathology',a:'Agrios GN, 1978. Academic Press, New Delhi.',c:'#2d6b45'},
+      {t:'Plant Pathology',a:'Balasubramanian P, 2009. Scientific Pub., Jodhpur.',c:'#4a6b2d'},
+      {t:'Plant Pathology',a:'Islam MT, 2009. Bangladesh Book Bank, Shams Pub. Dhaka.',c:'#6b4a2d'},
+      {t:'Fundamentals of Plant Pathology',a:'Mehrotra RS, 1991. Tata McGraw-Hill, New Delhi.',c:'#2d4a6b'},
+      {t:'Plant Diseases',a:'Walker JC, 1952. McGraw-Hill, New York.',c:'#5a2d6b'},
+    ]},
+
+  206:{code:'BOT.306',title:'Cytology and Genetics',lectures:40,marks:75,duration:'4 hours',group:'3rd Year — Major Theory',
+    topics:[
+      {t:'Introduction to Cytology',d:'Definition, scope and history of cytology. Cell theory. Prokaryotic vs eukaryotic cell structure. Tools: light microscopy, electron microscopy, cell fractionation.',l:2},
+      {t:'Cell Organelles',d:'Structure and function of: nucleus, mitochondria, chloroplasts, endoplasmic reticulum, Golgi apparatus, ribosomes, lysosomes, vacuoles, peroxisomes, microbodies. Cell wall structure.',l:5},
+      {t:'Chromosomes',d:'Chromosome structure: DNA, histones, non-histone proteins, nucleosome model. Chromatin organisation. Chromosome morphology: centromere, telomere, arms. Types of chromosomes. Karyotype and idiogram.',l:5},
+      {t:'Cell Division  Mitosis',d:'Stages of mitosis: prophase, metaphase, anaphase, telophase. Cytokinesis in plant cells. Significance of mitosis. Abnormalities of mitosis.',l:3},
+      {t:'Cell Division  Meiosis',d:'Stages of meiosis I and II in detail. Crossing over mechanism: chiasma formation. Significance of meiosis. Comparison of mitosis and meiosis.',l:5},
+      {t:'Chromosomal Basis of Inheritance',d:'Chromosomal theory of inheritance. Sex chromosomes and sex determination. Dosage compensation. X-inactivation (Lyon hypothesis). Chromosomal aberrations: structural and numerical.',l:4},
+      {t:'Linkage and Genetic Mapping',d:'Definition of linkage. Complete and incomplete linkage. Crossing over and recombination frequency. Chromosome mapping: two-point and three-point cross. Interference and coincidence.',l:4},
+      {t:'Extrachromosomal Inheritance',d:'Cytoplasmic inheritance: maternal effect, plastid inheritance, mitochondrial genetics. Cytoplasmic male sterility (CMS). Infectious heredity.',l:3},
+      {t:'Advanced Genetics',d:'Molecular basis of gene expression: operons (lac, trp). Post-transcriptional regulation. Epigenetics: methylation, acetylation, imprinting. Transposable elements.',l:5},
+      {t:'Genetic Analysis Techniques',d:'Genetic mapping using RFLP, SSR, SNP. FISH and GISH techniques. Flow cytometry. Chromosome painting.',l:4},
+    ],
+    books:[
+      {t:'Genetics',a:'Gardner EJ, Simmons MJ and Snustad DP, 1991. John Wiley and Sons, New York.',c:'#2d6b45'},
+      {t:'Introduction to Genetics',a:'Stansfield WD. Schaum\'s Outline, McGraw-Hill.',c:'#4a6b2d'},
+      {t:'Cell and Molecular Biology',a:'De Robertis EDP and De Robertis EMF, 2006. Lippincott Williams & Wilkins.',c:'#6b4a2d'},
+      {t:'Molecular Biology of the Cell',a:'Alberts B et al., 2002. Garland Science, New York.',c:'#2d4a6b'},
+      {t:'An Introduction to Cytology',a:'Sharma AK and Sharma A, 1980. Narendra Pub. House, New Delhi.',c:'#5a2d6b'},
+      {t:'Cytogenetics of Crop Plants',a:'Swaminathan MS, Gupta PK and Sinha U, 1983. Macmillan India.',c:'#6b2d4a'},
+    ]},
+  207:{code:'BOT.307',title:'Pharmacognosy and Medicinal Botany',lectures:30,marks:50,duration:'3 hours',group:'3rd Year — Major Theory',
+    topics:[
+      {t:'Introduction to Pharmacognosy',d:'Definition, history, scope and importance of pharmacognosy. Relationship with other sciences. Classification of drugs: morphological, taxonomical, chemical and pharmacological classification.',l:3},
+      {t:'Drug Collection and Preparation',d:'Sources of drugs: plant, animal, marine and microorganism. Collection, processing, drying, packaging, storage and quality control of crude drugs.',l:3},
+      {t:'Primary and Secondary Metabolites',d:'Primary metabolites: carbohydrates, proteins, lipids. Secondary metabolites: alkaloids, glycosides, tannins, flavonoids, terpenoids, essential oils  definition, classification, properties and medicinal importance.',l:5},
+      {t:'Important Drug Plants',d:'Study of important drug plants with reference to botanical source, family, collection, chemical constituents, uses and adulterants: Digitalis, Rauwolfia, Cinchona, Opium, Cannabis, Datura, Nux vomica, Ipecacuanha, Aloe, Senna.',l:6},
+      {t:'Medicinal Plants of Bangladesh',d:'Important medicinal plants used in traditional medicine in Bangladesh. Plants used in Ayurveda, Unani and folk medicine. Selected plants: Neem, Turmeric, Ginger, Tulsi, Kalmegh, Ashwagandha, Black seed, Arjun.',l:6},
+      {t:'Herbal Drugs and Formulations',d:'WHO guidelines on herbal medicines. Good Agricultural and Collection Practices (GACP). Standardisation of herbal drugs. Quality control: adulteration and substitution.',l:4},
+      {t:'Ethnomedicine',d:'Definition, scope, importance. Ethnomedicine of indigenous communities of Bangladesh. Documentation methods. Bioactive compounds from ethnomedicinal plants.',l:3},
+    ],
+    books:[
+      {t:'A Text Book of Pharmacognosy',a:'Ali M, 2002. CBS Pub. New Delhi.',c:'#2d6b45'},
+      {t:'Pharmacognosy',a:'Trease GE and Evans WC, 2002. WB Saunders, London.',c:'#4a6b2d'},
+      {t:'Medicinal Plants of Bangladesh',a:'Ghani A, 1998. Asiatic Society of Bangladesh.',c:'#6b4a2d'},
+      {t:'Introduction to Pharmacognosy',a:'Wallis TE, 1985. J & A Churchill Ltd, London.',c:'#2d4a6b'},
+      {t:'Phytochemical Methods',a:'Harborne JB, 1984. Chapman and Hall, London.',c:'#5a2d6b'},
+    ]},
+  208:{code:'BOT.308',title:'Plant Tissue Culture',lectures:30,marks:50,duration:'3 hours',group:'3rd Year — Major Theory',
+    topics:[
+      {t:'Introduction',d:'History, scope and importance of plant tissue culture. Totipotency concept. Basic principles of cell and tissue culture. Laboratory setup, equipment and aseptic techniques.',l:3},
+      {t:'Culture Media',d:'Components of tissue culture media: mineral salts, organic supplements, plant growth regulators, carbon source, vitamins, gelling agents. Murashige and Skoog (MS), White\'s, B5, Nitsch media. pH adjustment and sterilisation.',l:4},
+      {t:'Organogenesis',d:'Callus culture: induction, subculturing. Shoot organogenesis: direct and indirect. Root organogenesis. Role of auxin-cytokinin ratio. Adventitious organ formation.',l:4},
+      {t:'Somatic Embryogenesis',d:'Direct and indirect somatic embryogenesis. Stages of somatic embryo development. Comparison with zygotic embryogenesis. Applications in propagation and transformation.',l:3},
+      {t:'Micropropagation',d:'Stages of micropropagation. Types: meristem culture, shoot tip culture, axillary bud proliferation, adventitious shoot formation. Acclimatisation of plantlets. Commercial applications.',l:4},
+      {t:'Anther and Pollen Culture',d:'Androgenesis: direct and indirect. Factors affecting anther culture. Production of haploid plants and their applications in plant breeding. Chromosome doubling in haploids.',l:3},
+      {t:'Protoplast Culture',d:'Isolation and culture of protoplasts. Somatic hybridization: protoplast fusion methods, selection of hybrids, cybridisation. Applications and limitations.',l:3},
+      {t:'Cell Suspension Culture',d:'Establishment and maintenance of cell suspensions. Secondary metabolite production in cell culture. Bioreactor technology. Elicitation and biotransformation.',l:3},
+      {t:'Genetic Transformation',d:'Methods of plant transformation: Agrobacterium-mediated, biolistic (gene gun), electroporation. Selection and regeneration of transformed plants. Applications.',l:3},
+    ],
+    books:[
+      {t:'Plant Cell, Tissue and Organ Culture',a:'Bhojwani SS and Razdan MK, 1996. Elsevier, Amsterdam.',c:'#2d6b45'},
+      {t:'Plant Tissue Culture',a:'Trigiano RN and Gray DJ, 2000. CRC Press, USA.',c:'#4a6b2d'},
+      {t:'Plant Tissue Culture: Theory and Practice',a:'Bhojwani SS and Dantu PK, 2013. Springer, Netherlands.',c:'#6b4a2d'},
+      {t:'Introduction to Plant Tissue Culture',a:'Razdan MK, 2003. Science Pub. USA.',c:'#2d4a6b'},
+      {t:'Plant Biotechnology',a:'Slater A, Scott N and Fowler M, 2003. Oxford University Press.',c:'#5a2d6b'},
+    ]},
+
+  306:{code:'BOT.406',title:'Origin and Evolution of Life',lectures:30,marks:50,duration:'3 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'Origin of the Universe and Earth',d:'Big Bang theory. Formation of solar system and Earth. Geological time scale. Primordial atmosphere. Conditions on early Earth.',l:2},
+      {t:'Chemical Evolution',d:'Oparin-Haldane hypothesis. Miller-Urey experiment. Abiotic synthesis of organic molecules: amino acids, nucleotides, sugars. Formation of polymers. Protobionts and microspheres.',l:4},
+      {t:'Origin of Life',d:'RNA world hypothesis. Origin of replication and metabolism. First cells: protocells. Transition from RNA to DNA. Origin of genetic code.',l:4},
+      {t:'Early Life and Fossil Record',d:'Earliest fossils: stromatolites, cyanobacteria. Prokaryote to eukaryote transition: endosymbiotic theory (Margulis). Evolution of mitochondria and chloroplasts.',l:4},
+      {t:'Evolutionary Mechanisms',d:'Darwinian evolution: natural selection, variation, fitness. Neo-Darwinian synthesis. Types of selection: directional, stabilizing, disruptive. Genetic drift, founder effect, bottleneck.',l:5},
+      {t:'Evolution of Plants',d:'Major events in plant evolution: origin of photosynthesis, multicellularity, land plants, vascular system, seeds, flowers. Molecular clock and phylogenetics.',l:5},
+      {t:'Speciation',d:'Concepts of species. Mechanisms of speciation: allopatric, sympatric, parapatric. Reproductive isolation mechanisms. Adaptive radiation.',l:3},
+      {t:'Evolutionary Theory',d:'Lamarckism vs Darwinism. Synthetic theory of evolution. Punctuated equilibrium. Convergent and divergent evolution. Molecular evolution. Coevolution.',l:3},
+    ],
+    books:[
+      {t:'The Origin of Life',a:'Oparin AI, 1938 (re-printed). Dover Publications, New York.',c:'#2d6b45'},
+      {t:'Evolution',a:'Ridley M, 2004. Blackwell Publishing, Oxford.',c:'#4a6b2d'},
+      {t:'Molecular Evolution',a:'Li WH, 1997. Sinauer Associates, USA.',c:'#6b4a2d'},
+      {t:'Origin and Evolution of Life',a:'Patra AK, 2004. Kalyani Publishers, New Delhi.',c:'#2d4a6b'},
+      {t:'Evolutionary Biology',a:'Futuyma DJ, 2005. Sinauer Associates, USA.',c:'#5a2d6b'},
+      {t:'Molecular Biology and Evolution',a:'Paabo S and Gribaldo S, 2007. Springer.',c:'#6b2d4a'},
+    ]},
+  307:{code:'BOT.407',title:'Plant Stress Physiology',lectures:40,marks:75,duration:'4 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'Introduction to Stress Physiology',d:'Definition of plant stress and strain. Types of abiotic and biotic stresses. Stress resistance, tolerance and avoidance mechanisms. General stress response pathways.',l:3},
+      {t:'Water Deficit Stress',d:'Effects of drought on plant water relations, photosynthesis, growth and metabolism. Osmotic adjustment. Drought avoidance mechanisms. ABA signalling in drought. Drought-tolerant crops.',l:6},
+      {t:'Salinity Stress',d:'Types of salinity. Effects of NaCl and ionic stress. Ion homeostasis: SOS pathway. Osmotic adjustment. Salt exclusion and compartmentation. Halophytes vs glycophytes.',l:5},
+      {t:'Heat Stress',d:'Effects of high temperature on membranes, proteins and photosynthesis. Heat shock proteins (HSPs) and chaperones. Thermotolerance mechanisms.',l:4},
+      {t:'Cold and Chilling Stress',d:'Chilling injury and freezing injury. Membrane phase transition. Cold acclimation and hardening. Cryoprotectants. Antifreeze proteins. Cold-tolerant plants.',l:4},
+      {t:'Flooding and Anaerobic Stress',d:'Effects of waterlogging and submergence on plants. Anaerobic metabolism: fermentation pathways. Aerenchyma formation. Ethylene and flooding response.',l:3},
+      {t:'Heavy Metal Stress',d:'Sources of heavy metal pollution. Phytotoxicity of Cd, Pb, Hg, As, Cr, Cu, Zn. Uptake and transport. Chelation and sequestration. Metallothioneins and phytochelatins. Phytoremediation.',l:5},
+      {t:'Oxidative Stress and ROS',d:'Sources of reactive oxygen species (ROS): O2-, H2O2, OH. Oxidative damage to lipids, proteins and DNA. Antioxidant defence: SOD, CAT, APX, GPX. Non-enzymatic antioxidants.',l:5},
+      {t:'Biotic Stress and Defence',d:'Plant-pathogen interactions: compatible and incompatible. Hypersensitive response (HR). Systemic acquired resistance (SAR). Pathogenesis-related (PR) proteins. Phytoalexins. JA and SA signalling.',l:5},
+    ],
+    books:[
+      {t:'Plant Stress Physiology',a:'Shabala S (ed.), 2012. CABI Publishing, UK.',c:'#2d6b45'},
+      {t:'Plant Physiology',a:'Taiz L and Zeiger E, 2010. Sinauer Associates, USA.',c:'#4a6b2d'},
+      {t:'Physiology and Biochemistry of Plant Stress',a:'Thompson J, 1999. Taylor and Francis.',c:'#6b4a2d'},
+      {t:'Biochemistry and Molecular Biology of Plants',a:'Buchanan BB, Gruissem W and Jones RL, 2000. ASPB, Rockville.',c:'#2d4a6b'},
+      {t:'Abiotic Stress Tolerance in Plants',a:'Rai AK and Takabe T, 2006. Springer Netherlands.',c:'#5a2d6b'},
+    ]},
+  308:{code:'BOT.408',title:'Biotechnology and Genetic Engineering',lectures:40,marks:75,duration:'4 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'Introduction to Biotechnology',d:'Definition, historical development, scope, trends and future prospects of biotechnology. Applications in agriculture, medicine, industry and environment. Ethical issues.',l:3},
+      {t:'Recombinant DNA Technology',d:'Tools: restriction enzymes (types, nomenclature), DNA ligase, DNA polymerase, reverse transcriptase, alkaline phosphatase. Vectors: plasmid, bacteriophage, cosmid, BAC, YAC, viral vectors.',l:6},
+      {t:'Gene Cloning',d:'Steps of gene cloning: isolation of DNA, restriction digestion, ligation, transformation, selection and screening. cDNA library construction. Genomic library. Colony hybridisation.',l:5},
+      {t:'PCR and DNA Analysis',d:'Polymerase chain reaction (PCR): principle, components, steps. Types: RT-PCR, real-time PCR, multiplex PCR. Agarose gel electrophoresis. Southern, Northern and Western blotting.',l:5},
+      {t:'DNA Sequencing',d:'Sanger\'s dideoxy sequencing. Automated sequencing. Next generation sequencing (NGS): Illumina, Ion Torrent, PacBio. Genome sequencing strategies.',l:4},
+      {t:'Genetic Engineering of Plants',d:'Agrobacterium tumefaciens-mediated transformation: Ti plasmid, T-DNA. Biolistic method. Electroporation. Selection markers. Regeneration of transgenic plants. Molecular verification.',l:6},
+      {t:'Transgenic Plants and Applications',d:'Herbicide-resistant crops (Roundup Ready). Insect-resistant crops (Bt crops). Virus-resistant plants. Golden rice. Drought and salt tolerant crops. Pharming (molecular farming). Biofuels.',l:5},
+      {t:'Genomics and Bioinformatics',d:'Structural genomics, functional genomics, comparative genomics. Proteomics and metabolomics. Bioinformatics tools: BLAST, GenBank, UniProt, KEGG. Phylogenetic analysis tools.',l:4},
+      {t:'Biosafety and Bioethics',d:'Biosafety regulations: Cartagena Protocol, national biosafety frameworks. Risk assessment of GMOs. Bioethics: IPR, patents, biopiracy. Public perception of biotechnology.',l:2},
+    ],
+    books:[
+      {t:'Introduction to Plant Biotechnology',a:'Chawla HS, 2000. Science Pub. USA.',c:'#2d6b45'},
+      {t:'Molecular Biotechnology',a:'Glick BR and Pasternak JJ, 2003. ASM Press, Washington DC.',c:'#4a6b2d'},
+      {t:'Molecular Biology of the Gene',a:'Watson JD et al., 2004. Benjamin Cummings, San Francisco.',c:'#6b4a2d'},
+      {t:'Plant Biotechnology',a:'Slater A, Scott N and Fowler M, 2003. Oxford University Press.',c:'#2d4a6b'},
+      {t:'Genetic Engineering: Principles and Methods',a:'Setlow JK (ed.), 2001. Springer.',c:'#5a2d6b'},
+      {t:'Molecular Biology and Biotechnology',a:'Ananda MK, 2003. New Age International, New Delhi.',c:'#6b2d4a'},
+    ]},
+  309:{code:'BOT.409',title:'Molecular Biology',lectures:40,marks:75,duration:'4 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'DNA Structure and Organisation',d:'Watson-Crick double helix model. Forms of DNA: A, B, Z. DNA supercoiling and topoisomerases. Chromatin structure: nucleosome, 30nm fibre, higher order packing. Satellite DNA, repetitive sequences.',l:4},
+      {t:'DNA Replication',d:'Prokaryotic DNA replication: enzymology  DNA pol I, II, III, helicase, primase, ligase, SSB proteins, topoisomerases. Replication fork. Leading and lagging strand synthesis. Okazaki fragments. Replication in eukaryotes: origins, replicons, telomere replication, telomerase.',l:6},
+      {t:'DNA Damage and Repair',d:'Types of DNA damage: deamination, depurination, oxidation, UV-induced. Repair mechanisms: photoreactivation, base excision repair, nucleotide excision repair, mismatch repair, recombination repair, SOS repair.',l:4},
+      {t:'Transcription',d:'Prokaryotic transcription: RNA polymerase subunits, promoters (−10, −35 boxes), sigma factor, initiation, elongation, termination. Eukaryotic transcription: RNA pol I, II, III, basal transcription factors, enhancers, silencers. Co-activators, mediator complex.',l:6},
+      {t:'RNA Processing',d:'5\' capping, 3\' polyadenylation, splicing of pre-mRNA. Spliceosome: snRNPs. Alternative splicing. RNA editing. rRNA and tRNA processing. Introns: Group I, Group II, nuclear introns.',l:4},
+      {t:'Translation',d:'Genetic code: properties, wobble hypothesis. tRNA structure and aminoacyl-tRNA synthetases. Ribosomes: structure and function. Initiation, elongation and termination in prokaryotes and eukaryotes. Post-translational modifications.',l:5},
+      {t:'Gene Regulation',d:'Prokaryotic gene regulation: lac operon (induction), trp operon (repression), catabolite repression. Eukaryotic gene regulation: transcription factors, chromatin remodelling, histone modification, DNA methylation. Epigenetics.',l:5},
+      {t:'Non-coding RNAs',d:'Types: miRNA, siRNA, lncRNA, snoRNA, piRNA. Biogenesis and mechanisms: RNAi pathway, RISC complex. Role in gene silencing, development and stress responses. Applications: gene knockdown, therapy.',l:4},
+      {t:'Recombination',d:'Types of recombination: homologous, site-specific, transposition. Holliday junction model. Enzymes: RecA, RuvA, RuvB, RuvC. Transposable elements: Class I (retrotransposons) and Class II (DNA transposons).',l:2},
+    ],
+    books:[
+      {t:'Molecular Biology of the Cell',a:'Alberts B, Johnson A, Lewis J, Raff M, Roberts K and Walter P, 2002. Garland Science, New York.',c:'#2d6b45'},
+      {t:'Molecular Biology of the Gene',a:'Watson JD, Baker TA, Bell SP, Gann A, Levine M and Losick R, 2004. Benjamin Cummings.',c:'#4a6b2d'},
+      {t:'Molecular Cell Biology',a:'Lodish H, Berk A, Matsudaira P, Kaiser CA, Krieger M, Scott MP and Zipursky SL, 2004. Freeman.',c:'#6b4a2d'},
+      {t:'Molecular Biology',a:'Lewin B, 2004. Jones and Bartlett Publishers, Boston.',c:'#2d4a6b'},
+      {t:'AmbikaBajpai (Molecular Biology)',a:'Bajpai PK, 2002. S. Chand and Co., New Delhi.',c:'#5a2d6b'},
+      {t:'Molecular Biology of the Gene (Vol. I & II)',a:'Pasha MK, 1998. Anand Brothers, Dhaka.',c:'#6b2d4a'},
+    ]},
+  301:{code:'BOT.401',title:'Phytogeography and Plant Conservation Biology',lectures:40,marks:75,duration:'4 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'Introduction to Phytogeography',d:'Definition, scope, historical development. Factors controlling plant distribution: climatic, edaphic, topographic, biotic, historical.',l:3},
+      {t:'Floristic Kingdoms and Regions',d:'Engler\'s and Takhtajan\'s floristic kingdoms. Major floristic regions of the world. Botanical provinces of Bangladesh.',l:5},
+      {t:'Plant Migration and Dispersal',d:'Means of dispersal: wind, water, animals, human agency. Long-distance dispersal. Island biogeography theory.',l:4},
+      {t:'Centre of Origin and Diversity',d:'Vavilov\'s concept of centres of origin and diversity. Primary and secondary centres. Gene centres and crop diversity.',l:3},
+      {t:'Introduction to Conservation Biology',d:'Definition, scope, goals of conservation biology. Biodiversity crisis. Extinction rates. IUCN categories: EX, EW, CR, EN, VU, NT, LC.',l:4},
+      {t:'Threats to Plant Biodiversity',d:'Habitat loss and fragmentation. Overexploitation. Invasive alien species. Climate change impacts. Pollution effects on plant biodiversity.',l:4},
+      {t:'Conservation Strategies',d:'In-situ conservation: protected areas, national parks, wildlife sanctuaries, biosphere reserves. Ex-situ conservation: botanical gardens, seed banks, gene banks, cryopreservation, tissue culture.',l:5},
+      {t:'Conservation in Bangladesh',d:'Protected areas of Bangladesh: national parks, wildlife sanctuaries, game reserves. Sundarbans. Threatened and endemic plants of Bangladesh. NCS, NBSAP.',l:5},
+      {t:'Restoration Ecology',d:'Principles of ecological restoration. Reforestation and afforestation programs. Community-based conservation. Sustainable use of plant resources.',l:4},
+      {t:'Policy and Legislation',d:'National and international laws: Forest Act, Wildlife Preservation Act, Environment Conservation Act. CBD, CITES, Ramsar Convention and Bangladesh.',l:3},
+    ],
+    books:[
+      {t:'Biogeography',a:'Brown JH, Lomolino MV, 1998. Sinauer Associates, USA.',c:'#2d6b45'},
+      {t:'Plant Biogeography',a:'Good R, 1974. Longman, New York.',c:'#4a6b2d'},
+      {t:'Conservation Biology',a:'Primack RB, 2006. Sinauer Associates, USA.',c:'#6b4a2d'},
+      {t:'Bangladesh: Environment (vol.1)',a:'Gazi F 2000. West Paqkistan, Lahore.',c:'#2d4a6b'},
+      {t:'Biodiversity: Principles and Practices',a:'Krishnamurthy KV, 2003. Oxford & IBH Pub.',c:'#5a2d6b'},
+    ]},
+  302:{code:'BOT.402',title:'Ethnobotany and Economic Botany',lectures:40,marks:75,duration:'4 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'Introduction to Ethnobotany',d:'Definition, concept, scope, importance and historical development. Methods of ethnobotanical research: interviewing, field collection, data recording.',l:3},
+      {t:'Indigenous Knowledge',d:'Definition, importance and documentation of indigenous/traditional knowledge. Intellectual property rights (IPR), biopiracy, bioprospecting.',l:4},
+      {t:'Ethnobotany of Bangladesh',d:'Ethnobotanical studies in Bangladesh: medicinal plants used by various ethnic communities. Flora of CHT tribes (Chakma, Marma, Tripura). Sacred plants and groves.',l:6},
+      {t:'Introduction to Economic Botany',d:'Definition, scope, classification of economic plants. Plant products and their uses.',l:2},
+      {t:'Food Plants',d:'Major food crops: cereals (rice, wheat, maize), pulses, oil seeds, vegetables, spices, condiments, beverages (tea, coffee, cocoa), sugar plants of Bangladesh and the world.',l:6},
+      {t:'Industrial Plants',d:'Timber, bamboo, cane, fibre plants (jute, cotton, flax), rubber, turpentine, wax, dyes and tanning materials. Economic importance.',l:5},
+      {t:'Medicinal Plants',d:'Important medicinal plants of Bangladesh and the world. Active principles, uses, cultivation. Ayurveda, Unani, Homeopathic and Folk medicine. WHO guidelines on herbal medicine.',l:7},
+      {t:'Spices, Beverages and Narcotics',d:'Important spices, their botanical source, composition and uses. Tea, coffee, cocoa, rubber. Narcotics: opium, cocaine, cannabis  botanical sources and effects.',l:4},
+      {t:'Biotechnology and Economic Botany',d:'Improved crop varieties through biotechnology. Bt crops, golden rice, tissue culture plants.',l:3},
+    ],
+    books:[
+      {t:'A Text Book of Pharmacognosy',a:'Ali M, 2002. CBS Pub. New Delhi.',c:'#2d6b45'},
+      {t:'Ethnobotany',a:'Jain SK, 1987. Deep Pub., New Delhi.',c:'#4a6b2d'},
+      {t:'Economic Botany',a:'Pandey BP, 1990. S. Chand and Co., New Delhi.',c:'#6b4a2d'},
+      {t:'Medicinal Plants of Bangladesh',a:'Ghani A, 1998. Asiatic Society of Bangladesh.',c:'#2d4a6b'},
+      {t:'Ethnobotany of Bangladesh',a:'Uddin SB and Hassan MA (eds.), 2010. Bangladesh Book Bank.',c:'#5a2d6b'},
+      {t:'Economic Botany',a:'Weiner J, 2010. Cambridge University Press.',c:'#6b2d4a'},
+    ]},
+  303:{code:'BOT.403',title:'Plant PhysiologyII (Plant Stress and Applied)',lectures:40,marks:75,duration:'4 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'Membrane Biology',d:'Membrane structure, fluid mosaic model, membrane proteins, membrane transport  passive and active. Ion channels, carriers, pumps. Membrane ATPases.',l:4},
+      {t:'Enzyme Kinetics',d:'Enzyme classification, cofactors, coenzymes. Michaelis-Menten kinetics, Km and Vmax, enzyme inhibition. Allosteric enzymes.',l:4},
+      {t:'Photobiology',d:'Phytochrome  discovery, structure, Pfr/Pr interconversion, biological responses. Cryptochrome and phototropin. Blue light responses.',l:4},
+      {t:'Signal Transduction',d:'Cell signalling mechanisms: receptor proteins, second messengers (Ca2+, IP3, cAMP), phosphorylation cascades. Hormone signal transduction.',l:5},
+      {t:'Abiotic Stress Physiology',d:'Drought stress, salinity stress, heat stress, cold/chilling stress, heavy metal stress  physiological and molecular responses, tolerance mechanisms, adaptation.',l:6},
+      {t:'Biotic Stress',d:'Plant-pathogen interaction. Defense mechanisms: physical barriers, PR proteins, phytoalexins, systemic acquired resistance (SAR), PAMP-triggered immunity.',l:4},
+      {t:'Senescence and Programmed Cell Death',d:'Types of senescence. Molecular changes during senescence. Programmed cell death  types and significance in plants.',l:3},
+      {t:'Metabolic Engineering',d:'Primary and secondary metabolism. Alkaloids, terpenoids, flavonoids, phenolics  biosynthesis and significance. Metabolic engineering for crop improvement.',l:4},
+      {t:'Applied Plant Physiology',d:'Crop physiology: LAI, CGR, RGR, NAR, harvest index. Controlled atmosphere storage. Dormancy breaking. Rooting of cuttings.',l:6},
+    ],
+    books:[
+      {t:'Plant Physiology',a:'Taiz L and Zeiger E, 2010. Sinauer Associates, USA.',c:'#2d6b45'},
+      {t:'Plant Physiology',a:'Salisbury FB and Ross CW, 2005. CBS Pub.',c:'#4a6b2d'},
+      {t:'Biochemistry and Molecular Biology of Plants',a:'Buchanan BB, Gruissem W and Jones RL, 2000. ASPB, Rockville.',c:'#6b4a2d'},
+      {t:'Introduction to Plant Physiology',a:'Hopkins WG and Hüner NPA, 2004. Wiley.',c:'#2d4a6b'},
+      {t:'Advanced Plant Physiology',a:'Wilkins MB, 1987. ELBS.',c:'#5a2d6b'},
+    ]},
+  304:{code:'BOT.404',title:'Plant Breeding',lectures:40,marks:75,duration:'4 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'Introduction',d:'History and scope of plant breeding. Objectives of plant breeding. Mode of reproduction in crop plants: self-pollination, cross-pollination and vegetative propagation.',l:3},
+      {t:'Genetic Basis of Plant Breeding',d:'Quantitative vs. qualitative traits. Heritability estimates. Gene action: additive, dominance, epistasis. Genotype-environment interaction.',l:4},
+      {t:'Plant Introduction and Acclimatization',d:'Definition and importance. Quarantine regulations. Plant introduction centres and gene banks. Wild relatives of crops.',l:2},
+      {t:'Selection Methods',d:'Mass selection, pure line selection, clonal selection, progeny selection. Recurrent selection. Advantages and limitations of each method.',l:5},
+      {t:'Hybridization',d:'Objectives and steps. Crossing techniques. F1, F2 and backcross populations. Bulk method, pedigree method, SSD method, backcross breeding.',l:6},
+      {t:'Heterosis Breeding',d:'Definition, theories and exploitation of heterosis. Methods of producing hybrid seeds. Male sterility (CMS, GMS). Commercial hybrid varieties in Bangladesh.',l:5},
+      {t:'Mutation Breeding',d:'Types of mutations. Spontaneous and induced mutations. Physical and chemical mutagens. Mutation breeding  achievements and limitations.',l:4},
+      {t:'Polyploidy Breeding',d:'Types of polyploidy. Colchicine treatment. Auto and allopolyploids. Triticale as an example. Wide hybridization and chromosome doubling.',l:4},
+      {t:'Biotechnology in Plant Breeding',d:'Tissue culture-based techniques: anther culture, somatic hybridization, embryo rescue. Molecular markers (RFLP, SSR, SNP) in plant breeding. MAS.',l:4},
+      {t:'Variety Release and Protection',d:'Steps in variety development and release. Variety protection: Plant Breeders Rights, UPOV Convention. Seed certification. Major crop varieties released in Bangladesh.',l:3},
+    ],
+    books:[
+      {t:'Principles of Plant Breeding',a:'Allard RW, 1960. John Wiley and Sons, New York.',c:'#2d6b45'},
+      {t:'Elementary Plant Breeding',a:'Poehlman JM, 1979. Oxford and IBH Pub.',c:'#4a6b2d'},
+      {t:'Principles of Plant Breeding',a:'Singh BD, 2007. Kalyani Publishers, New Delhi.',c:'#6b4a2d'},
+      {t:'Plant Breeding',a:'Chahal GS and Gosal SS, 2002. Narosa Pub. House, New Delhi.',c:'#2d4a6b'},
+      {t:'Plant Breeding and Biotechnology',a:'Bajaj YPS, 2000. Kluwer Academic Pub.',c:'#5a2d6b'},
+    ]},
+  305:{code:'BOT.405',title:'Plant and Environmental Microbiology',lectures:40,marks:75,duration:'4 hours',group:'4th Year — Major Theory',
+    topics:[
+      {t:'Soil Microbiology',d:'Soil microorganisms: bacteria, fungi, actinomycetes, algae, protozoa. Soil microbial biomass. Microbial interactions in soil. Rhizosphere microbiology.',l:5},
+      {t:'Microbial Ecology',d:'Microbial diversity and distribution in different environments. Microbial communities in extreme environments. Biogeochemical cycling: C, N, S, P cycles.',l:5},
+      {t:'Nitrogen Cycle',d:'Nitrogen fixation: biological nitrogen fixation  symbiotic (Rhizobium, Frankia) and non-symbiotic. Nitrification, denitrification, ammonification. Importance for agriculture.',l:5},
+      {t:'Plant Growth Promoting Rhizobacteria (PGPR)',d:'Definition, types and mechanisms of PGPR. IAA production, phosphate solubilization, siderophore production, ACC deaminase. Biofertilizers.',l:4},
+      {t:'Phytomicrobiome',d:'Plant microbiome: rhizosphere, phyllosphere, endosphere microbiomes. Core microbiome concept. Impact on plant health and stress tolerance.',l:3},
+      {t:'Environmental Pollution and Microbiology',d:'Microbial indicators of water pollution. Coliform bacteria, BOD, COD. Water treatment: activated sludge, trickling filters.',l:4},
+      {t:'Bioremediation',d:'Definition, types (in-situ, ex-situ). Microorganisms for bioremediation. Phytoremediation. Biodegradation of xenobiotics, pesticides and heavy metals.',l:4},
+      {t:'Food Microbiology',d:'Microbiology of common foods. Fermented foods of Bangladesh. Spoilage microorganisms. Foodborne pathogens and diseases.',l:4},
+      {t:'Beneficial Microorganisms in Agriculture',d:'Mycorrhizal fungi: types, function, importance. Azolla-Anabaena association. Vermicomposting. Biopesticides.',l:4},
+      {t:'Industrial Microbiology',d:'Fermentation technology overview. Production of antibiotics, enzymes, organic acids, ethanol, vitamins using microorganisms.',l:2},
+    ],
+    books:[
+      {t:'Soil Microbiology',a:'Alexander M, 1961. John Wiley and Sons, New York.',c:'#2d6b45'},
+      {t:'Soil Microbiology',a:'Subba Rao NS, 1999. Oxford & IBH Pub., New Delhi.',c:'#4a6b2d'},
+      {t:'Microbiology',a:'Pelczar MJ, Chan ECS and Krieg NR, 1993. Tata McGraw-Hill.',c:'#6b4a2d'},
+      {t:'Environmental Microbiology',a:'Raina MK, 2003. Mittal Pub., New Delhi.',c:'#2d4a6b'},
+      {t:'A Text Book of Microbiology',a:'Aneja KR, 2003. New Age International, New Delhi.',c:'#5a2d6b'},
+    ]},
 };
 
-// ===== STATE =====
-const S={
-  user:null,activeGroup:null,
-  groups:[
-    {id:1,name:'1st Year',desc:'BOT.101–115 · Microbiology, Mycology, Phycology, Bryology, Pteridology, Agronomy, Soil Science, Zoology, CS',icon:'📗'},
-    {id:2,name:'2nd Year',desc:'Anatomy, Morphology, Plant Systematics, Genetics, Biochemistry & related courses',icon:'📘'},
-    {id:3,name:'3rd Year',desc:'Plant Physiology, Ecology, Economic Botany, Plant Pathology & advanced courses',icon:'📙'},
-    {id:4,name:'4th Year',desc:'Plant Biotechnology, Research Methods, Advanced Taxonomy & final year courses',icon:'📕'},
-    {id:5,name:'Masters / Special',desc:'Postgraduate notes, thesis guidance and special course materials',icon:'🎓'},
-  ],
-  users:[
-    {id:1,name:'Admin',roll:'BOT-ADMIN',email:'admin@botany.cu.ac.bd',status:'admin',pass:'admin123'},
-    {id:2,name:'Sabbir Ahmed',roll:'BOT-2023-015',email:'user@botany.cu.ac.bd',status:'author',pass:'user123'},
-    {id:3,name:'Nusrat Jahan',roll:'BOT-2024-022',email:'nusrat@cu.ac.bd',status:'pending',pass:'pass1'},
-  ],
-  pdfs:[
-    {id:1,title:'BOT.101 — Microbiology Full Notes',course:'BOT.101',group:1,uploader:'Admin',courseId:1},
-    {id:2,title:'BOT.102 — Mycology & Lichenology Notes',course:'BOT.102',group:1,uploader:'Admin',courseId:2},
-    {id:3,title:'BOT.103 — Phycology Lecture Notes',course:'BOT.103',group:1,uploader:'Admin',courseId:3},
-    {id:4,title:'BOT.104 — Bryology Notes',course:'BOT.104',group:1,uploader:'Sabbir Ahmed',courseId:4},
-    {id:5,title:'BOT.105 — Pteridology Study Guide',course:'BOT.105',group:1,uploader:'Admin',courseId:5},
-    {id:6,title:'BOT.106 — Agronomy (Bangladesh Crops)',course:'BOT.106',group:1,uploader:'Admin',courseId:6},
-    {id:7,title:'BOT.107 — Soil Science Notes',course:'BOT.107',group:1,uploader:'Admin',courseId:7},
-    {id:8,title:'1st Year Syllabus & Course Outline 2021-23',course:'',group:1,uploader:'Admin',courseId:null},
-  ]
-};
-
-// helpers
+// ===== UTILS =====
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2700);}
+function openLink(url){if(url&&url.trim())window.open(url.trim(),'_blank');else toast('⚠️ No link set. Admin needs to add a link.');}
 function lk(key){return LINKS[key]||'';}
-function setLk(key,val){LINKS[key]=val.trim();}
+function setLk(k,v){LINKS[k]=v.trim();}
 function countLinks(){return Object.values(LINKS).filter(v=>v).length;}
-
-function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
-function openLink(url){if(url&&url.trim())window.open(url.trim(),'_blank');else toast('⚠️ No link set for this item. Admin needs to add a link.');}
-
-// NAV
 function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open');}
 function closeMenu(){document.getElementById('mobile-menu').classList.remove('open');}
 
@@ -626,6 +1302,9 @@ function showPage(p){
   if(p==='notes')renderNotes();
   if(p==='admin')renderAdmin();
   if(p==='home')renderHomeGroups();
+  if(p==='teachers')renderTeachersPage();
+  if(p==='office')renderOfficePage();
+  if(p==='about')renderAboutPage();
   closeMenu();
 }
 
@@ -635,7 +1314,7 @@ function showPage(p){
   const em=['🌿','🍃','🌱','🍀','🌾'];
   for(let i=0;i<14;i++){
     const l=document.createElement('div');l.className='leaf';
-    l.textContent=em[Math.floor(Math.random()*em.length)];
+    l.textContent=em[i%em.length];
     l.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${1.8+Math.random()*3}rem;animation-delay:${Math.random()*5}s;animation-duration:${5+Math.random()*5}s;`;
     lb.appendChild(l);
   }
@@ -654,15 +1333,16 @@ function doLogin(){
   const p=document.getElementById('login-pass').value.trim();
   const u=S.users.find(u=>u.email===e&&u.pass===p);
   if(!u){toast('❌ Invalid credentials');return;}
-  if(u.status==='pending'){toast('⏳ Account pending admin approval');return;}
+  if(u.status==='pending'){toast('⏳ Pending admin approval');return;}
   S.user=u;
   document.getElementById('nav-auth-btn').textContent=u.name.split(' ')[0];
   document.getElementById('m-auth-btn').textContent='👤 '+u.name.split(' ')[0];
   if(u.status==='admin'){
     document.getElementById('admin-link').style.display='inline';
     document.getElementById('m-admin-link').style.display='block';
+    document.getElementById('admin-add-teacher-btn').style.display='block';
   }
-  toast('✅ Welcome, '+u.name.split(' ')[0]+'!');
+  toast(' Welcome, '+u.name.split(' ')[0]+'!');
   showPage('home');
 }
 
@@ -672,10 +1352,10 @@ function doRegister(){
   const email=document.getElementById('reg-email').value.trim();
   const pass=document.getElementById('reg-pass').value.trim();
   if(!name||!roll||!email||!pass){toast('⚠️ Fill all fields');return;}
-  if(S.users.find(u=>u.email===email||u.roll===roll)){toast('⚠️ Email or Roll already registered');return;}
+  if(S.users.find(u=>u.email===email||u.roll===roll)){toast('⚠️ Already registered');return;}
   S.users.push({id:S.users.length+1,name,roll,email,status:'pending',pass});
   document.getElementById('reg-success').style.display='block';
-  toast('📩 Registration sent for admin approval!');
+  toast('📩 Registration sent!');
 }
 
 // HOME
@@ -684,102 +1364,356 @@ function renderHomeGroups(){
     const cnt=S.pdfs.filter(p=>p.group===g.id).length;
     return `<div class="group-card" onclick="goToGroup(${g.id})"><span class="group-count">${cnt}</span><div class="group-icon">${g.icon}</div><h3>${g.name}</h3><p>${g.desc}</p></div>`;
   }).join('');
-  document.getElementById('stat-groups').textContent=S.groups.length;
   document.getElementById('stat-pdfs').textContent=S.pdfs.length;
   document.getElementById('stat-members').textContent=S.users.filter(u=>u.status!=='pending').length;
+  document.getElementById('stat-teachers').textContent=TEACHERS.length;
 }
 renderHomeGroups();
-
 function goToGroup(gid){S.activeGroup=gid;showPage('notes');}
 
 // NOTES
 function renderNotes(){
   document.getElementById('note-tabs').innerHTML=
-    `<div class="gtab ${!S.activeGroup?'active':''}" onclick="filterGroup(null)">📚 All</div>`
+    `<div class="gtab ${!S.activeGroup?'active':''}" onclick="filterGroup(null)">🌿 All</div>`
     +S.groups.map(g=>`<div class="gtab ${g.id===S.activeGroup?'active':''}" onclick="filterGroup(${g.id})">${g.icon} ${g.name}</div>`).join('');
   const filtered=S.activeGroup?S.pdfs.filter(p=>p.group===S.activeGroup):S.pdfs;
-  if(!filtered.length){document.getElementById('pdf-grid').innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--tl);font-family:sans-serif;font-size:0.88rem;">No notes here yet. 🌱</div>`;return;}
+  const isAdmin=S.user&&S.user.status==='admin';
+  if(!filtered.length){document.getElementById('pdf-grid').innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--tl);font-family:sans-serif;">No notes here yet. 🌱</div>`;return;}
   document.getElementById('pdf-grid').innerHTML=filtered.map(pdf=>{
     const grp=S.groups.find(g=>g.id===pdf.group);
     const hasCourse=pdf.courseId&&COURSES[pdf.courseId];
     const noteLink=lk('note-'+pdf.id);
-    return `<div class="pdf-card fade-in">
+    const adminBtns=isAdmin?`<div class="card-actions"><button class="card-act-btn edit-act" onclick="event.stopPropagation();openEditNote(${pdf.id})">✏️</button><button class="card-act-btn del-act" onclick="event.stopPropagation();deleteNote(${pdf.id})">🗑</button></div>`:'';
+    return `<div class="pdf-card fade-in" onclick="${hasCourse?`openCourse(${pdf.courseId})`:`openLink('${noteLink}')`}">
+      ${adminBtns}
       <div class="pdf-icon">📄</div>
       ${pdf.course?`<div class="course-tag">${pdf.course}</div>`:''}
       <h4>${pdf.title}</h4>
-      <div class="pdf-sub">${grp?grp.name:''} · ${pdf.uploader}</div>
-      <div class="pdf-meta">
-        <span class="pdf-size">${hasCourse?pdf.course+' Course':''}</span>
-        <button class="view-btn" onclick="event.stopPropagation();${hasCourse?`openCourse(${pdf.courseId})`:`openLink('${noteLink}')`}">${hasCourse?'View Topics':'⬇ Download'}</button>
-      </div>
+      <div class="pdf-sub">${grp?grp.name:''}  ${pdf.uploader}</div>
+      <div class="pdf-meta"><span class="pdf-size">${hasCourse?'View Topics':''}</span><button class="view-btn">${hasCourse?'View Topics':'⬇ Download'}</button></div>
     </div>`;
   }).join('');
 }
-
 function filterGroup(gid){S.activeGroup=gid;renderNotes();}
+
+function openEditNote(id){
+  const n=S.pdfs.find(p=>p.id===id);if(!n)return;
+  document.getElementById('edit-note-id').value=id;
+  document.getElementById('edit-note-title').value=n.title;
+  document.getElementById('edit-note-course').value=n.course||'';
+  document.getElementById('edit-note-link').value=lk('note-'+id);
+  document.getElementById('note-modal').classList.add('open');
+}
+function saveEditNote(){
+  const id=parseInt(document.getElementById('edit-note-id').value);
+  const n=S.pdfs.find(p=>p.id===id);if(!n)return;
+  n.title=document.getElementById('edit-note-title').value.trim();
+  n.course=document.getElementById('edit-note-course').value.trim();
+  const link=document.getElementById('edit-note-link').value.trim();
+  if(link)LINKS['note-'+id]=link;
+  document.getElementById('note-modal').classList.remove('open');
+  toast(' Note updated!');renderNotes();
+}
+function deleteNote(id){
+  if(!confirm('Delete this note?'))return;
+  S.pdfs=S.pdfs.filter(p=>p.id!==id);
+  toast('🗑 Note deleted');renderNotes();renderAdmin();
+}
 
 // COURSE DETAIL
 let currentCourseId=null;
 function openCourse(cid){
   currentCourseId=cid;
-  const c=COURSES[cid];
-  if(!c)return;
+  const c=COURSES[cid];if(!c)return;
   document.getElementById('cd-code').textContent=c.code;
   document.getElementById('cd-title').textContent=c.title;
   document.getElementById('cd-lec').textContent=c.lectures;
   document.getElementById('cd-marks').textContent=c.marks;
   document.getElementById('cd-dur').textContent=c.duration;
   document.getElementById('cd-grp').textContent=c.group;
-  document.getElementById('cd-bg').textContent='1st Year';
-  document.getElementById('cd-bt').textContent=c.code+' '+c.title;
+  document.getElementById('cd-bg').textContent=c.group.split('')[0].trim();
+  document.getElementById('cd-bt').textContent=c.code;
 
   document.getElementById('cd-topics').innerHTML=c.topics.map((tp,i)=>{
-    const key=`topic-${cid}-${i}`;
-    const url=lk(key);
-    const hasLink=!!url;
+    const key=`topic-${cid}-${i}`;const url=lk(key);const hasLink=!!url;
     return `<div class="topic-item fade-in">
       <div class="topic-num">${i+1}</div>
-      <div class="topic-content" style="width:100%;">
-        <div class="topic-header">
-          <div class="topic-title">${tp.t}</div>
-          <div class="topic-lec-badge">${tp.l} ${tp.l===1?'lecture':'lectures'}</div>
-        </div>
+      <div class="topic-content">
+        <div class="topic-title">${tp.t}</div>
         <div class="topic-desc">${tp.d}</div>
         <div class="topic-actions">
-          <button class="${hasLink?'topic-dl-btn':'topic-dl-btn no-link'}" onclick="${hasLink?`openLink('${url}')`:`toast('⚠️ No file uploaded yet for this topic.')`}">
-            ${hasLink?'⬇ Download Notes':'⬇ Not uploaded yet'}
-          </button>
+          <span class="topic-lec-badge">${tp.l} lecture${tp.l>1?'s':''}</span>
+          <button class="${hasLink?'topic-dl-btn':'topic-dl-btn no-link'}" onclick="${hasLink?`openLink('${url}')`:`toast('⚠️ No file for this topic yet.')`}">${hasLink?'⬇ Download Notes':'⬇ Not uploaded'}</button>
         </div>
       </div>
     </div>`;
   }).join('');
 
+  const bkc=['#2d6b45','#4a6b2d','#6b4a2d','#2d4a6b','#5a2d6b','#6b2d4a','#2d6b6b'];
   document.getElementById('cd-books').innerHTML=c.books.map((b,i)=>{
-    const key=`book-${cid}-${i}`;
-    const url=lk(key);
-    const hasLink=!!url;
+    const key=`book-${cid}-${i}`;const url=lk(key);const hasLink=!!url;
     return `<div class="book-item fade-in">
-      <div class="book-spine" style="background:${b.c};color:white;">📖</div>
-      <div class="book-info">
-        <div class="book-title">${b.t}</div>
-        <div class="book-author">${b.a}</div>
-      </div>
-      <button class="${hasLink?'book-dl-btn':'book-dl-btn no-link'}" onclick="${hasLink?`openLink('${url}')`:`toast('⚠️ No PDF uploaded yet for this book.')`}">
-        ${hasLink?'⬇ Download':'⬇ Not uploaded'}
-      </button>
+      <div class="book-spine" style="background:${b.c||bkc[i%bkc.length]};color:white;">📖</div>
+      <div class="book-info"><div class="book-title">${b.t}</div><div class="book-author">${b.a}</div></div>
+      <button class="${hasLink?'book-dl-btn':'book-dl-btn no-link'}" onclick="${hasLink?`openLink('${url}')`:`toast('⚠️ No PDF for this book yet.')`}">${hasLink?'⬇ Download':'⬇ Not uploaded'}</button>
     </div>`;
   }).join('');
-
   showPage('course');
+}
+
+// TEACHERS
+function renderTeachersPage(){
+  const grid=document.getElementById('teachers-grid');
+  const none=document.getElementById('no-teachers');
+  const isAdmin=S.user&&S.user.status==='admin';
+  if(!TEACHERS.length){grid.innerHTML='';none.style.display='block';return;}
+  none.style.display='none';
+  grid.innerHTML=TEACHERS.map(t=>{
+    const photo=TEACHER_PHOTOS[t.id];
+    const photoEl=photo
+      ?`<div class="teacher-photo"><img src="${photo}" alt="${t.name}"></div>`
+      :`<div class="teacher-photo" style="display:flex;align-items:center;justify-content:center;font-size:3.5rem;">👤</div>`;
+    const papers=t.papers&&t.papers.filter(p=>p.title).map(p=>
+      `<div class="paper-link" onclick="${p.url?`openLink('${p.url}')`:`toast('No link for this paper')`}">📄 ${p.title}</div>`
+    ).join('');
+    const adminBtns=isAdmin?`<div class="teacher-card-actions"><button class="tca-btn tca-edit" onclick="editTeacher(${t.id})">✏️</button><button class="tca-btn tca-del" onclick="deleteTeacher(${t.id})">🗑</button></div>`:'';
+    return `<div class="teacher-card fade-in">
+      ${adminBtns}${photoEl}
+      <div class="teacher-info">
+        <div class="teacher-name">${t.name}</div>
+        <div class="teacher-title">${t.designation}</div>
+        <div class="teacher-dept">${t.specialization}${t.email?`<br>📧 ${t.email}`:''}</div>
+        ${papers?`<div class="teacher-papers">${papers}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openTeacherModal(id){
+  document.getElementById('edit-teacher-id').value=id||'';
+  document.getElementById('modal-teacher-title').textContent=id?'Edit Teacher':'Add Teacher';
+  if(id){
+    const t=TEACHERS.find(t=>t.id===id);if(!t)return;
+    document.getElementById('t-name').value=t.name;
+    document.getElementById('t-title').value=t.designation;
+    document.getElementById('t-dept').value=t.specialization;
+    document.getElementById('t-email').value=t.email||'';
+    document.getElementById('t-phone').value=t.phone||'';
+    const photo=TEACHER_PHOTOS[id];
+    if(photo){document.getElementById('photo-img').src=photo;document.getElementById('photo-img').style.display='block';document.getElementById('photo-placeholder').style.display='none';}
+    else{document.getElementById('photo-img').style.display='none';document.getElementById('photo-placeholder').style.display='block';}
+    renderPapersForm(t.papers||[]);
+  } else {
+    document.getElementById('t-name').value='';
+    document.getElementById('t-title').value='';
+    document.getElementById('t-dept').value='';
+    document.getElementById('t-email').value='';
+    document.getElementById('t-phone').value='';
+    document.getElementById('photo-img').style.display='none';
+    document.getElementById('photo-placeholder').style.display='block';
+    renderPapersForm([]);
+  }
+  document.getElementById('teacher-modal').classList.add('open');
+}
+
+function closeTeacherModal(){document.getElementById('teacher-modal').classList.remove('open');}
+
+function handlePhotoUpload(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    document.getElementById('photo-img').src=ev.target.result;
+    document.getElementById('photo-img').style.display='block';
+    document.getElementById('photo-placeholder').style.display='none';
+    document.getElementById('photo-img').dataset.newPhoto=ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function renderPapersForm(papers){
+  const list=document.getElementById('papers-list');
+  list.innerHTML='';
+  (papers.length?papers:[{title:'',url:''}]).forEach((p,i)=>{
+    const row=document.createElement('div');row.className='paper-item-row';
+    row.innerHTML=`<input type="text" placeholder="Paper title / publication name" value="${p.title||''}">
+      <input type="url" placeholder="Link (optional)" value="${p.url||''}">
+      <button class="rm-paper" onclick="this.parentElement.remove()"></button>`;
+    list.appendChild(row);
+  });
+}
+
+function addPaperRow(){
+  const list=document.getElementById('papers-list');
+  const row=document.createElement('div');row.className='paper-item-row';
+  row.innerHTML=`<input type="text" placeholder="Paper title / publication name">
+    <input type="url" placeholder="Link (optional)">
+    <button class="rm-paper" onclick="this.parentElement.remove()"></button>`;
+  list.appendChild(row);
+}
+
+function saveTeacher(){
+  const name=document.getElementById('t-name').value.trim();
+  const designation=document.getElementById('t-title').value.trim();
+  const specialization=document.getElementById('t-dept').value.trim();
+  const email=document.getElementById('t-email').value.trim();
+  const phone=document.getElementById('t-phone').value.trim();
+  if(!name){toast('⚠️ Enter teacher name');return;}
+  const papers=[...document.getElementById('papers-list').querySelectorAll('.paper-item-row')].map(row=>{
+    const inputs=row.querySelectorAll('input');
+    return{title:inputs[0].value.trim(),url:inputs[1].value.trim()};
+  }).filter(p=>p.title);
+
+  const editId=document.getElementById('edit-teacher-id').value;
+  const imgEl=document.getElementById('photo-img');
+  const newPhoto=imgEl.dataset.newPhoto;
+
+  if(editId){
+    const t=TEACHERS.find(t=>t.id===parseInt(editId));
+    if(t){Object.assign(t,{name,designation,specialization,email,phone,papers});
+    if(newPhoto){TEACHER_PHOTOS[t.id]=newPhoto;delete imgEl.dataset.newPhoto;}}
+  } else {
+    const id=nextTeacherId++;
+    TEACHERS.push({id,name,designation,specialization,email,phone,papers});
+    if(newPhoto){TEACHER_PHOTOS[id]=newPhoto;delete imgEl.dataset.newPhoto;}
+  }
+  closeTeacherModal();
+  toast(' Teacher saved!');
+  renderTeachersPage();renderAdminTeachersList();
+  document.getElementById('a-teachers-count').textContent=TEACHERS.length;
+  document.getElementById('stat-teachers').textContent=TEACHERS.length;
+}
+
+function editTeacher(id){openTeacherModal(id);}
+function deleteTeacher(id){
+  if(!confirm('Delete this teacher?'))return;
+  TEACHERS=TEACHERS.filter(t=>t.id!==id);
+  delete TEACHER_PHOTOS[id];
+  toast('🗑 Teacher removed');
+  renderTeachersPage();renderAdminTeachersList();
+  document.getElementById('a-teachers-count').textContent=TEACHERS.length;
+}
+
+function renderAdminTeachersList(){
+  const el=document.getElementById('admin-teachers-list');
+  if(!TEACHERS.length){el.innerHTML='<p style="font-family:sans-serif;font-size:0.82rem;color:var(--tl);">No teachers added yet.</p>';return;}
+  el.innerHTML=TEACHERS.map(t=>`
+    <div class="aform-card" style="display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;padding:0.8rem;">
+      <div style="font-size:2rem;">${TEACHER_PHOTOS[t.id]?`<img src="${TEACHER_PHOTOS[t.id]}" style="width:44px;height:44px;border-radius:50%;object-fit:cover;">`:'👤'}</div>
+      <div style="flex:1;"><div style="font-size:0.85rem;color:var(--gd);font-weight:600;">${t.name}</div><div style="font-size:0.75rem;color:var(--tl);font-family:sans-serif;">${t.designation}  ${t.specialization}</div></div>
+      <button class="action-btn btn-edit" onclick="editTeacher(${t.id})">✏️ Edit</button>
+      <button class="action-btn btn-delete" onclick="deleteTeacher(${t.id})">🗑</button>
+    </div>`).join('');
+}
+
+// OFFICE
+function renderOfficePage(){
+  const o=OFFICE_INFO;
+  const isAdmin=S.user&&S.user.status==='admin';
+  document.getElementById('office-body').innerHTML=`
+    <div class="info-card">
+      ${isAdmin?`<button class="edit-overlay-btn" onclick="showPage('admin');showPanelById('office-admin')">✏️ Edit</button>`:''}
+      <h3>🏛 Department Contact</h3>
+      <div class="info-grid">
+        ${o.head?`<div class="info-item"><label>Head of Department</label><p>${o.head}</p></div>`:''}
+        ${o.headEmail?`<div class="info-item"><label>Head's Email</label><p>${o.headEmail}</p></div>`:''}
+        ${o.phone?`<div class="info-item"><label>Phone</label><p>${o.phone}</p></div>`:''}
+        ${o.fax?`<div class="info-item"><label>Fax</label><p>${o.fax}</p></div>`:''}
+        <div class="info-item"><label>Email</label><p>${o.email}</p></div>
+        <div class="info-item"><label>Office Hours</label><p>${o.hours}</p></div>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>📍 Address</h3>
+      <p style="font-family:sans-serif;font-size:0.88rem;color:var(--tm);line-height:1.8;">${o.address.replace(/\n/g,'<br>')}</p>
+    </div>
+    ${o.notes?`<div class="info-card"><h3>📢 Announcements</h3><p style="font-family:sans-serif;font-size:0.88rem;color:var(--tm);line-height:1.8;">${o.notes}</p></div>`:''}
+  `;
+}
+
+function saveOffice(){
+  OFFICE_INFO={
+    head:document.getElementById('off-head').value.trim(),
+    headEmail:document.getElementById('off-head-email').value.trim(),
+    phone:document.getElementById('off-phone').value.trim(),
+    fax:document.getElementById('off-fax').value.trim(),
+    email:document.getElementById('off-email').value.trim(),
+    address:document.getElementById('off-address').value.trim(),
+    hours:document.getElementById('off-hours').value.trim(),
+    notes:document.getElementById('off-notes').value.trim(),
+  };
+  toast(' Office info saved!');
+}
+
+// ABOUT
+function renderAboutPage(){
+  const a=ABOUT_INFO;
+  const isAdmin=S.user&&S.user.status==='admin';
+  document.getElementById('about-body').innerHTML=`
+    <div class="about-hero-img">🌿</div>
+    <div class="about-stats">
+      <div class="about-stat"><div class="about-stat-num">${a.year}</div><div class="about-stat-label">Est.</div></div>
+      <div class="about-stat"><div class="about-stat-num">${a.facultyCount}</div><div class="about-stat-label">Faculty</div></div>
+      <div class="about-stat"><div class="about-stat-num">${a.studentCount}</div><div class="about-stat-label">Students</div></div>
+      <div class="about-stat"><div class="about-stat-num">${TEACHERS.length}</div><div class="about-stat-label">Teachers Listed</div></div>
+    </div>
+    <div class="about-section">
+      ${isAdmin?`<button class="edit-overlay-btn" onclick="showPage('admin');showPanelById('about-admin')">✏️ Edit</button>`:''}
+      <h3>About the Department</h3>
+      <p>${a.history}</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-bottom:1.2rem;">
+      <div class="about-section"><h3>🎯 Vision</h3><p>${a.vision}</p></div>
+      <div class="about-section"><h3>🚀 Mission</h3><p>${a.mission}</p></div>
+    </div>
+    ${a.achievements?`<div class="about-section"><h3>🏆 Achievements</h3><p>${a.achievements}</p></div>`:''}
+  `;
+}
+
+function saveAbout(){
+  ABOUT_INFO={
+    history:document.getElementById('about-history').value.trim()||ABOUT_INFO.history,
+    vision:document.getElementById('about-vision').value.trim()||ABOUT_INFO.vision,
+    mission:document.getElementById('about-mission').value.trim()||ABOUT_INFO.mission,
+    facultyCount:document.getElementById('about-faculty-count').value.trim()||ABOUT_INFO.facultyCount,
+    studentCount:document.getElementById('about-student-count').value.trim()||ABOUT_INFO.studentCount,
+    year:document.getElementById('about-year').value.trim()||ABOUT_INFO.year,
+    achievements:document.getElementById('about-achievements').value.trim()||ABOUT_INFO.achievements,
+  };
+  toast(' About Us saved!');
+}
+
+function showPanelById(p){
+  const items=document.querySelectorAll('.sidebar-item');
+  document.querySelectorAll('.admin-panel').forEach(e=>e.classList.remove('active'));
+  items.forEach(e=>e.classList.remove('active'));
+  const panel=document.getElementById('panel-'+p);
+  if(panel)panel.classList.add('active');
 }
 
 // ADMIN
 function renderAdmin(){
-  renderUserTable();renderGroupList();renderGroupSelect();renderLinksPanel();
+  renderUserTable();renderGroupList();renderGroupSelect();renderLinksPanel();renderAdminTeachersList();
   document.getElementById('a-users').textContent=S.users.length;
   document.getElementById('a-pending').textContent=S.users.filter(u=>u.status==='pending').length;
   document.getElementById('a-pdfs').textContent=S.pdfs.length;
   document.getElementById('a-links').textContent=countLinks();
+  document.getElementById('a-teachers-count').textContent=TEACHERS.length;
+  // Pre-fill office and about forms
+  document.getElementById('off-head').value=OFFICE_INFO.head;
+  document.getElementById('off-head-email').value=OFFICE_INFO.headEmail;
+  document.getElementById('off-phone').value=OFFICE_INFO.phone;
+  document.getElementById('off-fax').value=OFFICE_INFO.fax;
+  document.getElementById('off-email').value=OFFICE_INFO.email;
+  document.getElementById('off-address').value=OFFICE_INFO.address;
+  document.getElementById('off-hours').value=OFFICE_INFO.hours;
+  document.getElementById('off-notes').value=OFFICE_INFO.notes;
+  document.getElementById('about-history').value=ABOUT_INFO.history;
+  document.getElementById('about-vision').value=ABOUT_INFO.vision;
+  document.getElementById('about-mission').value=ABOUT_INFO.mission;
+  document.getElementById('about-faculty-count').value=ABOUT_INFO.facultyCount;
+  document.getElementById('about-student-count').value=ABOUT_INFO.studentCount;
+  document.getElementById('about-year').value=ABOUT_INFO.year;
+  document.getElementById('about-achievements').value=ABOUT_INFO.achievements;
 }
 
 function showPanel(el,p){
@@ -787,23 +1721,22 @@ function showPanel(el,p){
   document.querySelectorAll('.sidebar-item').forEach(e=>e.classList.remove('active'));
   document.getElementById('panel-'+p).classList.add('active');
   el.classList.add('active');
-  if(p==='links')renderLinksPanel();
 }
 
 function renderUserTable(){
   document.getElementById('user-tbody').innerHTML=S.users.map(u=>{
     const bc={admin:'b-admin',author:'b-author',approved:'b-approved',pending:'b-pending'}[u.status]||'b-pending';
     const acts=u.status==='pending'
-      ?`<button class="action-btn btn-approve" onclick="approveUser(${u.id})">✅ Approve</button><button class="action-btn btn-delete" onclick="delUser(${u.id})">🗑</button>`
+      ?`<button class="action-btn btn-approve" onclick="approveUser(${u.id})"></button><button class="action-btn btn-delete" onclick="delUser(${u.id})">🗑</button>`
       :u.status==='approved'
       ?`<button class="action-btn btn-author" onclick="makeAuthor(${u.id})">📝 Author</button><button class="action-btn btn-delete" onclick="delUser(${u.id})">🗑</button>`
-      :u.status==='admin'?'—'
+      :u.status==='admin'?''
       :`<button class="action-btn btn-delete" onclick="delUser(${u.id})">🗑</button>`;
     return `<tr><td><strong>${u.name}</strong></td><td style="color:var(--tl)">${u.roll}</td><td style="color:var(--tl)">${u.email}</td><td><span class="badge ${bc}">${u.status}</span></td><td>${acts}</td></tr>`;
   }).join('');
 }
-function approveUser(id){const u=S.users.find(u=>u.id===id);if(u){u.status='approved';toast('✅ '+u.name+' approved!');renderAdmin();}}
-function makeAuthor(id){const u=S.users.find(u=>u.id===id);if(u){u.status='author';toast('📝 '+u.name+' is now Author');renderAdmin();}}
+function approveUser(id){const u=S.users.find(u=>u.id===id);if(u){u.status='approved';toast(' '+u.name+' approved!');renderAdmin();}}
+function makeAuthor(id){const u=S.users.find(u=>u.id===id);if(u){u.status='author';toast('📝 Author');renderAdmin();}}
 function delUser(id){const u=S.users.find(u=>u.id===id);if(u&&u.status!=='admin'){S.users=S.users.filter(x=>x.id!==id);toast('🗑 Removed');renderAdmin();}}
 
 function renderGroupList(){
@@ -814,7 +1747,7 @@ function addGroup(){
   const name=document.getElementById('new-group-name').value.trim();
   const desc=document.getElementById('new-group-desc').value.trim();
   const icon=document.getElementById('new-group-icon').value;
-  if(!name){toast('⚠️ Enter a group name');return;}
+  if(!name){toast('⚠️ Enter group name');return;}
   S.groups.push({id:Math.max(...S.groups.map(g=>g.id))+1,name,desc:desc||'Course materials',icon});
   document.getElementById('new-group-name').value='';
   toast('📂 Group created!');renderAdmin();
@@ -828,97 +1761,78 @@ function addPDF(){
   const course=document.getElementById('pdf-course').value.trim();
   const gid=parseInt(document.getElementById('pdf-group').value);
   const link=document.getElementById('pdf-link').value.trim();
-  if(!title){toast('⚠️ Enter a title');return;}
-  const nid=Math.max(...S.pdfs.map(p=>p.id))+1;
+  if(!title){toast('⚠️ Enter title');return;}
+  const nid=S.pdfs.length?Math.max(...S.pdfs.map(p=>p.id))+1:1;
   S.pdfs.push({id:nid,title,course,group:gid,uploader:S.user?S.user.name:'Admin',courseId:null});
   if(link)LINKS['note-'+nid]=link;
   document.getElementById('pdf-title').value='';
   document.getElementById('pdf-course').value='';
   document.getElementById('pdf-link').value='';
-  toast('✅ Note added!');renderAdmin();
+  toast(' Note added!');renderAdmin();
 }
 
 // LINKS PANEL
 function renderLinksPanel(){
   let html='';
   Object.entries(COURSES).forEach(([cid,c])=>{
-    html+=`<div style="margin-bottom:1.5rem;">
-      <div style="background:var(--gm);color:var(--gp);padding:0.5rem 0.8rem;border-radius:8px;font-family:sans-serif;font-size:0.8rem;font-weight:700;margin-bottom:0.6rem;">${c.code} — ${c.title}</div>`;
-    html+=`<div class="link-section-title">📋 Topics</div>`;
+    html+=`<div class="section-header-bar">${c.code}  ${c.title}</div>`;
     c.topics.forEach((tp,i)=>{
-      const key=`topic-${cid}-${i}`;
-      const cur=lk(key);
-      html+=`<div class="link-item">
-        <div class="link-item-header"><span class="link-item-name">${i+1}. ${tp.t}</span><span class="link-item-type">Topic</span></div>
-        <div class="link-input-row">
-          <input type="url" id="li-${key}" value="${cur}" placeholder="Paste Google Drive or any URL...">
-          <button class="link-save-btn" onclick="saveLink('${key}')">Save</button>
-        </div>
-        <div class="link-status ${cur?'set':'unset'}" id="ls-${key}">${cur?'✅ Link set: '+cur.substring(0,45)+'...':'⬜ No link yet'}</div>
-      </div>`;
+      const key=`topic-${cid}-${i}`;const cur=lk(key);
+      html+=`<div class="link-item"><div class="link-item-header"><span class="link-item-name">${i+1}. ${tp.t}</span><span class="link-item-type">Topic</span></div>
+        <div class="link-input-row"><input type="url" id="li-${key}" value="${cur}" placeholder="Paste Google Drive or any URL..."><button class="link-save-btn" onclick="saveLink('${key}')">Save</button></div>
+        <div class="link-status ${cur?'set':'unset'}" id="ls-${key}">${cur?' '+cur.substring(0,45)+'...':'⬜ No link yet'}</div></div>`;
     });
-    html+=`<div class="link-section-title">📚 Books</div>`;
     c.books.forEach((b,i)=>{
-      const key=`book-${cid}-${i}`;
-      const cur=lk(key);
-      html+=`<div class="link-item">
-        <div class="link-item-header"><span class="link-item-name">${b.t}</span><span class="link-item-type">Book</span></div>
-        <div class="link-input-row">
-          <input type="url" id="li-${key}" value="${cur}" placeholder="Paste Google Drive or any URL...">
-          <button class="link-save-btn" onclick="saveLink('${key}')">Save</button>
-        </div>
-        <div class="link-status ${cur?'set':'unset'}" id="ls-${key}">${cur?'✅ Link set: '+cur.substring(0,45)+'...':'⬜ No link yet'}</div>
-      </div>`;
+      const key=`book-${cid}-${i}`;const cur=lk(key);
+      html+=`<div class="link-item"><div class="link-item-header"><span class="link-item-name">${b.t}</span><span class="link-item-type">Book</span></div>
+        <div class="link-input-row"><input type="url" id="li-${key}" value="${cur}" placeholder="Paste Google Drive or any URL..."><button class="link-save-btn" onclick="saveLink('${key}')">Save</button></div>
+        <div class="link-status ${cur?'set':'unset'}" id="ls-${key}">${cur?' '+cur.substring(0,45)+'...':'⬜ No link yet'}</div></div>`;
     });
-    html+='</div>';
   });
-
-  // Also note cards with links
-  html+=`<div style="background:var(--gm);color:var(--gp);padding:0.5rem 0.8rem;border-radius:8px;font-family:sans-serif;font-size:0.8rem;font-weight:700;margin-bottom:0.6rem;margin-top:1rem;">📄 Note Cards (non-course PDFs)</div>`;
   S.pdfs.filter(p=>!p.courseId).forEach(p=>{
     const key=`note-${p.id}`;const cur=lk(key);
-    html+=`<div class="link-item">
-      <div class="link-item-header"><span class="link-item-name">${p.title}</span><span class="link-item-type">Note</span></div>
-      <div class="link-input-row">
-        <input type="url" id="li-${key}" value="${cur}" placeholder="Paste Google Drive or any URL...">
-        <button class="link-save-btn" onclick="saveLink('${key}')">Save</button>
-      </div>
-      <div class="link-status ${cur?'set':'unset'}" id="ls-${key}">${cur?'✅ Link set: '+cur.substring(0,45)+'...':'⬜ No link yet'}</div>
-    </div>`;
+    html+=`<div class="link-item"><div class="link-item-header"><span class="link-item-name">${p.title}</span><span class="link-item-type">Note</span></div>
+      <div class="link-input-row"><input type="url" id="li-${key}" value="${cur}" placeholder="Paste Google Drive or any URL..."><button class="link-save-btn" onclick="saveLink('${key}')">Save</button></div>
+      <div class="link-status ${cur?'set':'unset'}" id="ls-${key}">${cur?' '+cur.substring(0,45)+'...':'⬜ No link yet'}</div></div>`;
   });
-
   document.getElementById('links-content').innerHTML=html;
-  document.getElementById('a-links').textContent=countLinks();
 }
 
 function saveLink(key){
-  const inp=document.getElementById('li-'+key);
-  const val=inp?inp.value.trim():'';
+  const inp=document.getElementById('li-'+key);const val=inp?inp.value.trim():'';
   setLk(key,val);
   const st=document.getElementById('ls-'+key);
-  if(st){
-    st.textContent=val?'✅ Link set: '+val.substring(0,45)+'...':'⬜ No link yet';
-    st.className='link-status '+(val?'set':'unset');
-  }
+  if(st){st.textContent=val?' '+val.substring(0,45)+'...':'⬜ No link yet';st.className='link-status '+(val?'set':'unset');}
   document.getElementById('a-links').textContent=countLinks();
-  toast(val?'✅ Link saved!':'🗑 Link cleared');
-  // Re-render course page if open
+  toast(val?' Link saved!':'🗑 Link cleared');
   if(currentCourseId)openCourse(currentCourseId);
 }
 
 // AI
-const SYLLABUS=`You are BotaBot, the AI assistant for the Department of Botany, Faculty of Biological Sciences, University of Chittagong. You have complete knowledge of the B.Sc. (Honours) in Botany curriculum for Sessions 2021-2022 and 2022-2023. Programme: 4 years, 4000 marks, 160 credits. Major courses: 2700 marks. Related: 700. Sessional: 400. Viva: 200. Grading: A+=80%+/4.00, A=75-80%/3.75, A-=70-75%/3.50, B+=65-70%/3.25, B=60-65%/3.00, B-=55-60%/2.75, C+=50-55%/2.50, C=45-50%/2.25, D=40-45%/2.00, F=below 40%/0.00. Min CGPA for degree: 2.25. Min GPA for promotion: 1.75. Distinction: CGPA 4.00. 1st Year courses: BOT.101 Microbiology (50m), BOT.102 Mycology & Lichenology (75m), BOT.103 Phycology (75m), BOT.104 Bryology (50m), BOT.105 Pteridology (50m), BOT.106 Agronomy (75m), BOT.107 Soil Science (50m), BOT.108 Zoology (75m), BOT.109 Computer Science (50m). Answer helpfully and refer to course codes when relevant.`;
+const SYLLABUS=`You are BotaBot, the AI assistant for the Department of Botany, Faculty of Biological Sciences, University of Chittagong. You have complete knowledge of the B.Sc. (Honours) in Botany curriculum for Sessions 2021-2022 and 2022-2023.
+
+PROGRAMME: 4 years, 4000 marks, 160 credits. Major: 2700 marks. Related: 700. Sessional: 400. Viva: 200.
+
+GRADING: A+=80%+/4.00, A=75-80%/3.75, A-=70-75%/3.50, B+=65-70%/3.25, B=60-65%/3.00, B-=55-60%/2.75, C+=50-55%/2.50, C=45-50%/2.25, D=40-45%/2.00, F<40%/0.00. Min CGPA: 2.25. Min GPA for promotion: 1.75.
+
+1ST YEAR: BOT.101 Microbiology (50m), BOT.102 Mycology & Lichenology (75m), BOT.103 Phycology (75m), BOT.104 Bryology (50m), BOT.105 Pteridology (50m), BOT.106 Agronomy (75m), BOT.107 Soil Science (50m), BOT.108 Zoology (75m), BOT.109 Computer Science (50m). Practicals: BOT.110-113. Sessional BOT.114, Viva BOT.115.
+
+2ND YEAR: BOT.201 Gymnosperms & Palaeobotany (50m), BOT.202 Biodiversity (50m), BOT.203 Plant Anatomy (50m), BOT.204 Plant Morphology & Systematics (50m), BOT.205 Embryology & Palynology (50m). Related: BOT.206 Horticulture & Hill Cultivation (50m), BOT.207 Plant Taxonomy (45m), BOT.208 Bio-physical Chemistry (75m). Practicals: BOT.210, BOT.211. Total 2nd year: 950 marks, 38 credits.
+
+3RD YEAR: BOT.301 Plant Taxonomy (75m), BOT.302 Limnology (75m), BOT.303 Plant Ecology (75m), BOT.304 Plant Physiology (75m), BOT.305 Plant Pathology (75m), BOT.306 Cytology & Genetics (75m), BOT.307 Pharmacognosy & Medicinal Botany (50m), BOT.308 Plant Tissue Culture (50m). Practicals: BOT.309-312. Total 3rd year: 1000 marks, 40 credits.
+
+4TH YEAR: BOT.401 Phytogeography & Plant Conservation Biology (75m), BOT.402 Ethnobotany & Economic Botany (75m), BOT.403 Plant Physiology-II (75m), BOT.404 Plant Breeding (75m), BOT.405 Plant & Environmental Microbiology (75m), BOT.406 Origin & Evolution of Life (50m), BOT.407 Plant Stress Physiology (75m), BOT.408 Biotechnology & Genetic Engineering (75m), BOT.409 Molecular Biology (75m). Practicals: BOT.410-412. Total 4th year: 1100 marks, 44 credits.
+
+Answer helpfully. Refer to course codes when relevant.`;
 
 async function sendChat(){
-  const inp=document.getElementById('chat-input');
-  const msg=inp.value.trim();if(!msg)return;
-  inp.value='';addMsg(msg,'user');
-  const ty=addTyping();
+  const inp=document.getElementById('chat-input');const msg=inp.value.trim();if(!msg)return;
+  inp.value='';addMsg(msg,'user');const ty=addTyping();
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYLLABUS,messages:[{role:'user',content:msg}]})});
     const data=await res.json();ty.remove();
     addMsg(data.content&&data.content[0]?data.content[0].text:"Couldn't get a response.",'bot');
-  }catch(e){ty.remove();addMsg("Connection issue. Please try again.",'bot');}
+  }catch(e){ty.remove();addMsg("Connection issue. Try again.",'bot');}
 }
 function askSug(q){document.getElementById('chat-input').value=q;sendChat();}
 function addMsg(text,from){
