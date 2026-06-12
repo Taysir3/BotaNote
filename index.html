@@ -284,7 +284,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 <body>
 
 <nav>
-  <div class="nav-logo" onclick="showPage('home')">Bota<span>Note</span> 🌿</div>
+  <div class="nav-logo" onclick="showPage('home')">Bot<span>Note</span> 🌿</div>
   <div class="nav-links">
     <a onclick="showPage('home')">Home</a>
     <a onclick="showPage('notes')">Notes</a>
@@ -375,13 +375,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 <!-- AUTH -->
 <div class="page" id="page-auth" style="display:flex;align-items:center;justify-content:center;min-height:100vh;">
   <div class="auth-container fade-in">
-    <div class="auth-logo-text">Bota<span>Note</span> 🌿</div>
+    <div class="auth-logo-text">Bot<span>Note</span> 🌿</div>
     <div class="auth-dept">Dept. of Botany || University of Chittagong</div>
     <div class="auth-tabs"><div class="auth-tab active" onclick="switchTab('login')">Login</div><div class="auth-tab" onclick="switchTab('register')">Register</div></div>
     <div id="login-form">
       <div class="fg"><label>Email</label><input type="email" id="login-email" placeholder="your@cu.ac.bd"></div>
       <div class="fg"><label>Password</label><input type="password" id="login-pass" placeholder=""></div>
       <button class="auth-submit" onclick="doLogin()">Login to BotNote</button>
+      <p style="text-align:center;font-size:0.7rem;color:var(--tl);font-family:sans-serif;margin-top:0.7rem;">Demo: admin@botany.cu.ac.bd / admin123</p>
     </div>
     <div id="register-form">
       <div class="fg"><label>Full Name</label><input type="text" id="reg-name" placeholder="Your full name"></div>
@@ -568,7 +569,605 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(26,58,42,0.9
 
 <script>
 // ===== DATA STORES =====
-const LINKS = {};
+// =============================================================================
+// DOWNLOAD LINKS — Edit the URLs below to update any Download button on the site
+//
+// HOW TO USE:
+//   1. Find the topic or book you want to link
+//   2. Replace the empty string "" with your Google Drive (or any) URL
+//   3. Save the file — the button will immediately become active
+//
+// KEY FORMAT:
+//   topic-{courseId}-{topicIndex}  → Download button on a topic row
+//   book-{courseId}-{bookIndex}    → Download button on a book row
+//   note-{pdfId}                   → Download button on a Notes card
+// =============================================================================
+const LINKS = {
+
+  // ──────────────────────────────────────────────────────────────────────
+  // 1ST YEAR COURSES
+  // ──────────────────────────────────────────────────────────────────────
+
+  // ── BOT.101: Microbiology
+  'topic-1-0': "https://drive.google.com/file/d/1fRe0HQb6RhUwiQ5H2mNS_Hwks1Koiapf/view?usp=sharing",   // Topic 1: Introduction
+  'topic-1-1': "https://drive.google.com/file/d/1fRe0HQb6RhUwiQ5H2mNS_Hwks1Koiapf/view?usp=sharing",   // Topic 2: Classification
+  'topic-1-2': "https://drive.google.com/file/d/1gCtqFYsRzv__6a9nDE6_q844rxJjI8b2/view?usp=sharing",   // Topic 3: Prion
+  'topic-1-3': "https://drive.google.com/file/d/1gCtqFYsRzv__6a9nDE6_q844rxJjI8b2/view?usp=sharing",   // Topic 4: Viroids
+  'topic-1-4': "https://drive.google.com/file/d/1c5pTYYLDBOSzVUJJnduAcEFF0inqakOR/view?usp=sharing",   // Topic 5: Viruses
+  'topic-1-5': "https://drive.google.com/file/d/1y9eGUheRGt704Ljx6SRJ1DMztaZaoskO/view?usp=sharing",   // Topic 6: Rickettsias and Chlamydias
+  'topic-1-6': "https://drive.google.com/file/d/129mdPC-kcp9f_dR4-Vz0oPTN7IPUEAfp/view?usp=sharing",   // Topic 7: Mycoplasma
+  'topic-1-7': "https://drive.google.com/file/d/1IZOmlG2Y9GTyuadlLhhwbv6sQ_ZLiw0e/view?usp=sharing",   // Topic 8: Bacteria
+  'topic-1-8': "https://drive.google.com/file/d/1vlHbcEeg4_9D7AiwQaJGdQHOe1bnV7Zf/view?usp=sharing",   // Topic 9: Actinomycetes
+  'topic-1-9': "https://drive.google.com/file/d/1YuJVxz1d8Y7sUNml8UDnm8KByTH3Ckwc/view?usp=sharing",   // Topic 10: Growth of Microorganisms
+  'topic-1-10': "https://drive.google.com/file/d/1YuJVxz1d8Y7sUNml8UDnm8KByTH3Ckwc/view?usp=sharing",   // Topic 11: Control of Microorganisms
+  'book-1-0': "",    // Book 1: Essentials of Microbiology
+  'book-1-1': "",    // Book 2: An Introduction to Viruses
+  'book-1-2': "https://drive.google.com/file/d/1ohKglNPzD3OXT-_ASVE3_-_rqBVytwvH/view?usp=sharing",    // Book 3: A Text Book of Microbiology
+  'book-1-3': "",    // Book 4: Microbiology (5th Edition)
+  'book-1-4': "",    // Book 5: Microbiology
+  'book-1-5': "",    // Book 6: Microbiology and Plant Pathology
+  'book-1-6': "",    // Book 7: Microbiology: An Evolving Science
+
+  // ── BOT.102: Mycology and Lichenology
+  'topic-2-0': "",   // Topic 1: General Characters of Fungi
+  'topic-2-1': "",   // Topic 2: Fungal Growth
+  'topic-2-2': "",   // Topic 3: Biological Relations
+  'topic-2-3': "",   // Topic 4: Classification of Major Groups
+  'topic-2-4': "",   // Topic 5: Classification of Orders
+  'topic-2-5': "",   // Topic 6: Study of Important Genera
+  'topic-2-6': "",   // Topic 7: Study of Lichens
+  'book-2-0': "",    // Book 1: Introductory Mycology (3rd edn.)
+  'book-2-1': "",    // Book 2: A Text Book of Fungi
+  'book-2-2': "",    // Book 3: An Introduction to Fungi
+  'book-2-3': "",    // Book 4: Mycology
+  'book-2-4': "",    // Book 5: A Text Book of Botany: Fungi
+  'book-2-5': "",    // Book 6: Botany Part II. Fungi
+
+  // ── BOT.103: Phycology
+  'topic-3-0': "",   // Topic 1: Introduction & General Characters
+  'topic-3-1': "",   // Topic 2: Classification of Major Classes
+  'topic-3-2': "",   // Topic 3: Study of Important Genera
+  'topic-3-3': "",   // Topic 4: Importance of Algae
+  'topic-3-4': "",   // Topic 5: Origin and Evolutionary Trends
+  'topic-3-5': "",   // Topic 6: Special Types of Algae
+  'topic-3-6': "",   // Topic 7: Algal Flora of Bangladesh
+  'book-3-0': "",    // Book 1: Introduction to the Algae
+  'book-3-1': "",    // Book 2: Phycology
+  'book-3-2': "",    // Book 3: A Text Book of Algae
+  'book-3-3': "",    // Book 4: Algae  A Review
+  'book-3-4': "",    // Book 5: Botany for Degree Students  Algae
+
+  // ── BOT.104: Bryology
+  'topic-4-0': "",   // Topic 1: Introduction
+  'topic-4-1': "",   // Topic 2: Classification
+  'topic-4-2': "",   // Topic 3: Major Orders
+  'topic-4-3': "",   // Topic 4: Study of Important Genera
+  'topic-4-4': "",   // Topic 5: Bryophytes of Bangladesh
+  'book-4-0': "",    // Book 1: Bryophyta and Pteridophyta
+  'book-4-1': "",    // Book 2: Higher Cryptogams
+  'book-4-2': "",    // Book 3: An Introduction to Bryophyte
+  'book-4-3': "",    // Book 4: Cryptoganic Botany, Bryophytes and Pteridophytes
+  'book-4-4': "",    // Book 5: Botany for Degree Students  Bryophyta
+  'book-4-5': "",    // Book 6: Bryophyta
+
+  // ── BOT.105: Pteridology
+  'topic-5-0': "",   // Topic 1: Introduction
+  'topic-5-1': "",   // Topic 2: Stelar System
+  'topic-5-2': "",   // Topic 3: Diversity and Reproduction
+  'topic-5-3': "",   // Topic 4: Taxonomy and Life History
+  'topic-5-4': "",   // Topic 5: Fern Propagation
+  'topic-5-5': "",   // Topic 6: Pteridophytes of Bangladesh
+  'book-5-0': "",    // Book 1: A Textbook of Pteridophyta
+  'book-5-1': "",    // Book 2: An Introduction to Pteridophyta
+  'book-5-2': "",    // Book 3: Higher Cryptogamis
+  'book-5-3': "",    // Book 4: The Morphology of Pteridophyta
+  'book-5-4': "",    // Book 5: Pteridophyta
+
+  // ── BOT.106: Agronomy
+  'topic-6-0': "",   // Topic 1: Introduction
+  'topic-6-1': "",   // Topic 2: Classification of Crops
+  'topic-6-2': "",   // Topic 3: Agricultural Implements & Tillage
+  'topic-6-3': "",   // Topic 4: Irrigation
+  'topic-6-4': "",   // Topic 5: Drainage
+  'topic-6-5': "",   // Topic 6: Manures and Fertilizers
+  'topic-6-6': "",   // Topic 7: Cropping Systems
+  'topic-6-7': "",   // Topic 8: Crop Rotation
+  'topic-6-8': "",   // Topic 9: Important Crops of Bangladesh
+  'topic-6-9': "",   // Topic 10: Weeds of Bangladesh
+  'book-6-0': "",    // Book 1: An Introduction to Bangladesh Agriculture
+  'book-6-1': "",    // Book 2: Fundamentals of Agronomy
+  'book-6-2': "",    // Book 3: Agriculture in Bangladesh
+  'book-6-3': "",    // Book 4: Hand Book of Agronomy
+  'book-6-4': "",    // Book 5: Tropical Crops (Dicot and Monocot)
+  'book-6-5': "",    // Book 6: Agriculture in the Tropics
+
+  // ── BOT.107: Soil Science
+  'topic-7-0': "",   // Topic 1: Definition and Scope
+  'topic-7-1': "",   // Topic 2: Soil Formation
+  'topic-7-2': "",   // Topic 3: Properties of Soils
+  'topic-7-3': "",   // Topic 4: Soil Water
+  'topic-7-4': "",   // Topic 5: Soil Organic Matter
+  'topic-7-5': "",   // Topic 6: Soil Colloids
+  'topic-7-6': "",   // Topic 7: Soil Fertility and Productivity
+  'topic-7-7': "",   // Topic 8: Soil Classification
+  'book-7-0': "",    // Book 1: Soils Physics (4th edn.)
+  'book-7-1': "",    // Book 2: Chemistry of the Soil (2nd edn.)
+  'book-7-2': "",    // Book 3: Text Book of Soil Science
+  'book-7-3': "",    // Book 4: The Nature and Properties of Soils (10th edn.)
+  'book-7-4': "",    // Book 5: Fundamentals of Soils Science (5th edn.)
+
+  // ──────────────────────────────────────────────────────────────────────
+  // 2ND YEAR COURSES
+  // ──────────────────────────────────────────────────────────────────────
+
+  // ── BOT.201: Gymnosperms and Palaeobotany
+  'topic-101-0': "",   // Topic 1: Introduction to Gymnosperms
+  'topic-101-1': "",   // Topic 2: Classification of Gymnosperms
+  'topic-101-2': "",   // Topic 3: Detailed Study of Genera
+  'topic-101-3': "",   // Topic 4: Economic Importance of Gymnosperms
+  'topic-101-4': "",   // Topic 5: Introduction to Palaeobotany
+  'topic-101-5': "",   // Topic 6: Types of Plant Fossils
+  'topic-101-6': "",   // Topic 7: Evolution through Fossil Record
+  'topic-101-7': "",   // Topic 8: Palaeobotany of Bangladesh
+  'book-101-0': "",    // Book 1: Gymnosperms
+  'book-101-1': "",    // Book 2: Gymnosperms
+  'book-101-2': "",    // Book 3: Palaeobotany
+  'book-101-3': "",    // Book 4: Gymnosperms and Evolution of Vascular Plants
+  'book-101-4': "",    // Book 5: Palaeobotany (3rd edn.)
+
+  // ── BOT.202: Biodiversity
+  'topic-102-0': "",   // Topic 1: Introduction to Biodiversity
+  'topic-102-1': "",   // Topic 2: Threats to Biodiversity
+  'topic-102-2': "",   // Topic 3: Conservation Biology
+  'topic-102-3': "",   // Topic 4: Biodiversity of Bangladesh
+  'topic-102-4': "",   // Topic 5: Economic Importance of Biodiversity
+  'topic-102-5': "",   // Topic 6: Ethnobotany and Biodiversity
+  'topic-102-6': "",   // Topic 7: International Conventions
+  'topic-102-7': "",   // Topic 8: Biodiversity Information Systems
+  'book-102-0': "",    // Book 1: Biodiversity
+  'book-102-1': "",    // Book 2: An Advanced Text Book on Biodiversity
+  'book-102-2': "",    // Book 3: Biodiversity and Conservation
+  'book-102-3': "",    // Book 4: Plant Biodiversity  Principles and Practice
+  'book-102-4': "",    // Book 5: Ethnobotany
+
+  // ── BOT.203: Plant Anatomy
+  'topic-103-0': "",   // Topic 1: Introduction to Plant Anatomy
+  'topic-103-1': "",   // Topic 2: Meristematic Tissues
+  'topic-103-2': "",   // Topic 3: Permanent Tissues
+  'topic-103-3': "",   // Topic 4: Tissue Systems
+  'topic-103-4': "",   // Topic 5: Anatomy of Root
+  'topic-103-5': "",   // Topic 6: Anatomy of Stem
+  'topic-103-6': "",   // Topic 7: Anatomy of Leaf
+  'topic-103-7': "",   // Topic 8: Anomalous Secondary Growth
+  'book-103-0': "",    // Book 1: Introduction to Plant Anatomy (2nd edn.)
+  'book-103-1': "",    // Book 2: Plant Anatomy
+  'book-103-2': "",    // Book 3: Plant Anatomy (6th edn.)
+  'book-103-3': "",    // Book 4: A Text Book of Plant Anatomy (Vol.6)
+
+  // ── BOT.204: Plant Morphology and Systematics
+  'topic-104-0': "",   // Topic 1: Introduction to Plant Morphology
+  'topic-104-1': "",   // Topic 2: Stem and Leaf Morphology
+  'topic-104-2': "",   // Topic 3: Flower Morphology
+  'topic-104-3': "",   // Topic 4: Fruit and Seed
+  'topic-104-4': "",   // Topic 5: Introduction to Plant Systematics
+  'topic-104-5': "",   // Topic 6: Classification Systems
+  'topic-104-6': "",   // Topic 7: Study of Families
+  'topic-104-7': "",   // Topic 8: Taxonomic Keys
+  'book-104-0': "",    // Book 1: Plant Systematics
+  'book-104-1': "",    // Book 2: An Introduction to Taxonomy of Angiosperms
+  'book-104-2': "",    // Book 3: Plant Taxonomy
+  'book-104-3': "",    // Book 4: Flowering Plants Taxonomy
+  'book-104-4': "",    // Book 5: A Text Book of Systematic Botany
+
+  // ── BOT.205: Embryology and Palynology
+  'topic-105-0': "",   // Topic 1: Introduction to Embryology
+  'topic-105-1': "",   // Topic 2: Male Gametophyte
+  'topic-105-2': "",   // Topic 3: Ovule and Female Gametophyte
+  'topic-105-3': "",   // Topic 4: Fertilization and Endosperm
+  'topic-105-4': "",   // Topic 5: Embryo Development
+  'topic-105-5': "",   // Topic 6: Introduction to Palynology
+  'topic-105-6': "",   // Topic 7: Applied Palynology
+  'topic-105-7': "",   // Topic 8: Pollen Allergy
+  'book-105-0': "",    // Book 1: Plant Embryology
+  'book-105-1': "",    // Book 2: Embryology of Angiosperms
+  'book-105-2': "",    // Book 3: Palynology
+  'book-105-3': "",    // Book 4: Pollen: Biology and Implications for Plant Breeding
+  'book-105-4': "",    // Book 5: Plant Embryology
+
+  // ── BOT.206: Horticulture and Hill Cultivation
+  'topic-106-0': "",   // Topic 1: Introduction to Horticulture
+  'topic-106-1': "",   // Topic 2: Propagation of Horticultural Plants
+  'topic-106-2': "",   // Topic 3: Nursery Management
+  'topic-106-3': "",   // Topic 4: Soil and Manure Management
+  'topic-106-4': "",   // Topic 5: Orchard Establishment and Management
+  'topic-106-5': "",   // Topic 6: Important Fruit Crops of Bangladesh
+  'topic-106-6': "",   // Topic 7: Vegetable Crops
+  'topic-106-7': "",   // Topic 8: Spices and Condiment Crops
+  'topic-106-8': "",   // Topic 9: Floriculture
+  'topic-106-9': "",   // Topic 10: Hill Cultivation
+  'book-106-0': "",    // Book 1: Introduction to Horticulture
+  'book-106-1': "",    // Book 2: Horticulture
+  'book-106-2': "",    // Book 3: Vegetable Crops
+  'book-106-3': "",    // Book 4: Fruit Production in Bangladesh
+  'book-106-4': "",    // Book 5: Horticulture: Principles and Practices
+  'book-106-5': "",    // Book 6: New Agriculture for Bangladesh
+
+  // ── BOT.207: Plant Taxonomy (Related)
+  'topic-107-0': "",   // Topic 1: Introduction and History
+  'topic-107-1': "",   // Topic 2: Taxonomic Concepts
+  'topic-107-2': "",   // Topic 3: Nomenclature
+  'topic-107-3': "",   // Topic 4: Identification Tools
+  'topic-107-4': "",   // Topic 5: Major Classification Systems
+  'topic-107-5': "",   // Topic 6: Morphological Taxonomy
+  'topic-107-6': "",   // Topic 7: Angiosperm Families  Dicots
+  'topic-107-7': "",   // Topic 8: Angiosperm Families  Monocots
+  'topic-107-8': "",   // Topic 9: Taxonomy of Selected Bangladesh Flora
+  'book-107-0': "",    // Book 1: Plant Systematics
+  'book-107-1': "",    // Book 2: Taxonomy and Biosystematics
+  'book-107-2': "",    // Book 3: Flowering Plants of Bangladesh
+  'book-107-3': "",    // Book 4: Principles of Angiosperm Taxonomy
+  'book-107-4': "",    // Book 5: Introduction to Plant Taxonomy
+  'book-107-5': "",    // Book 6: Flora of Bangladesh
+
+  // ── BOT.208: Bio-physical Chemistry
+  'topic-108-0': "",   // Topic 1: Solutions and Colligative Properties
+  'topic-108-1': "",   // Topic 2: Thermodynamics
+  'topic-108-2': "",   // Topic 3: Electrochemistry
+  'topic-108-3': "",   // Topic 4: Spectroscopy
+  'topic-108-4': "",   // Topic 5: Chromatography
+  'topic-108-5': "",   // Topic 6: Centrifugation
+  'topic-108-6': "",   // Topic 7: Electrophoresis
+  'topic-108-7': "",   // Topic 8: Carbohydrates
+  'topic-108-8': "",   // Topic 9: Lipids
+  'topic-108-9': "",   // Topic 10: Proteins and Amino Acids
+  'topic-108-10': "",   // Topic 11: Nucleic Acids
+  'book-108-0': "",    // Book 1: Biochemistry
+  'book-108-1': "",    // Book 2: Physical Chemistry
+  'book-108-2': "",    // Book 3: Introduction to Plant Physiology (2nd edn.)
+  'book-108-3': "",    // Book 4: Principles of Biochemistry
+  'book-108-4': "",    // Book 5: Biophysical Chemistry
+
+  // ── BOT.209: Genetics
+  'topic-109-0': "",   // Topic 1: Introduction to Genetics
+  'topic-109-1': "",   // Topic 2: Extensions of Mendelian Genetics
+  'topic-109-2': "",   // Topic 3: Chromosomal Theory of Inheritance
+  'topic-109-3': "",   // Topic 4: Linkage and Crossing Over
+  'topic-109-4': "",   // Topic 5: Chromosomal Mutations
+  'topic-109-5': "",   // Topic 6: Gene Mutations
+  'topic-109-6': "",   // Topic 7: Quantitative Genetics
+  'topic-109-7': "",   // Topic 8: Population Genetics
+  'topic-109-8': "",   // Topic 9: Molecular Genetics Overview
+  'book-109-0': "",    // Book 1: Genetics
+  'book-109-1': "",    // Book 2: Introduction to Genetics
+  'book-109-2': "",    // Book 3: Molecular Biology of the Cell
+  'book-109-3': "",    // Book 4: Genetics
+  'book-109-4': "",    // Book 5: Fundamentals of Genetics
+  'book-109-5': "",    // Book 6: Principles of Genetics
+
+  // ──────────────────────────────────────────────────────────────────────
+  // 3RD YEAR COURSES
+  // ──────────────────────────────────────────────────────────────────────
+
+  // ── BOT.301: Plant Taxonomy
+  'topic-201-0': "",   // Topic 1: Introduction, History and Scope
+  'topic-201-1': "",   // Topic 2: Development of Plant Classification
+  'topic-201-2': "",   // Topic 3: Modern Taxonomy
+  'topic-201-3': "",   // Topic 4: Botanical Nomenclature
+  'topic-201-4': "",   // Topic 5: Plant Identification
+  'topic-201-5': "",   // Topic 6: Detailed Study of Families (Dicots)
+  'topic-201-6': "",   // Topic 7: Detailed Study of Families (Dicots cont.)
+  'topic-201-7': "",   // Topic 8: Detailed Study of Families (Monocots)
+  'book-201-0': "",    // Book 1: Plant Systematics
+  'book-201-1': "",    // Book 2: Taxonomy and Biosystematics
+  'book-201-2': "",    // Book 3: Plant Taxonomy
+  'book-201-3': "",    // Book 4: Flowering Plants of Bangladesh
+  'book-201-4': "",    // Book 5: Introduction to Plant Taxonomy
+  'book-201-5': "",    // Book 6: Flora of Bangladesh series
+
+  // ── BOT.302: Limnology
+  'topic-202-0': "",   // Topic 1: Introduction
+  'topic-202-1': "",   // Topic 2: Physical Properties of Water
+  'topic-202-2': "",   // Topic 3: Chemical Properties of Water
+  'topic-202-3': "",   // Topic 4: Biological Communities
+  'topic-202-4': "",   // Topic 5: Primary Production
+  'topic-202-5': "",   // Topic 6: Aquatic Plants of Bangladesh
+  'topic-202-6': "",   // Topic 7: Water Pollution and Management
+  'topic-202-7': "",   // Topic 8: Wetlands and Water Resources
+  'book-202-0': "",    // Book 1: Limnology
+  'book-202-1': "",    // Book 2: Limnology
+  'book-202-2': "",    // Book 3: Aquatic Plants of Bangladesh
+  'book-202-3': "",    // Book 4: Aquatic Plant Biology
+  'book-202-4': "",    // Book 5: Limnology of the Chittagong University Campus
+
+  // ── BOT.303: Plant Ecology
+  'topic-203-0': "",   // Topic 1: Introduction
+  'topic-203-1': "",   // Topic 2: Environmental Factors
+  'topic-203-2': "",   // Topic 3: Ecological Adaptations
+  'topic-203-3': "",   // Topic 4: Plant Communities and Vegetation
+  'topic-203-4': "",   // Topic 5: Succession
+  'topic-203-5': "",   // Topic 6: Ecosystem
+  'topic-203-6': "",   // Topic 7: Major Ecosystems of Bangladesh
+  'topic-203-7': "",   // Topic 8: Restoration Ecology
+  'topic-203-8': "",   // Topic 9: Phytogeography
+  'book-203-0': "",    // Book 1: Principles of Ecology
+  'book-203-1': "",    // Book 2: Ecology
+  'book-203-2': "",    // Book 3: Plant Ecology (3rd edn.)
+  'book-203-3': "",    // Book 4: Ecology and Environment
+  'book-203-4': "",    // Book 5: Ecology of Bangladesh
+
+  // ── BOT.304: Plant Physiology
+  'topic-204-0': "",   // Topic 1: Water Relations
+  'topic-204-1': "",   // Topic 2: Mineral Nutrition
+  'topic-204-2': "",   // Topic 3: Photosynthesis
+  'topic-204-3': "",   // Topic 4: Respiration
+  'topic-204-4': "",   // Topic 5: Nitrogen Metabolism
+  'topic-204-5': "",   // Topic 6: Growth Regulators (Phytohormones)
+  'topic-204-6': "",   // Topic 7: Growth and Development
+  'topic-204-7': "",   // Topic 8: Stress Physiology
+  'book-204-0': "",    // Book 1: Plant Physiology
+  'book-204-1': "",    // Book 2: The Physiology of Plants Under Stress
+  'book-204-2': "",    // Book 3: Plant Physiology
+  'book-204-3': "",    // Book 4: Plant Physiology
+  'book-204-4': "",    // Book 5: Introduction to Plant Physiology (2nd edn.)
+  'book-204-5': "",    // Book 6: Advanced Plant Physiology
+
+  // ── BOT.305: Plant Pathology
+  'topic-205-0': "",   // Topic 1: Introduction
+  'topic-205-1': "",   // Topic 2: Plant Pathogenic Organisms
+  'topic-205-2': "",   // Topic 3: Disease Cycle and Epidemiology
+  'topic-205-3': "",   // Topic 4: Symptoms of Plant Diseases
+  'topic-205-4': "",   // Topic 5: Important Diseases of Bangladesh Crops
+  'topic-205-5': "",   // Topic 6: Disease Control
+  'topic-205-6': "",   // Topic 7: Post-harvest Pathology
+  'topic-205-7': "",   // Topic 8: Plant Disease Diagnosis
+  'topic-205-8': "",   // Topic 9: Plant Quarantine
+  'book-205-0': "",    // Book 1: Plant Pathology
+  'book-205-1': "",    // Book 2: Plant Pathology
+  'book-205-2': "",    // Book 3: Plant Pathology
+  'book-205-3': "",    // Book 4: Fundamentals of Plant Pathology
+  'book-205-4': "",    // Book 5: Plant Diseases
+
+  // ── BOT.306: Cytology and Genetics
+  'topic-206-0': "",   // Topic 1: Introduction to Cytology
+  'topic-206-1': "",   // Topic 2: Cell Organelles
+  'topic-206-2': "",   // Topic 3: Chromosomes
+  'topic-206-3': "",   // Topic 4: Cell Division  Mitosis
+  'topic-206-4': "",   // Topic 5: Cell Division  Meiosis
+  'topic-206-5': "",   // Topic 6: Chromosomal Basis of Inheritance
+  'topic-206-6': "",   // Topic 7: Linkage and Genetic Mapping
+  'topic-206-7': "",   // Topic 8: Extrachromosomal Inheritance
+  'topic-206-8': "",   // Topic 9: Advanced Genetics
+  'topic-206-9': "",   // Topic 10: Genetic Analysis Techniques
+  'book-206-0': "",    // Book 1: Genetics
+  'book-206-1': "",    // Book 2: Introduction to Genetics
+  'book-206-2': "",    // Book 3: Cell and Molecular Biology
+  'book-206-3': "",    // Book 4: Molecular Biology of the Cell
+  'book-206-4': "",    // Book 5: An Introduction to Cytology
+  'book-206-5': "",    // Book 6: Cytogenetics of Crop Plants
+
+  // ── BOT.307: Pharmacognosy and Medicinal Botany
+  'topic-207-0': "",   // Topic 1: Introduction to Pharmacognosy
+  'topic-207-1': "",   // Topic 2: Drug Collection and Preparation
+  'topic-207-2': "",   // Topic 3: Primary and Secondary Metabolites
+  'topic-207-3': "",   // Topic 4: Important Drug Plants
+  'topic-207-4': "",   // Topic 5: Medicinal Plants of Bangladesh
+  'topic-207-5': "",   // Topic 6: Herbal Drugs and Formulations
+  'topic-207-6': "",   // Topic 7: Ethnomedicine
+  'book-207-0': "",    // Book 1: A Text Book of Pharmacognosy
+  'book-207-1': "",    // Book 2: Pharmacognosy
+  'book-207-2': "",    // Book 3: Medicinal Plants of Bangladesh
+  'book-207-3': "",    // Book 4: Introduction to Pharmacognosy
+  'book-207-4': "",    // Book 5: Phytochemical Methods
+
+  // ── BOT.308: Plant Tissue Culture
+  'topic-208-0': "",   // Topic 1: Introduction
+  'topic-208-1': "",   // Topic 2: Culture Media
+  'topic-208-2': "",   // Topic 3: Organogenesis
+  'topic-208-3': "",   // Topic 4: Somatic Embryogenesis
+  'topic-208-4': "",   // Topic 5: Micropropagation
+  'topic-208-5': "",   // Topic 6: Anther and Pollen Culture
+  'topic-208-6': "",   // Topic 7: Protoplast Culture
+  'topic-208-7': "",   // Topic 8: Cell Suspension Culture
+  'topic-208-8': "",   // Topic 9: Genetic Transformation
+  'book-208-0': "",    // Book 1: Plant Cell, Tissue and Organ Culture
+  'book-208-1': "",    // Book 2: Plant Tissue Culture
+  'book-208-2': "",    // Book 3: Plant Tissue Culture: Theory and Practice
+  'book-208-3': "",    // Book 4: Introduction to Plant Tissue Culture
+  'book-208-4': "",    // Book 5: Plant Biotechnology
+
+  // ──────────────────────────────────────────────────────────────────────
+  // 4TH YEAR COURSES
+  // ──────────────────────────────────────────────────────────────────────
+
+  // ── BOT.401: Phytogeography and Plant Conservation Biology
+  'topic-301-0': "",   // Topic 1: Introduction to Phytogeography
+  'topic-301-1': "",   // Topic 2: Floristic Kingdoms and Regions
+  'topic-301-2': "",   // Topic 3: Plant Migration and Dispersal
+  'topic-301-3': "",   // Topic 4: Centre of Origin and Diversity
+  'topic-301-4': "",   // Topic 5: Introduction to Conservation Biology
+  'topic-301-5': "",   // Topic 6: Threats to Plant Biodiversity
+  'topic-301-6': "",   // Topic 7: Conservation Strategies
+  'topic-301-7': "",   // Topic 8: Conservation in Bangladesh
+  'topic-301-8': "",   // Topic 9: Restoration Ecology
+  'topic-301-9': "",   // Topic 10: Policy and Legislation
+  'book-301-0': "",    // Book 1: Biogeography
+  'book-301-1': "",    // Book 2: Plant Biogeography
+  'book-301-2': "",    // Book 3: Conservation Biology
+  'book-301-3': "",    // Book 4: Bangladesh: Environment (vol.1)
+  'book-301-4': "",    // Book 5: Biodiversity: Principles and Practices
+
+  // ── BOT.402: Ethnobotany and Economic Botany
+  'topic-302-0': "",   // Topic 1: Introduction to Ethnobotany
+  'topic-302-1': "",   // Topic 2: Indigenous Knowledge
+  'topic-302-2': "",   // Topic 3: Ethnobotany of Bangladesh
+  'topic-302-3': "",   // Topic 4: Introduction to Economic Botany
+  'topic-302-4': "",   // Topic 5: Food Plants
+  'topic-302-5': "",   // Topic 6: Industrial Plants
+  'topic-302-6': "",   // Topic 7: Medicinal Plants
+  'topic-302-7': "",   // Topic 8: Spices, Beverages and Narcotics
+  'topic-302-8': "",   // Topic 9: Biotechnology and Economic Botany
+  'book-302-0': "",    // Book 1: A Text Book of Pharmacognosy
+  'book-302-1': "",    // Book 2: Ethnobotany
+  'book-302-2': "",    // Book 3: Economic Botany
+  'book-302-3': "",    // Book 4: Medicinal Plants of Bangladesh
+  'book-302-4': "",    // Book 5: Ethnobotany of Bangladesh
+  'book-302-5': "",    // Book 6: Economic Botany
+
+  // ── BOT.403: Plant Physiology II
+  'topic-303-0': "",   // Topic 1: Membrane Biology
+  'topic-303-1': "",   // Topic 2: Enzyme Kinetics
+  'topic-303-2': "",   // Topic 3: Photobiology
+  'topic-303-3': "",   // Topic 4: Signal Transduction
+  'topic-303-4': "",   // Topic 5: Abiotic Stress Physiology
+  'topic-303-5': "",   // Topic 6: Biotic Stress
+  'topic-303-6': "",   // Topic 7: Senescence and Programmed Cell Death
+  'topic-303-7': "",   // Topic 8: Metabolic Engineering
+  'topic-303-8': "",   // Topic 9: Applied Plant Physiology
+  'book-303-0': "",    // Book 1: Plant Physiology
+  'book-303-1': "",    // Book 2: Plant Physiology
+  'book-303-2': "",    // Book 3: Biochemistry and Molecular Biology of Plants
+  'book-303-3': "",    // Book 4: Introduction to Plant Physiology
+  'book-303-4': "",    // Book 5: Advanced Plant Physiology
+
+  // ── BOT.404: Plant Breeding
+  'topic-304-0': "",   // Topic 1: Introduction
+  'topic-304-1': "",   // Topic 2: Genetic Basis of Plant Breeding
+  'topic-304-2': "",   // Topic 3: Plant Introduction and Acclimatization
+  'topic-304-3': "",   // Topic 4: Selection Methods
+  'topic-304-4': "",   // Topic 5: Hybridization
+  'topic-304-5': "",   // Topic 6: Heterosis Breeding
+  'topic-304-6': "",   // Topic 7: Mutation Breeding
+  'topic-304-7': "",   // Topic 8: Polyploidy Breeding
+  'topic-304-8': "",   // Topic 9: Biotechnology in Plant Breeding
+  'topic-304-9': "",   // Topic 10: Variety Release and Protection
+  'book-304-0': "",    // Book 1: Principles of Plant Breeding
+  'book-304-1': "",    // Book 2: Elementary Plant Breeding
+  'book-304-2': "",    // Book 3: Principles of Plant Breeding
+  'book-304-3': "",    // Book 4: Plant Breeding
+  'book-304-4': "",    // Book 5: Plant Breeding and Biotechnology
+
+  // ── BOT.405: Plant and Environmental Microbiology
+  'topic-305-0': "",   // Topic 1: Soil Microbiology
+  'topic-305-1': "",   // Topic 2: Microbial Ecology
+  'topic-305-2': "",   // Topic 3: Nitrogen Cycle
+  'topic-305-3': "",   // Topic 4: Plant Growth Promoting Rhizobacteria (PGPR)
+  'topic-305-4': "",   // Topic 5: Phytomicrobiome
+  'topic-305-5': "",   // Topic 6: Environmental Pollution and Microbiology
+  'topic-305-6': "",   // Topic 7: Bioremediation
+  'topic-305-7': "",   // Topic 8: Food Microbiology
+  'topic-305-8': "",   // Topic 9: Beneficial Microorganisms in Agriculture
+  'topic-305-9': "",   // Topic 10: Industrial Microbiology
+  'book-305-0': "",    // Book 1: Soil Microbiology
+  'book-305-1': "",    // Book 2: Soil Microbiology
+  'book-305-2': "",    // Book 3: Microbiology
+  'book-305-3': "",    // Book 4: Environmental Microbiology
+  'book-305-4': "",    // Book 5: A Text Book of Microbiology
+
+  // ── BOT.406: Origin and Evolution of Life
+  'topic-306-0': "",   // Topic 1: Origin of the Universe and Earth
+  'topic-306-1': "",   // Topic 2: Chemical Evolution
+  'topic-306-2': "",   // Topic 3: Origin of Life
+  'topic-306-3': "",   // Topic 4: Early Life and Fossil Record
+  'topic-306-4': "",   // Topic 5: Evolutionary Mechanisms
+  'topic-306-5': "",   // Topic 6: Evolution of Plants
+  'topic-306-6': "",   // Topic 7: Speciation
+  'topic-306-7': "",   // Topic 8: Evolutionary Theory
+  'book-306-0': "",    // Book 1: The Origin of Life
+  'book-306-1': "",    // Book 2: Evolution
+  'book-306-2': "",    // Book 3: Molecular Evolution
+  'book-306-3': "",    // Book 4: Origin and Evolution of Life
+  'book-306-4': "",    // Book 5: Evolutionary Biology
+  'book-306-5': "",    // Book 6: Molecular Biology and Evolution
+
+  // ── BOT.407: Plant Stress Physiology
+  'topic-307-0': "",   // Topic 1: Introduction to Stress Physiology
+  'topic-307-1': "",   // Topic 2: Water Deficit Stress
+  'topic-307-2': "",   // Topic 3: Salinity Stress
+  'topic-307-3': "",   // Topic 4: Heat Stress
+  'topic-307-4': "",   // Topic 5: Cold and Chilling Stress
+  'topic-307-5': "",   // Topic 6: Flooding and Anaerobic Stress
+  'topic-307-6': "",   // Topic 7: Heavy Metal Stress
+  'topic-307-7': "",   // Topic 8: Oxidative Stress and ROS
+  'topic-307-8': "",   // Topic 9: Biotic Stress and Defence
+  'book-307-0': "",    // Book 1: Plant Stress Physiology
+  'book-307-1': "",    // Book 2: Plant Physiology
+  'book-307-2': "",    // Book 3: Physiology and Biochemistry of Plant Stress
+  'book-307-3': "",    // Book 4: Biochemistry and Molecular Biology of Plants
+  'book-307-4': "",    // Book 5: Abiotic Stress Tolerance in Plants
+
+  // ── BOT.408: Biotechnology and Genetic Engineering
+  'topic-308-0': "",   // Topic 1: Introduction to Biotechnology
+  'topic-308-1': "",   // Topic 2: Recombinant DNA Technology
+  'topic-308-2': "",   // Topic 3: Gene Cloning
+  'topic-308-3': "",   // Topic 4: PCR and DNA Analysis
+  'topic-308-4': "",   // Topic 5: DNA Sequencing
+  'topic-308-5': "",   // Topic 6: Genetic Engineering of Plants
+  'topic-308-6': "",   // Topic 7: Transgenic Plants and Applications
+  'topic-308-7': "",   // Topic 8: Genomics and Bioinformatics
+  'topic-308-8': "",   // Topic 9: Biosafety and Bioethics
+  'book-308-0': "",    // Book 1: Introduction to Plant Biotechnology
+  'book-308-1': "",    // Book 2: Molecular Biotechnology
+  'book-308-2': "",    // Book 3: Molecular Biology of the Gene
+  'book-308-3': "",    // Book 4: Plant Biotechnology
+  'book-308-4': "",    // Book 5: Genetic Engineering: Principles and Methods
+  'book-308-5': "",    // Book 6: Molecular Biology and Biotechnology
+
+  // ── BOT.409: Molecular Biology
+  'topic-309-0': "",   // Topic 1: DNA Structure and Organisation
+  'topic-309-1': "",   // Topic 2: DNA Replication
+  'topic-309-2': "",   // Topic 3: DNA Damage and Repair
+  'topic-309-3': "",   // Topic 4: Transcription
+  'topic-309-4': "",   // Topic 5: RNA Processing
+  'topic-309-5': "",   // Topic 6: Translation
+  'topic-309-6': "",   // Topic 7: Gene Regulation
+  'topic-309-7': "",   // Topic 8: Non-coding RNAs
+  'topic-309-8': "",   // Topic 9: Recombination
+  'book-309-0': "",    // Book 1: Molecular Biology of the Cell
+  'book-309-1': "",    // Book 2: Molecular Biology of the Gene
+  'book-309-2': "",    // Book 3: Molecular Cell Biology
+  'book-309-3': "",    // Book 4: Molecular Biology
+  'book-309-4': "",    // Book 5: AmbikaBajpai (Molecular Biology)
+  'book-309-5': "",    // Book 6: Molecular Biology of the Gene (Vol. I & II)
+
+  // ──────────────────────────────────────────────────────────────────────
+  // NOTES CARDS (shown in the Notes page grid)
+  // ──────────────────────────────────────────────────────────────────────
+
+  'note-1': "",   // BOT.101 — Microbiology Full Notes
+  'note-2': "",   // BOT.102 — Mycology & Lichenology Notes
+  'note-3': "",   // BOT.103 — Phycology Lecture Notes
+  'note-4': "",   // BOT.104 — Bryology Notes
+  'note-5': "",   // BOT.105 — Pteridology Study Guide
+  'note-6': "",   // BOT.106 — Agronomy Notes
+  'note-7': "",   // BOT.107 — Soil Science Notes
+  'note-8': "",   // BOT.201 — Gymnosperms & Palaeobotany
+  'note-9': "",   // BOT.202 — Biodiversity
+  'note-10': "",   // BOT.203 — Plant Anatomy
+  'note-11': "",   // BOT.204 — Plant Morphology & Systematics
+  'note-12': "",   // BOT.205 — Embryology & Palynology
+  'note-13': "",   // BOT.301 — Plant Taxonomy
+  'note-14': "",   // BOT.302 — Limnology
+  'note-15': "",   // BOT.303 — Plant Ecology
+  'note-16': "",   // BOT.304 — Plant Physiology
+  'note-17': "",   // BOT.305 — Plant Pathology
+  'note-18': "",   // BOT.401 — Phytogeography & Plant Conservation Biology
+  'note-19': "",   // BOT.402 — Ethnobotany & Economic Botany
+  'note-20': "",   // BOT.403 — Plant Physiology II
+  'note-21': "",   // BOT.404 — Plant Breeding
+  'note-22': "",   // BOT.405 — Plant & Environmental Microbiology
+  'note-23': "",   // BOT.206 — Horticulture & Hill Cultivation
+  'note-24': "",   // BOT.207 — Plant Taxonomy (Related)
+  'note-25': "",   // BOT.208 — Bio-physical Chemistry
+  'note-26': "",   // BOT.209 — Genetics
+  'note-27': "",   // BOT.306 — Cytology & Genetics
+  'note-28': "",   // BOT.307 — Pharmacognosy & Medicinal Botany
+  'note-29': "",   // BOT.308 — Plant Tissue Culture
+  'note-30': "",   // BOT.406 — Origin & Evolution of Life
+  'note-31': "",   // BOT.407 — Plant Stress Physiology
+  'note-32': "",   // BOT.408 — Biotechnology & Genetic Engineering
+  'note-33': "",   // BOT.409 — Molecular Biology
+
+};
 let TEACHERS = [];
 let nextTeacherId = 1;
 let TEACHER_PHOTOS = {};
@@ -1576,7 +2175,7 @@ function saveTeacher(){
     if(newPhoto){TEACHER_PHOTOS[id]=newPhoto;delete imgEl.dataset.newPhoto;}
   }
   closeTeacherModal();
-  toast(' Teacher saved!');
+  toast('Teacher saved!');
   renderTeachersPage();renderAdminTeachersList();
   document.getElementById('a-teachers-count').textContent=TEACHERS.length;
   document.getElementById('stat-teachers').textContent=TEACHERS.length;
@@ -1828,7 +2427,7 @@ async function sendChat(){
   const inp=document.getElementById('chat-input');const msg=inp.value.trim();if(!msg)return;
   inp.value='';addMsg(msg,'user');const ty=addTyping();
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYLLABUS,messages:[{role:'user',content:msg}]})});
+    const res=await fetch('',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'',max_tokens:1000,system:SYLLABUS,messages:[{role:'user',content:msg}]})});
     const data=await res.json();ty.remove();
     addMsg(data.content&&data.content[0]?data.content[0].text:"Couldn't get a response.",'bot');
   }catch(e){ty.remove();addMsg("Connection issue. Try again.",'bot');}
@@ -1851,3 +2450,4 @@ showPage('home');
 </script>
 </body>
 </html>
+
